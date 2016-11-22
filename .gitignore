@@ -3,28 +3,17 @@ lib-cov
 *.log
 *.csv
 *.dat
-*.out
-*.pid
-*.gz
-*.swp
 
-pids
-logs
-results
-tmp
-coverage
-*/images
+**/images
 
 # API keys
 .env
 
 # Dependency directory
 node_modules
-bower_components
 
 # Editor stuff
 .idea
-*.iml
 
 # OSX crap
 .DS_Store
