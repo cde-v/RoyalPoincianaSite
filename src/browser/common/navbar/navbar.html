@@ -1,0 +1,25 @@
+<div class="navbar-fixed z-depth-0">
+    <nav>
+        <div class="nav-wrapper orange lighten-4 z-depth-2">
+            <a ui-sref="home" class="brand-logo left">
+                <!-- <img src="rptreelogotransparent.png"> -->
+                <div class="logo-back orange lighten-5 z-depth-2">
+                    <img src="fullrplogotransparent.png">
+                </div>
+            </a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li ng-repeat="option in vm.options">
+                    <a class="black-text" ui-sref="{{ option.state }}">{{ option.label }}</a>
+                </li>
+            </ul>
+            <a class="button-collapse dropdown-button right" href="#" data-activates="menuDropdown" data-beloworigin="true" dropdown>
+                <i id="menu-button" class="material-icons black-text mr2">menu</i>
+            </a>
+            <ul id="menuDropdown" class="dropdown-content">
+                <li ng-repeat="option in vm.options">
+                    <a class="black-text" ui-sref="{{ option.state }}">{{ option.label }}</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>

@@ -1,0 +1,6 @@
+{
+  "extends": "fullstack",
+  "parserOptions": {
+    "sourceType": "module"
+  }
+}

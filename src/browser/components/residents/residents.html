@@ -1,0 +1,40 @@
+<navbar></navbar>
+<header>
+    <hero>
+    </hero>
+</header>
+<main>
+    <div class="white">
+        <div class="container">
+            <!-- ERROR WARNING MESSAGES!!!!!! -->
+            <div ng-if="messages.error" role="alert" class="alert alert-danger">
+                <div ng-repeat="error in messages.error">{{error.msg}}</div>
+            </div>
+            <!-- ERROR WARNING MESSAGES!!!!!! -->
+            <div class="row">
+                <form class="col s6" ng-submit="login()">
+                    <h2>Log In</h2>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" id="email" placeholder="Email" class="validate" ng-model="user.email" autofocus>
+                        </div>
+                        <div class="input-field col s6">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" id="password" placeholder="Password" class="validate" ng-model="user.password">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success">Log in</button>
+                </form>
+                <!-- <div class="form-group"> -->
+                <a href="/forgot"><strong>Forgot your password?</strong></a>
+                <!-- </div> -->
+                <span>or</span>
+                <p class="text-center">
+                    Don't have an account? <a href="/signup"><strong>Sign up</strong></a>
+                </p>
+            </div>
+        </div>
+    </div>
+</main>
+<footbar></footbar>

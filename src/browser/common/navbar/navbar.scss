@@ -1,0 +1,25 @@
+@import '../common';
+.brand-logo {
+    height: 100%;
+    left: 0px !important;
+    img {
+        max-width: 100%;
+        height: 141px;
+    }
+}
+
+.logo-back {
+    border-radius: 0px 0px 20px 0px;
+}
+
+nav ul a {
+    color: #000;
+}
+
+#menu-button {
+    font-size: 3rem;
+}
+
+.dropdown-content {
+    width: auto !important;
+}
