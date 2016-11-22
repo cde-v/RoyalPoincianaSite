@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-export default function($scope, todoFactory) {
+function TodosController ($scope, todosFactory) {
     let params = {
         createHasInput: false
     };
@@ -18,7 +18,7 @@ export default function($scope, todoFactory) {
     // }
     // ];
 
-    todoFactory.getTasks($scope);
+    todosFactory.getTasks($scope);
 
     $scope.onCompletedClick = todo => {
         todo.isCompleted = !todo.isCompleted;
@@ -33,10 +33,12 @@ export default function($scope, todoFactory) {
         todo.isEditing = false;
     };
 
-    const { createTask, updateTask, deleteTask, watchCreateTaskInput } = todoFactory;
+    const { createTask, updateTask, deleteTask, watchCreateTaskInput } = todosFactory;
 
     $scope.createTask = _.partial(createTask, $scope, params);
     $scope.updateTask = _.partial(updateTask, $scope);
     $scope.deleteTask = _.partial(deleteTask, $scope);
     $scope.$watch('createTaskInput', _.partial(watchCreateTaskInput, params, $scope));
 }
+
+export default TodosController;

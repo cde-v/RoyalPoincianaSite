@@ -1,12 +1,14 @@
 class NavbarController {
   constructor($location, $window, $auth) {
     this.name = 'navbar';
+
     this.options = [
       { label: 'Home', state: 'home' },
       { label: 'About', state: 'about' },
       { label: 'Contact', state: 'contact' },
-      { label: 'Residents', state: 'residents' }
-    ]
+      { label: 'Residents', state: 'residents' },
+      { label: 'Todos', state: 'todos' }
+    ];
     this.$location = $location;
     this.$window = $window;
     this.$auth = $auth;
