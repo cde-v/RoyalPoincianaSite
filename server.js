@@ -8,6 +8,8 @@ console.log(process.env.PORT);
 
 var PORT = process.env.PORT || 3000;
 
+app.set('port', PORT || 3000);
+
 console.log(process.env.PORT);
 
 app.use(bodyParser.json());
