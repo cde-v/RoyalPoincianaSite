@@ -1,42 +1,134 @@
+// let express = require('express');
+// let path = require('path');
+// let logger = require('morgan');
+// let compression = require('compression');
+// let cookieParser = require('cookie-parser');
+// let bodyParser = require('body-parser');
+// let expressValidator = require('express-validator');
+// let dotenv = require('dotenv');
+// let mongoose = require('mongoose');
+// let jwt = require('jsonwebtoken');
+// let moment = require('moment');
+// let request = require('request');
+
+// let routes = require('server/routes');
+
+// let app = express();
+
+// let PORT = process.env.PORT || 3000;
+
+// // Load environment variables from .env file, only for LOCAL env, .env not on heroku, actually part of vars
+// // console.log(process.env)
+
+// if (process.env.NODE_ENV !== 'prod') {
+//   dotenv.load();
+// }
+
+// app.set('port', PORT);
+
+// app.use(bodyParser.json());
+
+// // Used for production build
+// app.use(express.static(path.join(__dirname, 'public')));
+
+// routes(app);
+
+// app.all('/*', function(req, res) {
+//     res.sendFile(path.join(__dirname, 'public/index.html'));
+// });
+
+// app.listen(PORT, function() {
+//     console.log('Server running on ' + PORT);
+// });
+
+
 var express = require('express');
 var path = require('path');
-let logger = require('morgan');
-let compression = require('compression');
-let cookieParser = require('cookie-parser');
+var logger = require('morgan');
+var compression = require('compression');
+var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-let expressValidator = require('express-validator');
-let dotenv = require('dotenv');
-let mongoose = require('mongoose');
-let jwt = require('jsonwebtoken');
-let moment = require('moment');
-let request = require('request');
-var routes = require('server/routes');
+var expressValidator = require('express-validator');
+var dotenv = require('dotenv');
+var mongoose = require('mongoose');
+var jwt = require('jsonwebtoken');
+var moment = require('moment');
+var request = require('request');
+
+// Load environment variables from .env file
+dotenv.load();
+
+// Models
+var User = require('./src/server/db/models/User');
+
+// Controllers
+var userController = require('./src/server/controllers/user');
+var contactController = require('./src/server/controllers/contact');
 
 var app = express();
 
-// Load environment variables from .env file, only for LOCAL env, .env not on heroku, actually part of vars
-// console.log(process.env)
-
-if (process.env.NODE_ENV !== 'prod') {
-  dotenv.load();
-  console.log('BOOM')
-}
-
-var PORT = process.env.PORT || 3000;
-
-app.set('port', PORT || 3000);
-
+mongoose.connect(process.env.MONGODB_URI);
+mongoose.connection.on('error', function() {
+  console.log('MongoDB Connection Error. Please make sure that MongoDB is running.');
+  process.exit(1);
+});
+app.set('port', process.env.PORT || 3000);
+app.use(compression());
+app.use(logger('dev'));
 app.use(bodyParser.json());
-
-// Used for production build
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(expressValidator());
+app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-routes(app);
+app.use(function(req, res, next) {
+  req.isAuthenticated = function() {
+    var token = (req.headers.authorization && req.headers.authorization.split(' ')[1]) || req.cookies.token;
+    try {
+      return jwt.verify(token, process.env.TOKEN_SECRET);
+    } catch (err) {
+      return false;
+    }
+  };
 
-app.all('/*', function(req, res) {
-    res.sendFile(path.join(__dirname, 'public/index.html'));
+  if (req.isAuthenticated()) {
+    var payload = req.isAuthenticated();
+    User.findById(payload.sub, function(err, user) {
+      req.user = user;
+      next();
+    });
+  } else {
+    next();
+  }
 });
 
-app.listen(PORT, function() {
-    console.log('Server running on ' + PORT);
+app.post('/contact', contactController.contactPost);
+app.put('/account', userController.ensureAuthenticated, userController.accountPut);
+app.delete('/account', userController.ensureAuthenticated, userController.accountDelete);
+app.post('/signup', userController.signupPost);
+app.post('/login', userController.loginPost);
+app.post('/forgot', userController.forgotPost);
+app.post('/reset/:token', userController.resetPost);
+app.get('/unlink/:provider', userController.ensureAuthenticated, userController.unlink);
+
+app.get('/', function(req, res) {
+  res.sendFile(path.join(__dirname, 'app', 'index.html'));
 });
+
+app.get('*', function(req, res) {
+  res.redirect('/#' + req.originalUrl);
+});
+
+// Production error handler
+if (app.get('env') === 'production') {
+  app.use(function(err, req, res, next) {
+    console.error(err.stack);
+    res.sendStatus(err.status || 500);
+  });
+}
+
+app.listen(app.get('port'), function() {
+  console.log('Express server listening on port ' + app.get('port'));
+});
+
+module.exports = app;

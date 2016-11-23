@@ -3,8 +3,9 @@
     <hero>
     </hero>
 </header>
-<main>
-    <div class="white">
+<main id="residents" class="valign-wrapper">
+    <img class="top-banner" ng-src="image01.jpg">
+    <div class="section">
         <div class="container">
             <!-- ERROR WARNING MESSAGES!!!!!! -->
             <div ng-if="messages.error" role="alert" class="alert alert-danger">
@@ -12,27 +13,29 @@
             </div>
             <!-- ERROR WARNING MESSAGES!!!!!! -->
             <div class="row">
-                <form class="col s6" ng-submit="login()">
-                    <h2>Log In</h2>
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <label for="email">Email</label>
-                            <input type="email" name="email" id="email" placeholder="Email" class="validate" ng-model="user.email" autofocus>
+                <div class="form-container col s6 offset-s3 l4 offset-l4 section white z-depth-2">
+                    <form ng-submit="login()">
+                        <div class="row">
+                            <h4 class="center">Log In</h4>
+                            <div class="input-field col s6 l12">
+                                <label for="email">Email</label>
+                                <input type="email" name="email" id="email" placeholder="Email" class="validate" ng-model="user.email" autofocus>
+                            </div>
+                            <div class="input-field col s6 l12">
+                                <label for="password">Password</label>
+                                <input type="password" name="password" id="password" placeholder="Password" class="validate" ng-model="user.password">
+                            </div>
                         </div>
-                        <div class="input-field col s6">
-                            <label for="password">Password</label>
-                            <input type="password" name="password" id="password" placeholder="Password" class="validate" ng-model="user.password">
+                        <div class="row center">
+                            <button type="submit" class="btn btn-success center-align center">Log in</button>
                         </div>
-                    </div>
-                    <button type="submit" class="btn btn-success">Log in</button>
-                </form>
-                <!-- <div class="form-group"> -->
-                <a href="/forgot"><strong>Forgot your password?</strong></a>
-                <!-- </div> -->
-                <span>or</span>
-                <p class="text-center">
-                    Don't have an account? <a href="/signup"><strong>Sign up</strong></a>
-                </p>
+                        <div class="row center">
+                            <a ui-sref="forgot">
+                                <strong>Forgot your password?</strong>
+                            </a>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

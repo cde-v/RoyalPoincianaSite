@@ -6,8 +6,7 @@ class NavbarController {
       { label: 'Home', state: 'home' },
       { label: 'About', state: 'about' },
       { label: 'Contact', state: 'contact' },
-      { label: 'Residents', state: 'residents' },
-      { label: 'Todos', state: 'todos' }
+      { label: 'Resident Portal', state: 'residents' }
     ];
     this.$location = $location;
     this.$window = $window;
