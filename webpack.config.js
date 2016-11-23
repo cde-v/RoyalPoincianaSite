@@ -1,9 +1,6 @@
 var webpack = require('webpack');
 var path = require('path');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
-// var HtmlWebpackPlugin = require('html-webpack-plugin');
-// var ExtractTextPlugin = require('extract-text-webpack-plugin');
-
 
 module.exports = {
   devtool: 'source-map',
@@ -46,10 +43,6 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
     new CopyWebpackPlugin([{ from: 'images' }])
-    // new ExtractTextPlugin('[name].css'),
-    // new webpack.ProvidePlugin({
-    //   'window.jQuery': 'jquery'
-    // })
   ],
   devServer: {
     hot: true,

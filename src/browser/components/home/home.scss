@@ -1,55 +1,26 @@
-p {
-    line-height: 2rem;
-}
-
-.container {
-    width: 100%;
-}
-
-.parallax-container {
-    line-height: 0;
-    height: auto;
-    color: rgba(255, 255, 255, .9);
-}
-
-.top-banner {
-    width: 100%;
-    display: block;
-}
-
-.parallax-top {
-    min-height: 380px;
-}
-
-.parallax-mid {
-    min-height: 500px;
-}
-
-.parallax-bot {
-    min-height: 500px;
-}
-
-.parallax-container .section {
-    width: 100%;
-}
-
-.row {
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-.icon-block {
-    padding: 1px 15px;
-    border-radius: 20px;
-    h2 {
-      margin: 1rem 0 0 0;
+// p {
+//     line-height: 2rem;
+// }
+#home {
+    // .top-banner {
+    //     width: 100%;
+    //     display: block;
+    // }
+    // .row {
+    //     margin-top: 10px;
+    //     margin-bottom: 10px;
+    // }
+    .icon-block {
+        padding: 1px 15px;
+        border-radius: 20px;
+        h2 {
+            margin: 1rem 0 0 0;
+        }
     }
-}
-
-.icon-block .material-icons {
-    font-size: inherit;
-}
-
-footer.page-footer {
-    margin: 0;
+    .icon-block .material-icons {
+        font-size: inherit;
+    }
+    // footer.page-footer {
+    //     margin: 0;
+    // }
 }

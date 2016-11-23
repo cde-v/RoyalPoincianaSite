@@ -4,7 +4,8 @@ import angularMaterialize from 'angular-materialize';
 import satellizer from 'satellizer';
 import Common from './common/common';
 import Components from './components/components';
-import AppComponent from './app.component';
+import './app.scss';
+// import AppComponent from './app.component';
 
 const root = angular
   .module('app', [
@@ -18,6 +19,6 @@ const root = angular
     // 'ngInject';
     $locationProvider.html5Mode(true).hashPrefix('!');
   })
-  .component('app', AppComponent);
+  // .component('app', AppComponent);
 
 export default root;
