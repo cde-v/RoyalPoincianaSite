@@ -16,7 +16,7 @@ const root = angular
     uiRouter
   ])
   .config(($locationProvider) => {
-    // 'ngInject';
+    'ngInject';
     $locationProvider.html5Mode(true).hashPrefix('!');
   })
   // .component('app', AppComponent);

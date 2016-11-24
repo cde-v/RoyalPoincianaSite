@@ -2,15 +2,12 @@ import template from './about.html';
 import controller from './about.controller';
 import './about.scss';
 
-let aboutComponent = function() {
-  return {
-    restrict: 'EA',
-    template,
-    controller,
-    link: aboutComponentLink
-  };
+let aboutComponent = {
+  restrict: 'EA',
+  template,
+  controller
 };
 
-function aboutComponentLink() {}
+// function aboutComponentLink() {}
 
 export default aboutComponent;

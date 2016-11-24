@@ -13,6 +13,6 @@ let aboutModule = angular.module('about', [
         template: '<about></about>'
       });
   })
-  .directive('about', aboutComponent);
+  .component('about', aboutComponent);
 
 export default aboutModule;

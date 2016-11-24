@@ -4,8 +4,7 @@ import footbarComponent from './footbar.component';
 
 let footbarModule = angular.module('footbar', [
     uiRouter
-])
-
-.component('footbar', footbarComponent);
+  ])
+  .component('footbar', footbarComponent);
 
 export default footbarModule;
