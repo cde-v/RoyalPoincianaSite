@@ -2,13 +2,11 @@ import template from './home.html';
 import controller from './home.controller';
 import './home.scss';
 
-let homeComponent = function() {
-  return {
-    restrict: 'EA',
+let homeComponent = {
     template,
-    controller,
-    controllerAs: 'vmm'
-  };
+    controller
+    // ,
+    // controllerAs: 'vmm'
 };
 
 export default homeComponent;

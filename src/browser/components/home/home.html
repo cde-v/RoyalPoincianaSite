@@ -1,9 +1,12 @@
-<navbar></navbar>
 <header>
     <hero></hero>
 </header>
-<main id="home">
-    <img class="top-banner" ng-src="image01.jpg">
+<div id="home">
+    <div class="parallax-container">
+        <div parallax>
+            <img class="top-banner" src="image01.jpg">
+        </div>
+    </div>
     <div class="orange lighten-4">
         <div class="section">
             <div class="row">
@@ -11,7 +14,7 @@
                     <div class="row">
                         <div class="col s12 m4">
                             <div class="icon-block orange lighten-5 z-depth-2">
-                            <!-- <div class="icon-block amber lighten-5 z-depth-2"> -->
+                                <!-- <div class="icon-block amber lighten-5 z-depth-2"> -->
                                 <h2 class="center pink-text"><i class="material-icons">filter_vintage</i></h2>
                                 <h5 class="center">Beautiful Title</h5>
                                 <p class="light">Beautiful commentary about something beautiful in this beautiful community.</p>
@@ -19,7 +22,7 @@
                         </div>
                         <div class="col s12 m4">
                             <div class="icon-block orange lighten-5 z-depth-2">
-                            <!-- <div class="icon-block amber lighten-5 z-depth-2"> -->
+                                <!-- <div class="icon-block amber lighten-5 z-depth-2"> -->
                                 <h2 class="center orange-text"><i class="material-icons">wb_sunny</i></h2>
                                 <h5 class="center">Sunny Florida</h5>
                                 <p class="light">Seriously, I have no idea what will appeal to you people.</p>
@@ -27,7 +30,7 @@
                         </div>
                         <div class="col s12 m4">
                             <div class="icon-block orange lighten-5 z-depth-2">
-                            <!-- <div class="icon-block amber lighten-5 z-depth-2"> -->
+                                <!-- <div class="icon-block amber lighten-5 z-depth-2"> -->
                                 <h2 class="center cyan-text"><i class="material-icons">beach_access</i></h2>
                                 <h5 class="center">Beaches!!!</h5>
                                 <p class="light">15 minutes to the world famous Deerfield, Spanish River, and and Red Reef beaches.</p>
@@ -40,10 +43,9 @@
     </div>
     <div class="slider orange lighten-4" height="575" slider>
         <ul class="slides">
-            <li ng-repeat="slide in vmm.slideshow">
+            <li ng-repeat="slide in $ctrl.slideshow">
                 <img ng-src="{{slide.image}}">
             </li>
         </ul>
     </div>
-</main>
-<footbar></footbar>
+</div>

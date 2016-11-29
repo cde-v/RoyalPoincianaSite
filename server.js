@@ -1,71 +1,37 @@
-// let express = require('express');
-// let path = require('path');
-// let logger = require('morgan');
-// let compression = require('compression');
-// let cookieParser = require('cookie-parser');
-// let bodyParser = require('body-parser');
-// let expressValidator = require('express-validator');
-// let dotenv = require('dotenv');
-// let mongoose = require('mongoose');
-// let jwt = require('jsonwebtoken');
-// let moment = require('moment');
-// let request = require('request');
+let express = require('express');
+let path = require('path');
+let logger = require('morgan');
+let compression = require('compression');
+let cookieParser = require('cookie-parser');
+let bodyParser = require('body-parser');
+let expressValidator = require('express-validator');
+let dotenv = require('dotenv');
+let mongoose = require('mongoose');
+let jwt = require('jsonwebtoken');
+let moment = require('moment');
+let request = require('request');
 
-// let routes = require('server/routes');
+// Load environment variables from .env file, only for LOCAL env, .env not on heroku, actually part of vars
+// console.log(process.env)
 
-// let app = express();
-
-// let PORT = process.env.PORT || 3000;
-
-// // Load environment variables from .env file, only for LOCAL env, .env not on heroku, actually part of vars
-// // console.log(process.env)
-
-// if (process.env.NODE_ENV !== 'prod') {
-//   dotenv.load();
-// }
-
-// app.set('port', PORT);
-
-// app.use(bodyParser.json());
-
-// // Used for production build
-// app.use(express.static(path.join(__dirname, 'public')));
-
-// routes(app);
-
-// app.all('/*', function(req, res) {
-//     res.sendFile(path.join(__dirname, 'public/index.html'));
-// });
-
-// app.listen(PORT, function() {
-//     console.log('Server running on ' + PORT);
-// });
-
-
-var express = require('express');
-var path = require('path');
-var logger = require('morgan');
-var compression = require('compression');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var expressValidator = require('express-validator');
-var dotenv = require('dotenv');
-var mongoose = require('mongoose');
-var jwt = require('jsonwebtoken');
-var moment = require('moment');
-var request = require('request');
-
-// Load environment variables from .env file
-dotenv.load();
+if (process.env.NODE_ENV !== 'prod') {
+  dotenv.load();
+  console.log('BOOM')
+}
 
 // Models
-var User = require('./src/server/db/models/User');
+let User = require('./models/User');
 
 // Controllers
-var userController = require('./src/server/controllers/user');
-var contactController = require('./src/server/controllers/contact');
+let userController = require('./controllers/user');
+let contactController = require('./controllers/contact');
 
-var app = express();
+let app = express();
+
+let npmPath = path.join(__dirname, './node_modules');
+let browserPath = path.join(__dirname, './browser');
+app.use(express.static(npmPath));
+app.use(express.static(browserPath));
 
 mongoose.connect(process.env.MONGODB_URI);
 mongoose.connection.on('error', function() {
@@ -83,7 +49,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(function(req, res, next) {
   req.isAuthenticated = function() {
-    var token = (req.headers.authorization && req.headers.authorization.split(' ')[1]) || req.cookies.token;
+    let token = (req.headers.authorization && req.headers.authorization.split(' ')[1]) || req.cookies.token;
     try {
       return jwt.verify(token, process.env.TOKEN_SECRET);
     } catch (err) {
@@ -92,11 +58,12 @@ app.use(function(req, res, next) {
   };
 
   if (req.isAuthenticated()) {
-    var payload = req.isAuthenticated();
+    let payload = req.isAuthenticated();
     User.findById(payload.sub, function(err, user) {
+      console.error(err);
       req.user = user;
       next();
-    });
+   });
   } else {
     next();
   }

@@ -5,10 +5,7 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 module.exports = {
   context: path.join(__dirname, 'src'),
   entry: [
-    // 'webpack-dev-server/client?http://127.0.0.1:8080/',
-    // 'webpack/hot/only-dev-server',
-    // 'materialize-loader!./materialize.config.js',
-    './browser'
+    './browser/app.js'
   ],
   output: {
     path: path.join(__dirname, 'public'),

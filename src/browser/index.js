@@ -1,4 +1,4 @@
-import angular from 'angular';
-import root from 'app';
+// import angular from 'angular';
+// import root from 'app';
 
-angular.bootstrap(document, [root.name]);
+// angular.bootstrap(document, [root.name]);

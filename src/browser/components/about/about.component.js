@@ -3,7 +3,6 @@ import controller from './about.controller';
 import './about.scss';
 
 let aboutComponent = {
-  restrict: 'EA',
   template,
   controller
 };

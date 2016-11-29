@@ -1,5 +1,4 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto);
-
 // .mm0 { margin:        0 }
 // .mt0 { margin-top:    0 }
 // .mr0 { margin-right:  0 }
@@ -7,7 +6,6 @@
 // .ml0 { margin-left:   0 }
 // .mx0 { margin-left:   0; margin-right:  0 }
 // .my0 { margin-top:    0; margin-bottom: 0 }
-
 // .mm1 { margin:        1rem }
 // .mt1 { margin-top:    1rem }
 // .mr1 { margin-right:  1rem }
@@ -15,7 +13,6 @@
 // .ml1 { margin-left:   1rem }
 // .mx1 { margin-left:   1rem; margin-right:  1rem }
 // .my1 { margin-top:    1rem; margin-bottom: 1rem }
-
 // .mm2 { margin:        2rem }
 // .mt2 { margin-top:    2rem }
 // .mr2 { margin-right:  2rem }
@@ -23,7 +20,6 @@
 // .ml2 { margin-left:   2rem }
 // .mx2 { margin-left:   2rem; margin-right:  2rem }
 // .my2 { margin-top:    2rem; margin-bottom: 2rem }
-
 // .mm3 { margin:        3rem }
 // .mt3 { margin-top:    3rem }
 // .mr3 { margin-right:  3rem }
@@ -31,7 +27,6 @@
 // .ml3 { margin-left:   3rem }
 // .mx3 { margin-left:   3rem; margin-right:  3rem }
 // .my3 { margin-top:    3rem; margin-bottom: 3rem }
-
 // .mm4 { margin:        4rem }
 // .mt4 { margin-top:    4rem }
 // .mr4 { margin-right:  4rem }
@@ -39,11 +34,9 @@
 // .ml4 { margin-left:   4rem }
 // .mx4 { margin-left:   4rem; margin-right:  4rem }
 // .my4 { margin-top:    4rem; margin-bottom: 4rem }
-
 // .ml-auto { margin-left: auto }
 // .mr-auto { margin-right: auto }
 // .mx-auto { margin-left: auto; margin-right: auto; }
-
 // .p0  { padding: 0 }
 // .pt0 { padding-top: 0 }
 // .pr0 { padding-right: 0 }
@@ -51,7 +44,6 @@
 // .pl0 { padding-left: 0 }
 // .px0 { padding-left: 0; padding-right:  0 }
 // .py0 { padding-top: 0;  padding-bottom: 0 }
-
 // .p1  { padding:        1rem }
 // .pt1 { padding-top:    1rem }
 // .pr1 { padding-right:  1rem }
@@ -59,7 +51,6 @@
 // .pl1 { padding-left:   1rem }
 // .py1 { padding-top:    1rem; padding-bottom: 1rem }
 // .px1 { padding-left:   1rem; padding-right:  1rem }
-
 // .p2  { padding:        2rem }
 // .pt2 { padding-top:    2rem }
 // .pr2 { padding-right:  2rem }
@@ -67,7 +58,6 @@
 // .pl2 { padding-left:   2rem }
 // .py2 { padding-top:    2rem; padding-bottom: 2rem }
 // .px2 { padding-left:   2rem; padding-right:  2rem }
-
 // .p3  { padding:        3rem }
 // .pt3 { padding-top:    3rem }
 // .pr3 { padding-right:  3rem }
@@ -75,7 +65,6 @@
 // .pl3 { padding-left:   3rem }
 // .py3 { padding-top:    3rem; padding-bottom: 3rem }
 // .px3 { padding-left:   3rem; padding-right:  3rem }
-
 // .p4  { padding:        4rem }
 // .pt4 { padding-top:    4rem }
 // .pr4 { padding-right:  4rem }
@@ -83,21 +72,15 @@
 // .pl4 { padding-left:   4rem }
 // .py4 { padding-top:    4rem; padding-bottom: 4rem }
 // .px4 { padding-left:   4rem; padding-right:  4rem }
-
-
 // .mxn1 { margin-left: -1rem; margin-right: -1rem; }
 // .mxn2 { margin-left: -2rem; margin-right: -2rem; }
 // .mxn3 { margin-left: -3rem; margin-right: -3rem; }
 // .mxn4 { margin-left: -4rem; margin-right: -4rem; }
-
 // .ml-auto { margin-left: auto }
 // .mr-auto { margin-right: auto }
 // .mx-auto { margin-left: auto; margin-right: auto; }
-
 $min-navbar-height: 56px;
-
 .top-banner {
-    width: 100%;
     display: block;
 }
 
@@ -106,7 +89,7 @@ $min-navbar-height: 56px;
     margin-bottom: 10px;
 }
 
-div[ui-view]:first-child {
+.app {
     display: flex;
     min-height: 100vh;
     flex-direction: column;

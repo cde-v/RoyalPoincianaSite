@@ -63,7 +63,7 @@
 /******/ 	}
 
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "01709ccdd28606fb6bad"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "6df7dd526bb77af48394"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 
@@ -32424,7 +32424,8 @@
 	// import AppComponent from './app.component';
 
 	var root = _angular2.default.module('app', [_common2.default.name, _components2.default.name, _angularMaterialize2.default, _satellizer2.default, _angularUiRouter2.default]).config(function ($locationProvider) {
-	  // 'ngInject';
+	  'ngInject';
+
 	  $locationProvider.html5Mode(true).hashPrefix('!');
 	});
 	// .component('app', AppComponent);
@@ -41303,7 +41304,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var navbarModule = _angular2.default.module('navbar', [_angularUiRouter2.default]).directive('navbar', _navbar2.default);
+	var navbarModule = _angular2.default.module('navbar', [_angularUiRouter2.default]).component('navbar', _navbar2.default);
 
 	exports.default = navbarModule;
 
@@ -41329,13 +41330,11 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var navbarComponent = function navbarComponent() {
-	  return {
-	    restrict: 'EA',
-	    template: _navbar2.default,
-	    controller: _navbar4.default,
-	    controllerAs: 'vm'
-	  };
+	var navbarComponent = {
+	  template: _navbar2.default,
+	  controller: _navbar4.default
+	  // ,
+	  // controllerAs: 'vm'
 	};
 
 	exports.default = navbarComponent;
@@ -41344,7 +41343,7 @@
 /* 16 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"navbar-fixed z-depth-0\">\n    <nav>\n        <div class=\"nav-wrapper orange lighten-4 z-depth-2\">\n            <a ui-sref=\"home\" class=\"brand-logo left\">\n                <div class=\"logo-back orange lighten-5 z-depth-2\">\n                    <img src=\"fullrplogotransparent.png\">\n                </div>\n            </a>\n            <ul id=\"nav-mobile\" class=\"right hide-on-med-and-down\">\n                <li ng-repeat=\"option in vm.options\">\n                    <a class=\"black-text\" ui-sref=\"{{ option.state }}\">{{ option.label }}</a>\n                </li>\n            </ul>\n            <a class=\"button-collapse dropdown-button right\" href=\"#\" data-activates=\"menuDropdown\" data-beloworigin=\"true\" dropdown>\n                <i id=\"menu-button\" class=\"material-icons black-text mr2\">menu</i>\n            </a>\n            <ul id=\"menuDropdown\" class=\"dropdown-content\">\n                <li ng-repeat=\"option in vm.options\">\n                    <a class=\"black-text\" ui-sref=\"{{ option.state }}\">{{ option.label }}</a>\n                </li>\n            </ul>\n        </div>\n    </nav>\n</div>\n"
+	module.exports = "<div class=\"navbar-fixed z-depth-0\">\n    <nav>\n        <div class=\"nav-wrapper orange lighten-4 z-depth-2\">\n            <a ui-sref=\"home\" class=\"brand-logo left\">\n                <div class=\"logo-back orange lighten-5 z-depth-2\">\n                    <img src=\"fullrplogotransparent.png\">\n                </div>\n            </a>\n            <ul id=\"nav-mobile\" class=\"right hide-on-med-and-down\">\n                <li ng-repeat=\"option in $ctrl.options\">\n                    <a class=\"black-text\" ui-sref=\"{{ option.state }}\">{{ option.label }}</a>\n                </li>\n            </ul>\n            <a class=\"button-collapse dropdown-button right\" href=\"#\" data-activates=\"menuDropdown\" data-beloworigin=\"true\" dropdown>\n                <i id=\"menu-button\" class=\"material-icons black-text mr2\">menu</i>\n            </a>\n            <ul id=\"menuDropdown\" class=\"dropdown-content\">\n                <li ng-repeat=\"option in $ctrl.options\">\n                    <a class=\"black-text\" ui-sref=\"{{ option.state }}\">{{ option.label }}</a>\n                </li>\n            </ul>\n        </div>\n    </nav>\n</div>\n"
 
 /***/ },
 /* 17 */
@@ -41371,7 +41370,6 @@
 	    (0, _classCallCheck3.default)(this, NavbarController);
 
 	    this.name = 'navbar';
-
 	    this.options = [{ label: 'Home', state: 'home' }, { label: 'About', state: 'about' }, { label: 'Contact', state: 'contact' }, { label: 'Resident Portal', state: 'residents' }];
 	    this.$location = $location;
 	    this.$window = $window;
@@ -42121,7 +42119,7 @@
 /* 44 */
 /***/ function(module, exports) {
 
-	module.exports = "<footer class=\"page-footer\">\n<div id=\"footbar\" class=\"page-footer orange lighten-4\">\n<!-- <footer id=\"footbar\" class=\"page-footer orange lighten-4\"> -->\n    <div class=\"container\">\n        <div class=\"row\">\n            <div class=\"col l6 s12\">\n                <h5 class=\"black-text\">Royal Poinciana HOA</h5>\n                <p class=\"black-text\">Benevolent Dictator, King of the Andals, HOA President: His Regency, Peter de Villiers</p>\n            </div>\n            <div class=\"col l3 s12\">\n                <h5 class=\"black-text\">Settings</h5>\n                <ul>\n                    <li><a class=\"black-text\" href=\"#!\">Link 1</a></li>\n                </ul>\n            </div>\n            <div class=\"col l3 s12\">\n                <h5 class=\"black-text\">Connect</h5>\n                <ul>\n                    <li><a class=\"black-text\" href=\"#!\">Link 1</a></li>\n                </ul>\n            </div>\n        </div>\n    </div>\n    <div class=\"footer-copyright\">\n        <div class=\"container\">\n            Made by <a class=\"orange-text\" href=\"#\">cde-v</a>\n        </div>\n    </div>\n<!-- </footer> -->\n</div>\n</footer>"
+	module.exports = "<footer class=\"page-footer orange lighten-4\">\n    <div class=\"container\">\n        <div class=\"row\">\n            <div class=\"col l6 s12\">\n                <h5 class=\"black-text\">Royal Poinciana HOA</h5>\n                <p class=\"black-text\">Benevolent Dictator, King of the Andals, HOA President: His Regency, Peter de Villiers</p>\n            </div>\n            <div class=\"col l3 s12\">\n                <h5 class=\"black-text\">Settings</h5>\n                <ul>\n                    <li><a class=\"black-text\" href=\"#!\">Link 1</a></li>\n                </ul>\n            </div>\n            <div class=\"col l3 s12\">\n                <h5 class=\"black-text\">Connect</h5>\n                <ul>\n                    <li><a class=\"black-text\" href=\"#!\">Link 1</a></li>\n                </ul>\n            </div>\n        </div>\n    </div>\n    <div class=\"footer-copyright\">\n        <div class=\"container\">\n            Made by <a class=\"orange-text\" href=\"#\">cde-v</a>\n        </div>\n    </div>\n</footer>\n"
 
 /***/ },
 /* 45 */
@@ -42384,7 +42382,7 @@
 	    url: '/',
 	    template: '<home></home>'
 	  });
-	}).directive('home', _home2.default);
+	}).component('home', _home2.default);
 
 	exports.default = homeModule;
 
@@ -42395,7 +42393,7 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+	    value: true
 	});
 
 	var _home = __webpack_require__(57);
@@ -42410,13 +42408,11 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var homeComponent = function homeComponent() {
-	  return {
-	    restrict: 'EA',
+	var homeComponent = {
 	    template: _home2.default,
-	    controller: _home4.default,
-	    controllerAs: 'vmm'
-	  };
+	    controller: _home4.default
+	    // ,
+	    // controllerAs: 'vmm'
 	};
 
 	exports.default = homeComponent;
@@ -42425,7 +42421,7 @@
 /* 57 */
 /***/ function(module, exports) {
 
-	module.exports = "<navbar></navbar>\n<header>\n    <hero></hero>\n</header>\n<main id=\"home\">\n    <img class=\"top-banner\" ng-src=\"image01.jpg\">\n    <div class=\"orange lighten-4\">\n        <div class=\"section\">\n            <div class=\"row\">\n                <div class=\"col s12 l8 offset-l2\">\n                    <div class=\"row\">\n                        <div class=\"col s12 m4\">\n                            <div class=\"icon-block orange lighten-5 z-depth-2\">\n                            <!-- <div class=\"icon-block amber lighten-5 z-depth-2\"> -->\n                                <h2 class=\"center pink-text\"><i class=\"material-icons\">filter_vintage</i></h2>\n                                <h5 class=\"center\">Beautiful Title</h5>\n                                <p class=\"light\">Beautiful commentary about something beautiful in this beautiful community.</p>\n                            </div>\n                        </div>\n                        <div class=\"col s12 m4\">\n                            <div class=\"icon-block orange lighten-5 z-depth-2\">\n                            <!-- <div class=\"icon-block amber lighten-5 z-depth-2\"> -->\n                                <h2 class=\"center orange-text\"><i class=\"material-icons\">wb_sunny</i></h2>\n                                <h5 class=\"center\">Sunny Florida</h5>\n                                <p class=\"light\">Seriously, I have no idea what will appeal to you people.</p>\n                            </div>\n                        </div>\n                        <div class=\"col s12 m4\">\n                            <div class=\"icon-block orange lighten-5 z-depth-2\">\n                            <!-- <div class=\"icon-block amber lighten-5 z-depth-2\"> -->\n                                <h2 class=\"center cyan-text\"><i class=\"material-icons\">beach_access</i></h2>\n                                <h5 class=\"center\">Beaches!!!</h5>\n                                <p class=\"light\">15 minutes to the world famous Deerfield, Spanish River, and and Red Reef beaches.</p>\n                            </div>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n    <div class=\"slider orange lighten-4\" height=\"575\" slider>\n        <ul class=\"slides\">\n            <li ng-repeat=\"slide in vmm.slideshow\">\n                <img ng-src=\"{{slide.image}}\">\n            </li>\n        </ul>\n    </div>\n</main>\n<footbar></footbar>\n"
+	module.exports = "<navbar></navbar>\n<header>\n    <hero></hero>\n</header>\n<main id=\"home\">\n    <img class=\"top-banner\" ng-src=\"image01.jpg\">\n    <div class=\"orange lighten-4\">\n        <div class=\"section\">\n            <div class=\"row\">\n                <div class=\"col s12 l8 offset-l2\">\n                    <div class=\"row\">\n                        <div class=\"col s12 m4\">\n                            <div class=\"icon-block orange lighten-5 z-depth-2\">\n                            <!-- <div class=\"icon-block amber lighten-5 z-depth-2\"> -->\n                                <h2 class=\"center pink-text\"><i class=\"material-icons\">filter_vintage</i></h2>\n                                <h5 class=\"center\">Beautiful Title</h5>\n                                <p class=\"light\">Beautiful commentary about something beautiful in this beautiful community.</p>\n                            </div>\n                        </div>\n                        <div class=\"col s12 m4\">\n                            <div class=\"icon-block orange lighten-5 z-depth-2\">\n                            <!-- <div class=\"icon-block amber lighten-5 z-depth-2\"> -->\n                                <h2 class=\"center orange-text\"><i class=\"material-icons\">wb_sunny</i></h2>\n                                <h5 class=\"center\">Sunny Florida</h5>\n                                <p class=\"light\">Seriously, I have no idea what will appeal to you people.</p>\n                            </div>\n                        </div>\n                        <div class=\"col s12 m4\">\n                            <div class=\"icon-block orange lighten-5 z-depth-2\">\n                            <!-- <div class=\"icon-block amber lighten-5 z-depth-2\"> -->\n                                <h2 class=\"center cyan-text\"><i class=\"material-icons\">beach_access</i></h2>\n                                <h5 class=\"center\">Beaches!!!</h5>\n                                <p class=\"light\">15 minutes to the world famous Deerfield, Spanish River, and and Red Reef beaches.</p>\n                            </div>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n    <div class=\"slider orange lighten-4\" height=\"575\" slider>\n        <ul class=\"slides\">\n            <li ng-repeat=\"slide in $ctrl.slideshow\">\n                <img ng-src=\"{{slide.image}}\">\n            </li>\n        </ul>\n    </div>\n</main>\n<footbar></footbar>\n"
 
 /***/ },
 /* 58 */
@@ -42523,7 +42519,7 @@
 	    url: '/about',
 	    template: '<about></about>'
 	  });
-	}).directive('about', _about2.default);
+	}).component('about', _about2.default);
 
 	exports.default = aboutModule;
 
@@ -42549,16 +42545,13 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var aboutComponent = function aboutComponent() {
-	  return {
-	    restrict: 'EA',
-	    template: _about2.default,
-	    controller: _about4.default,
-	    link: aboutComponentLink
-	  };
+	var aboutComponent = {
+	  restrict: 'EA',
+	  template: _about2.default,
+	  controller: _about4.default
 	};
 
-	function aboutComponentLink() {}
+	// function aboutComponentLink() {}
 
 	exports.default = aboutComponent;
 
@@ -42566,7 +42559,7 @@
 /* 63 */
 /***/ function(module, exports) {
 
-	module.exports = "<navbar></navbar>\n<header>\n    <hero></hero>\n</header>\n<main>\n    <div>\n        <h1>{{ name }} ASDFASDF</h1>\n        <section>\n            {{ name }}\n        </section>\n    </div>\n</main>\n<!-- <footer> -->\n    <footbar></footbar>\n<!-- </footer> -->\n"
+	module.exports = "<navbar></navbar>\n<header>\n    <hero></hero>\n</header>\n<main>\n    <div>\n        <h1>{{ $ctrl.name }} ASDFASDF</h1>\n        <section>\n            {{ $ctrl.name }}\n        </section>\n    </div>\n</main>\n<footbar></footbar>\n"
 
 /***/ },
 /* 64 */

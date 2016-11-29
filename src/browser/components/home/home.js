@@ -14,6 +14,6 @@ let homeModule = angular.module('home', [
         template: '<home></home>'
       });
   })
-  .directive('home', homeComponent);
+  .component('home', homeComponent);
 
 export default homeModule;

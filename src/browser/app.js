@@ -5,7 +5,7 @@ import satellizer from 'satellizer';
 import Common from './common/common';
 import Components from './components/components';
 import './app.scss';
-// import AppComponent from './app.component';
+import AppComponent from './app.component';
 
 const root = angular
   .module('app', [
@@ -18,7 +18,24 @@ const root = angular
   .config(($locationProvider) => {
     'ngInject';
     $locationProvider.html5Mode(true).hashPrefix('!');
+    // $authProvider.loginUrl = '/login';
+    // $authProvider.signupUrl = '/signup';
+    function skipIfAuthenticated($location, $auth) {
+      if ($auth.isAuthenticated()) {
+        $location.path('/');
+      }
+    }
+    function loginRequired($location, $auth) {
+      if (!$auth.isAuthenticated()) {
+        $location.path('/login');
+      }
+    }
   })
-  // .component('app', AppComponent);
+  .component('app', AppComponent)
+  .run(function($rootScope, $window) {
+    if ($window.localStorage.user) {
+      $rootScope.currentUser = JSON.parse($window.localStorage.user);
+    }
+  });
 
 export default root;

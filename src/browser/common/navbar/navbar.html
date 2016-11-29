@@ -7,16 +7,22 @@
                 </div>
             </a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li ng-repeat="option in vm.options">
-                    <a class="black-text" ui-sref="{{ option.state }}">{{ option.label }}</a>
+                <li ng-repeat="option in $ctrl.options" ng-if="option.authOnly === $ctrl.isAuthenticated() || option.authOnly === 'both'">
+                    <a class="black-text" href="#" ui-sref="{{option.state}}">{{option.label}}</a>
+                </li>
+                <li ng-if="$ctrl.isAuthenticated()">
+                    <a class="black-text" href="#" ng-click="$ctrl.logout()">Log Out</a>
                 </li>
             </ul>
             <a class="button-collapse dropdown-button right" href="#" data-activates="menuDropdown" data-beloworigin="true" dropdown>
                 <i id="menu-button" class="material-icons black-text mr2">menu</i>
             </a>
             <ul id="menuDropdown" class="dropdown-content">
-                <li ng-repeat="option in vm.options">
-                    <a class="black-text" ui-sref="{{ option.state }}">{{ option.label }}</a>
+                <li ng-repeat="option in $ctrl.options" ng-if="option.authOnly === $ctrl.isAuthenticated() || option.authOnly === 'both'">
+                    <a class="black-text" href="#" ui-sref="{{option.state}}">{{option.label}}</a>
+                </li>
+                <li ng-if="$ctrl.isAuthenticated()">
+                    <a class="black-text" href="#" ng-click="$ctrl.logout()">Log Out</a>
                 </li>
             </ul>
         </div>

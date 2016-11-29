@@ -38,6 +38,7 @@
     "morgan": "^1.7.0",
     "nodemailer": "^2.6.4",
     "request": "^2.79.0",
+    "resolve-url-loader": "^1.6.0",
     "satellizer": "^0.15.5"
   },
   "devDependencies": {
