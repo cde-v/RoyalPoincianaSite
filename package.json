@@ -61,7 +61,7 @@
     "node-sass": "^3.4.2",
     "raw-loader": "^0.5.1",
     "resolve-url-loader": "^1.4.3",
-    "sass-loader": "^3.1.2",
+    "sass-loader": "^4.0.0",
     "style-loader": "^0.13.0",
     "url-loader": "^0.5.7",
     "webpack": "^1.12.12",
@@ -71,6 +71,6 @@
     "webpack-material-design-icons": "0.0.2"
   },
   "engines": {
-    "node": "5.5.0"
+    "node": "6.2.1"
   }
 }
