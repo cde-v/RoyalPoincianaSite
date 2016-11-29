@@ -1,6 +1,7 @@
-<div class="navbar-fixed z-depth-0">
-    <nav>
-        <div class="nav-wrapper orange lighten-4 z-depth-2">
+<header>
+<div class="navbar-fixed">
+    <nav class="z-depth-2">
+        <div class="nav-wrapper orange lighten-4">
             <a ui-sref="home" class="brand-logo left">
                 <div class="logo-back orange lighten-5 z-depth-2">
                     <img src="fullrplogotransparent.png">
@@ -11,7 +12,7 @@
                     <a class="black-text" href="#" ui-sref="{{option.state}}">{{option.label}}</a>
                 </li>
                 <li ng-if="$ctrl.isAuthenticated()">
-                    <a class="black-text" href="#" ng-click="$ctrl.logout()">Log Out</a>
+                    <a class="black-text" ng-click="$ctrl.logout()">Log Out</a>
                 </li>
             </ul>
             <a class="button-collapse dropdown-button right" href="#" data-activates="menuDropdown" data-beloworigin="true" dropdown>
@@ -19,7 +20,7 @@
             </a>
             <ul id="menuDropdown" class="dropdown-content">
                 <li ng-repeat="option in $ctrl.options" ng-if="option.authOnly === $ctrl.isAuthenticated() || option.authOnly === 'both'">
-                    <a class="black-text" href="#" ui-sref="{{option.state}}">{{option.label}}</a>
+                    <a class="black-text" ui-sref="{{option.state}}">{{option.label}}</a>
                 </li>
                 <li ng-if="$ctrl.isAuthenticated()">
                     <a class="black-text" href="#" ng-click="$ctrl.logout()">Log Out</a>
@@ -28,3 +29,4 @@
         </div>
     </nav>
 </div>
+</header>
