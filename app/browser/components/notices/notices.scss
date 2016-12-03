@@ -1,0 +1,15 @@
+#notices {
+    > .parallax-container {
+        > .section {
+            position: absolute;
+            width: 100vw;
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 0px;
+        }
+    }
+    .form-container {
+        opacity: 1.0;
+        border-radius: 20px;
+        padding: 0vw 2vw;
+    }
+}

@@ -4,8 +4,6 @@ lib-cov
 *.csv
 *.dat
 
-**/images
-
 # API keys
 .env
 

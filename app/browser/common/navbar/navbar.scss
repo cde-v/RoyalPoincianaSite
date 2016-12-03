@@ -1,0 +1,25 @@
+@import '../common';
+.brand-logo {
+    left: 0px !important;
+    img {
+        width: 15vw;
+        height: 9.2vw;
+        min-height: $min-navbar-height;
+        min-width: $min-navbar-height * (15vw / 9.2vw);
+    }
+    .logo-back {
+        min-height: $min-navbar-height;
+        min-width: $min-navbar-height * (15vw / 9.2vw);
+        line-height: 0px;
+        border-radius: 0px 0px 20px 0px;
+        padding-bottom: 1vw;
+    }
+}
+
+nav ul a {
+    color: black;
+}
+
+#menu-button {
+    font-size: 3rem;
+}

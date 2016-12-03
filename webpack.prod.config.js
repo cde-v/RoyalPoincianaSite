@@ -3,7 +3,7 @@ var path = require('path');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-  context: path.join(__dirname, 'src'),
+  context: path.join(__dirname, 'app'),
   entry: [
     './browser/app.js'
   ],
@@ -42,6 +42,6 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
-    new CopyWebpackPlugin([{ from: 'images' }])
+    new CopyWebpackPlugin([{ from: 'assets' }])
   ]
 };

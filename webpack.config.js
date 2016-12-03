@@ -4,7 +4,7 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   devtool: 'source-map',
-  context: path.join(__dirname, 'src'),
+  context: path.join(__dirname, 'app'),
   entry: [
     'webpack-dev-server/client?http://127.0.0.1:8080/',
     'webpack/hot/only-dev-server',
@@ -42,7 +42,7 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
-    new CopyWebpackPlugin([{ from: 'images' }])
+    new CopyWebpackPlugin([{ from: 'assets' }])
   ],
   devServer: {
     hot: true,
