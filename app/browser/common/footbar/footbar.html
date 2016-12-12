@@ -1,5 +1,9 @@
 <footer class="page-footer orange lighten-4">
-    <!-- <footer class="page-footer blue lighten-4"> -->
+    <div class="bot-banner row valign-wrapper orange lighten-5">
+        <div class="col s2 m2 l2" ng-repeat="slide in $ctrl.slideshow">
+            <img class="valign" ng-src="{{slide.imagePath}}">
+        </div>
+    </div>
     <div class="container">
         <p class="center-align">Royal Poinciana at Boca Raton is managed by: </p>
         <p class="center-align">Mahogany Services, Inc. </p>

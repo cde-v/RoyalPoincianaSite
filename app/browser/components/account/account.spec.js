@@ -1,16 +1,16 @@
-import NoticesModule from './notices'
-import NoticesController from './notices.controller';
-import NoticesComponent from './notices.component';
-import NoticesTemplate from './notices.html';
+import AccountModule from './account'
+import AccountController from './account.controller';
+import AccountComponent from './account.component';
+import AccountTemplate from './account.html';
 
-describe('Notices', () => {
+describe('Account', () => {
   let $rootScope, makeController;
 
-  beforeEach(window.module(NoticesModule.name));
+  beforeEach(window.module(AccountModule.name));
   beforeEach(inject((_$rootScope_) => {
     $rootScope = _$rootScope_;
     makeController = () => {
-      return new NoticesController();
+      return new AccountController();
     };
   }));
 
@@ -30,16 +30,16 @@ describe('Notices', () => {
     // template specs
     // tip: use regex to ensure correct bindings are used e.g., {{  }}
     it('has name in template [REMOVE]', () => {
-      expect(NoticesTemplate).to.match(/{{\s?vm\.name\s?}}/g);
+      expect(AccountTemplate).to.match(/{{\s?vm\.name\s?}}/g);
     });
   });
 
   describe('Component', () => {
       // component/directive specs
-      let component = NoticesComponent;
+      let component = AccountComponent;
 
       it('includes the intended template',() => {
-        expect(component.template).to.equal(NoticesTemplate);
+        expect(component.template).to.equal(AccountTemplate);
       });
 
       it('uses `controllerAs` syntax', () => {
@@ -47,7 +47,7 @@ describe('Notices', () => {
       });
 
       it('invokes the right controller', () => {
-        expect(component.controller).to.equal(NoticesController);
+        expect(component.controller).to.equal(AccountController);
       });
   });
 });

@@ -1,0 +1,37 @@
+<div id="account">
+    <div class="row">
+        <div class="top-banner orange lighten-5">
+            <h4 class="center page-title">My Account</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="mid-banner section orange lighten-4 z-depth-5">
+            <div class="row section">
+                <div class="icon-block col s10 offset-s1 m6 offset-m3 orange lighten-5 z-depth-2">
+                    <form ng-submit="$ctrl.updateAccount()">
+                        <h5 class="center">Update Email</h5>
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="email" ng-model="$ctrl.account.email">
+                        <div class="center">
+                            <button type="submit" class="btn waves-effect waves-light">Update Email</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row section">
+                <div class="icon-block col s10 offset-s1 m6 offset-m3 orange lighten-5 z-depth-2">
+                    <form ng-submit="$ctrl.changePassword()">
+                        <h5 class="center">Change Password</h5>
+                        <label for="password">New Password</label>
+                        <input type="password" name="password" id="password" ng-model="$ctrl.account.password">
+                        <label for="confirm">Confirm Password</label>
+                        <input type="password" name="confirm" id="confirm" ng-model="$ctrl.account.confirm">
+                        <div class="center">
+                            <button type="submit" class="btn waves-effect waves-light">Change Password</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

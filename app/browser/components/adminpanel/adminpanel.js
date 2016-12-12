@@ -1,16 +1,16 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
-import noticesComponent from './notices.component';
+import adminpanelComponent from './adminpanel.component';
 
-let noticesModule = angular.module('notices', [
+let adminpanelModule = angular.module('adminpanel', [
     uiRouter
   ])
   .config(($stateProvider) => {
     'ngInject';
     $stateProvider
-      .state('notices', {
-        url: '/notices',
-        template: '<notices></notices>',
+      .state('adminpanel', {
+        url: '/adminpanel',
+        template: '<adminpanel></adminpanel>',
         resolve: { loginRequired: loginRequired }
       });
 
@@ -21,6 +21,6 @@ let noticesModule = angular.module('notices', [
     }
 
   })
-  .component('notices', noticesComponent);
+  .component('adminpanel', adminpanelComponent);
 
-export default noticesModule;
+export default adminpanelModule;

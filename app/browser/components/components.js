@@ -5,6 +5,8 @@ import Documents from './documents/documents';
 import Notices from './notices/notices';
 import Login from './login/login';
 import Signup from './signup/signup';
+import AdminPanel from './adminpanel/adminpanel';
+import Account from './account/account';
 
 const componentModule = angular.module('app.components', [
   Home.name,
@@ -12,7 +14,9 @@ const componentModule = angular.module('app.components', [
   Documents.name,
   Notices.name,
   Login.name,
-  Signup.name
+  Signup.name,
+  AdminPanel.name,
+  Account.name
 ]);
 
 export default componentModule;

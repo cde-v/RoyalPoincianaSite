@@ -1,4 +1,12 @@
 #home {
+    .mid-banner {
+        z-index: 100;
+        position: relative;
+        box-shadow: 0px -10px 24px -19px black;
+        .row {
+            margin: 10px 0px;
+        }
+    }
     .icon-block {
         padding: 1px 15px;
         border-radius: 20px;
@@ -8,25 +16,5 @@
     }
     .icon-block .material-icons {
         font-size: inherit;
-    }
-    .mid-banner {
-        .row {
-            margin: 10px 0px;
-        }
-        filter: drop-shadow(0px 1px lightgray);
-    }
-    .bot-banner {
-        border-top: 1.0vw #fff3e0 solid;
-        border-bottom: 1.0vw #fff3e0 solid;
-        border-left: 0.5vw #fff3e0 solid;
-        border-right: 0.5vw #fff3e0 solid;
-        margin-bottom: 0px;
-        img {
-            width: 100%;
-            height: 100%;
-        }
-        .col {
-            padding: 0px 0.5vw;
-        }
     }
 }

@@ -21,7 +21,6 @@ function generateToken(user) {
  * Login required middleware
  */
 exports.ensureAuthenticated = function(req, res, next) {
-  console.log('REQ.USER!!!!!!!!!!!!!!!', req.user);
   if (req.isAuthenticated()) {
     next();
   } else {
@@ -31,13 +30,13 @@ exports.ensureAuthenticated = function(req, res, next) {
 /**
  * Admin required middleware
  */
-exports.ensureAdmin = function(req, res, next) {
-  if (req.isAuthenticated()) {
-    next();
-  } else {
-    res.status(401).send({ msg: 'Unauthorized' });
-  }
-};
+// exports.ensureAdmin = function(req, res, next) {
+//   if (req.isAuthenticated()) {
+//     next();
+//   } else {
+//     res.status(401).send({ msg: 'Unauthorized' });
+//   }
+// };
 
 
 /**
@@ -45,14 +44,12 @@ exports.ensureAdmin = function(req, res, next) {
  * Sign in with email and password
  */
 exports.loginPost = function(req, res, next) {
-  console.log('REQ', req);
   req.assert('email', 'Email is not valid').isEmail();
   req.assert('email', 'Email cannot be blank').notEmpty();
   req.assert('password', 'Password cannot be blank').notEmpty();
   req.sanitize('email').normalizeEmail({ remove_dots: false });
 
   var errors = req.validationErrors();
-// console.log(req.validationErrors())
   if (errors) {
     return res.status(400).send(errors);
   }
@@ -129,6 +126,7 @@ exports.accountPut = function(req, res, next) {
     if ('password' in req.body) {
       user.password = req.body.password;
     } else {
+
       user.email = req.body.email;
       user.name = req.body.name;
       user.gender = req.body.gender;

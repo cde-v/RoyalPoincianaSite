@@ -1,0 +1,5 @@
+TODO:
+
+add account/profile page
+move sign up page to admin only / add users page
+add admin routes

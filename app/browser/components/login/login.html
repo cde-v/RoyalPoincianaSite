@@ -2,11 +2,9 @@
     <div class="parallax-container valign-wrapper">
         <div class="section no-pad-bot">
             <div class="container">
-                <!-- ERROR WARNING MESSAGES!!!!!! -->
                 <div ng-if="messages.error" role="alert" class="alert alert-danger">
                     <div ng-repeat="error in messages.error">{{error.msg}}</div>
                 </div>
-                <!-- ERROR WARNING MESSAGES!!!!!! -->
                 <div class="row">
                     <div class="form-container col s8 offset-s2 l4 offset-l4 section orange lighten-5 z-depth-2">
                         <form ng-submit="$ctrl.login()">
@@ -22,7 +20,7 @@
                                 </div>
                             </div>
                             <div class="row center">
-                                <button type="submit" class="btn btn-success center-align center">Log in</button>
+                                <button type="submit" class="btn waves-effect waves-light">Log in</button>
                             </div>
                             <div class="row center">
                                 <a ui-sref="forgot">
