@@ -63,7 +63,7 @@
 /******/ 	}
 
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "904602e05c91ad42966d"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "f4b643af835d00ae13bb"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 
@@ -618,11 +618,11 @@
 
 	var _components2 = _interopRequireDefault(_components);
 
-	var _app = __webpack_require__(99);
+	var _app = __webpack_require__(100);
 
 	var _app2 = _interopRequireDefault(_app);
 
-	__webpack_require__(101);
+	__webpack_require__(102);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -42722,7 +42722,7 @@
 /* 43 */
 /***/ function(module, exports) {
 
-	module.exports = "<footer class=\"page-footer orange lighten-4\">\n    <div class=\"bot-banner row valign-wrapper orange lighten-5\">\n        <div class=\"col s2 m2 l2\" ng-repeat=\"slide in $ctrl.slideshow\">\n            <img class=\"valign\" ng-src=\"{{slide.imagePath}}\">\n        </div>\n    </div>\n    <div class=\"container\">\n        <p class=\"center-align\">Royal Poinciana at Boca Raton is managed by: </p>\n        <p class=\"center-align\">Mahogany Services, Inc. </p>\n        <p class=\"center-align\">Attn: Lauren Heller </p>\n        <p class=\"center-align\">21 SE 5th Street - Suite 100, Boca Raton, FL 33432 | Phone: (561) 997-6453</p>\n    </div>\n    <div class=\"footer-copyright\">\n        <div class=\"container orange-text text-darken-3\">\n            Website designed and built by: <a class=\"black-text\" href=\"#\">cde-v</a>\n        </div>\n    </div>\n</footer>\n"
+	module.exports = "<div id=\"footbar\">\n    <footer class=\"page-footer orange lighten-4\">\n        <div class=\"bot-banner row valign-wrapper orange lighten-5\">\n            <div class=\"col s2 m2 l2\" ng-repeat=\"slide in $ctrl.slideshow\">\n                <img class=\"valign\" ng-src=\"{{slide.imagePath}}\">\n            </div>\n        </div>\n        <div class=\"container\">\n            <p class=\"center-align\">Royal Poinciana at Boca Raton is managed by: </p>\n            <p class=\"center-align\">Mahogany Services, Inc. </p>\n            <p class=\"center-align\">Attn: Lauren Heller </p>\n            <p class=\"center-align\">21 SE 5th Street - Suite 100, Boca Raton, FL 33432 | Phone: (561) 997-6453</p>\n        </div>\n        <div class=\"footer-copyright\">\n            <div class=\"container orange-text text-darken-3\">\n                Website designed and built by: <a class=\"black-text\" href=\"#\">cde-v</a>\n            </div>\n        </div>\n    </footer>\n</div>\n"
 
 /***/ },
 /* 44 */
@@ -42784,7 +42784,7 @@
 	exports.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i,900,900i);", ""]);
 
 	// module
-	exports.push([module.id, ".app {\n  display: -ms-flexbox;\n  display: flex;\n  min-height: 100vh;\n  -ms-flex-direction: column;\n      flex-direction: column;\n}\n\nmain {\n  -ms-flex: 1 0 auto;\n      flex: 1 0 auto;\n}\n\np {\n  margin: 5px 0px;\n}\n\nfooter.page-footer {\n  padding-top: 0px !important;\n  margin-top: 0px !important;\n}\n\n.bot-banner {\n  z-index: 100;\n  position: relative;\n  padding: 1vw 0.5vw;\n  box-shadow: inset 0px 5px 12px -7px black, inset 0px -5px 12px -7px black;\n}\n\n.bot-banner img {\n  width: 100%;\n  height: 100%;\n}\n\n.bot-banner .col {\n  padding: 0px 0.5vw;\n}\n", ""]);
+	exports.push([module.id, ".app {\n  display: -ms-flexbox;\n  display: flex;\n  min-height: 100vh;\n  -ms-flex-direction: column;\n      flex-direction: column;\n}\n\nmain {\n  -ms-flex: 1 0 auto;\n      flex: 1 0 auto;\n}\n\n#footbar p {\n  margin: 5px 0px;\n}\n\n#footbar footer.page-footer {\n  padding-top: 0px !important;\n  margin-top: 0px !important;\n}\n\n#footbar .bot-banner {\n  z-index: 100;\n  position: relative;\n  padding: 1vw 0.5vw;\n  box-shadow: inset 0px 5px 12px -7px black, inset 0px -5px 12px -7px black;\n}\n\n#footbar .bot-banner img {\n  width: 100%;\n  height: 100%;\n}\n\n#footbar .bot-banner .col {\n  padding: 0px 0.5vw;\n}\n", ""]);
 
 	// exports
 
@@ -42831,7 +42831,7 @@
 
 	var _adminpanel2 = _interopRequireDefault(_adminpanel);
 
-	var _account = __webpack_require__(92);
+	var _account = __webpack_require__(93);
 
 	var _account2 = _interopRequireDefault(_account);
 
@@ -43049,7 +43049,7 @@
 /* 56 */
 /***/ function(module, exports) {
 
-	module.exports = "<div id=\"about\">\n    <div class=\"top-banner row orange lighten-5\">\n        <div class=\"slider-container col s12 m6 l8\">\n            <div class=\"slider\" height=\"575\" slider>\n                <ul class=\"slides z-depth-2\">\n                    <li ng-repeat=\"slide in $ctrl.slideshow\">\n                        <img ng-src=\"{{slide.imagePath}}\">\n                    </li>\n                </ul>\n            </div>\n        </div>\n        <div class=\"desc-container col s12 m6 l4\">\n            <div class=\"section\">\n                <p><strong><large>Royal Poinciana at Boca Raton</large></strong> is a gorgeous new construction luxury gated community with an incredible East Boca Raton location. The community was built in 2007 and offers features including:\n                </p>\n                <ul class=\"browser-default\">\n                    <li>\n                        Full-size two-car garages\n                    </li>\n                    <li>\n                        Resort style pool and sundeck\n                    </li>\n                    <li>\n                        Hurricane impact resistant glass windows and doors\n                    </li>\n                    <li>\n                        Spanish Colonial inspired architecture\n                    </li>\n                    <li>\n                        Paved brick walkways, driveways, and sidewalks\n                    </li>\n                    <li>\n                        \"Old World\" tile roofs\n                    </li>\n                    <li>\n                        Monterrey styled balconies\n                    </li>\n                </ul>\n                <p>\n                    There are five unique floor plans available, with 3 or 4 bedrooms and sizes ranging from 1,900 square feet to over 2,400 square feet. The spacious interiors offer high-end finishes including marble flooring, plush carpeting, master bathrooms with spa tubs, and kitchens with stainless steel appliances and granite countertops.\n                </p>\n            </div>\n        </div>\n    </div>\n    <div class=\"mid-banner section orange lighten-4 z-depth-2\">\n        <div class=\"row\">\n            <div class=\"satellite-container col s12 m12 l5\">\n                <img class=\"z-depth-2\" src=\"https://maps.googleapis.com/maps/api/staticmap?center=26.418434,-80.0791000&zoom=18&size=570x300&scale=2&maptype=satellite&key=AIzaSyCaVRZkPN8W_isThefbYm_FDfmAeW4zFb4\">\n            </div>\n            <div class=\"desc-container col s12 m12 l2\">\n                <div class=\"icon-block orange lighten-5 z-depth-2\">\n                    <h3 class=\"icon center orange-text\"><i class=\"material-icons\">map</i></h3>\n                    <p class=\"center\">Our community is conveniently located on Hidden Valley Blvd, just west of Dixie Highway</p>\n                </div>\n            </div>\n            <div class=\"map-container col s12 m12 l5\">\n                <img class=\"z-depth-2\" src=\"https://maps.googleapis.com/maps/api/staticmap?center=26.418434,-80.0791000&zoom=13&size=570x300&scale=2&maptype=roadmap&markers=color:red%7C26.418434,-80.0791000&key=AIzaSyCaVRZkPN8W_isThefbYm_FDfmAeW4zFb4\">\n            </div>\n        </div>\n    </div>\n</div>\n"
+	module.exports = "<div id=\"about\">\n    <div class=\"top-banner row orange lighten-5 valign-wrapper\">\n        <div class=\"slider-container col s12 m6 l8\">\n            <div class=\"slider\" height=\"575\" slider>\n                <ul class=\"slides z-depth-2\">\n                    <li ng-repeat=\"slide in $ctrl.slideshow\">\n                        <img ng-src=\"{{slide.imagePath}}\">\n                    </li>\n                </ul>\n            </div>\n        </div>\n        <div class=\"desc-container col s12 m6 l4\">\n            <div class=\"section valign\">\n                <p><strong><large>Royal Poinciana at Boca Raton</large></strong> is a gorgeous new construction luxury gated community with an incredible East Boca Raton location. The community was built in 2007 and offers features including:\n                </p>\n                <ul class=\"browser-default\">\n                    <li>\n                        Full-size two-car garages\n                    </li>\n                    <li>\n                        Resort style pool and sundeck\n                    </li>\n                    <li>\n                        Hurricane impact resistant glass windows and doors\n                    </li>\n                    <li>\n                        Spanish Colonial inspired architecture\n                    </li>\n                    <li>\n                        Paved brick walkways, driveways, and sidewalks\n                    </li>\n                    <li>\n                        \"Old World\" tile roofs\n                    </li>\n                    <li>\n                        Monterrey styled balconies\n                    </li>\n                </ul>\n                <p>\n                    There are five unique floor plans available, with 3 or 4 bedrooms and sizes ranging from 1,900 square feet to over 2,400 square feet. The spacious interiors offer high-end finishes including marble flooring, plush carpeting, master bathrooms with spa tubs, and kitchens with stainless steel appliances and granite countertops.\n                </p>\n            </div>\n        </div>\n    </div>\n    <div class=\"mid-banner section orange lighten-4 z-depth-2\">\n        <div class=\"row\">\n            <div class=\"col s12 m12 l5\">\n                <img class=\"satellite-image z-depth-2\" src=\"https://maps.googleapis.com/maps/api/staticmap?center=26.418434,-80.0791000&zoom=18&size=570x300&scale=2&maptype=satellite&key=AIzaSyCaVRZkPN8W_isThefbYm_FDfmAeW4zFb4\">\n            </div>\n            <div class=\"col s12 m12 l2\">\n                <div class=\"icon-block orange lighten-5 z-depth-2\">\n                    <h3 class=\"icon center orange-text\"><i class=\"material-icons\">map</i></h3>\n                    <p class=\"center\">Our community is conveniently located on Hidden Valley Blvd, just west of Dixie Highway</p>\n                </div>\n            </div>\n            <div class=\"col s12 m12 l5\">\n                <img class=\"z-depth-2\" src=\"https://maps.googleapis.com/maps/api/staticmap?center=26.418434,-80.0791000&zoom=13&size=570x300&scale=2&maptype=roadmap&markers=color:red%7C26.418434,-80.0791000&key=AIzaSyCaVRZkPN8W_isThefbYm_FDfmAeW4zFb4\">\n            </div>\n        </div>\n    </div>\n</div>\n"
 
 /***/ },
 /* 57 */
@@ -43111,7 +43111,7 @@
 
 
 	// module
-	exports.push([module.id, "#about .row {\n  margin-bottom: 0px;\n}\n\n#about .icon-block {\n  padding: 1px 15px;\n  border-radius: 20px;\n}\n\n#about .icon-block .icon {\n  margin: 1vw 0 0 0;\n}\n\n#about .icon-block .material-icons {\n  font-size: inherit;\n}\n\n#about .slider-container {\n  padding: 0px;\n}\n\n#about .top-banner .desc-container {\n  padding: 0vw 2vw;\n}\n\n#about .mid-banner {\n  z-index: 100;\n  position: relative;\n  box-shadow: 0px -5px 12px -7px black;\n}\n\n#about .mid-banner .row {\n  margin: 10px 0px;\n}\n\n#about .mid-banner img {\n  width: 100%;\n  height: 100%;\n}\n\n#about .mid-banner .satellite-container img {\n  -webkit-filter: brightness(1.4) saturate(1.7) contrast(1.1);\n          filter: brightness(1.4) saturate(1.7) contrast(1.1);\n}\n\n#about .slider .indicators {\n  margin: 5px 0px;\n}\n\n#about .indicator-item {\n  border: 1px solid gray;\n  background-color: #ffe0b2;\n}\n\n#about .indicator-item.active {\n  background-color: #ff9100;\n}\n", ""]);
+	exports.push([module.id, "#about .row {\n  margin-bottom: 0px;\n}\n\n#about .icon-block {\n  padding: 1px 15px;\n  border-radius: 20px;\n}\n\n#about .icon-block .icon {\n  margin: 1vw 0 0 0;\n}\n\n#about .icon-block .material-icons {\n  font-size: inherit;\n}\n\n#about .slider-container {\n  padding: 0px;\n}\n\n#about .top-banner .desc-container {\n  padding: 0vw 2vw;\n}\n\n#about .mid-banner {\n  z-index: 100;\n  position: relative;\n  box-shadow: 0px -5px 12px -7px black;\n}\n\n#about .mid-banner .col {\n  margin-bottom: 10px;\n}\n\n#about .mid-banner .row {\n  margin: 10px 0px;\n}\n\n#about .mid-banner img {\n  width: 100%;\n  height: 100%;\n}\n\n#about .mid-banner .satellite-image {\n  -webkit-filter: brightness(1.4) saturate(1.7) contrast(1.1);\n          filter: brightness(1.4) saturate(1.7) contrast(1.1);\n}\n\n#about .slider .indicators {\n  margin: 5px 0px;\n}\n\n#about .indicator-item {\n  border: 1px solid gray;\n  background-color: #ffe0b2;\n}\n\n#about .indicator-item.active {\n  background-color: #ff9100;\n}\n", ""]);
 
 	// exports
 
@@ -43191,7 +43191,7 @@
 /* 62 */
 /***/ function(module, exports) {
 
-	module.exports = "<div id=\"documents\">\n    <div class=\"parallax-container valign-wrapper\">\n        <div class=\"section no-pad-bot\">\n            <div class=\"container\">\n                <div class=\"row\">\n                    <div class=\"form-container col s8 offset-s2 l4 offset-l4 section orange lighten-5 z-depth-2\">\n                        <div class=\"row\">\n                            <h4 class=\"center\">{{ $ctrl.name }}</h4>\n                            <div class=\"input-field col s12 l12\">\n                                {{ $ctrl.name }}\n                            </div>\n                            <div class=\"input-field col s12 l12\">\n                                {{ $ctrl.name }}\n                            </div>\n                        </div>\n                        <div class=\"row center\">\n                            {{ $ctrl.name }}\n                        </div>\n                        <div class=\"row center\">\n                            <a href=\"/img/myw3schoolsimage.jpg\" download>DOWNLOAD</a> {{ $ctrl.name }}\n                        </div>\n                    </div>\n                </div>\n            </div>\n            <div parallax>\n                <img class=\"top-banner\" src=\"image01.jpg\">\n            </div>\n        </div>\n    </div>\n</div>\n"
+	module.exports = "<div id=\"documents\">\n    <div class=\"row\">\n        <div class=\"top-banner orange lighten-5\">\n            <h4 class=\"center page-title\">Download Documents</h4>\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"container\">\n            <button type=\"button\" class=\"btn waves-effect waves-light\" ng-click=\"\">Add New Document</button>\n            <table>\n                <thead>\n                    <tr>\n                        <th>Document Title</th>\n                        <th>Category</th>\n                        <th>Description</th>\n                        <th>Download</th>\n                    </tr>\n                </thead>\n                <tbody>\n                    <tr>\n                        <td>2015 Budget</td>\n                        <td>Budgets</td>\n                        <td>The accepted 2015 Royal Poinciana Budget</td>\n                        <td><a href=\"/img/myw3schoolsimage.jpg\" download>DOWNLOAD</a></td>\n                    </tr>\n                    <tr>\n                        <td>2016 Budget</td>\n                        <td>Budgets</td>\n                        <td>The accepted 2016 Royal Poinciana Budget</td>\n                        <td><a href=\"/img/myw3schoolsimage.jpg\" download>DOWNLOAD</a></td>\n                    </tr>\n                    <tr>\n                        <td>Parking Rules</td>\n                        <td>Rules & Regs</td>\n                        <td>Parking enforcement rules for Royal Poinciana</td>\n                        <td><a href=\"/img/myw3schoolsimage.jpg\" download>DOWNLOAD</a></td>\n                    </tr>\n                </tbody>\n            </table>\n        </div>\n    </div>\n</div>\n\n                            \n                        "
 
 /***/ },
 /* 63 */
@@ -43333,7 +43333,7 @@
 /* 68 */
 /***/ function(module, exports) {
 
-	module.exports = "<div id=\"notices\">\n    <div class=\"parallax-container valign-wrapper\">\n        <div class=\"section no-pad-bot\">\n            <div class=\"container\">\n                <div class=\"row\">\n                    <div class=\"form-container col s8 offset-s2 l4 offset-l4 section orange lighten-5 z-depth-2\">\n                        <div class=\"row\">\n                            <h4 class=\"center\">{{ $ctrl.name }}</h4>\n                            <div class=\"input-field col s12 l12\">\n                                {{ $ctrl.name }}\n                            </div>\n                            <div class=\"input-field col s12 l12\">\n                                {{ $ctrl.name }}\n                            </div>\n                        </div>\n                        <div class=\"row center\">\n                            {{ $ctrl.name }}\n                        </div>\n                        <div class=\"row center\">\n                            {{ $ctrl.name }}\n                        </div>\n                    </div>\n                </div>\n            </div>\n            <div parallax>\n                <img class=\"top-banner\" src=\"image01.jpg\">\n            </div>\n        </div>\n    </div>\n</div>\n"
+	module.exports = "<div id=\"notices\">\n    <div class=\"parallax-container valign-wrapper\">\n        <div class=\"section no-pad-bot\">\n            <div class=\"container\">\n                <div class=\"row\">\n                    <div class=\"form-container col s8 offset-s2 l4 offset-l4 section orange lighten-5 z-depth-2\">\n                        <div class=\"row\">\n                            <h4 class=\"center\">Community Notices</h4>\n                        </div>\n                        <p>This is a notice about recent or upcoming events / important dates related to the community.</p>\n                    </div>\n                </div>\n            </div>\n            <div parallax>\n                <img class=\"top-banner\" src=\"image01.jpg\">\n            </div>\n        </div>\n    </div>\n</div>\n"
 
 /***/ },
 /* 69 */
@@ -43835,6 +43835,10 @@
 
 	var _adminpanel2 = _interopRequireDefault(_adminpanel);
 
+	var _adminpanel3 = __webpack_require__(92);
+
+	var _adminpanel4 = _interopRequireDefault(_adminpanel3);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var adminpanelModule = _angular2.default.module('adminpanel', [_angularUiRouter2.default]).config(function ($stateProvider) {
@@ -43851,7 +43855,7 @@
 	      $state.go('/login');
 	    }
 	  }
-	}).component('adminpanel', _adminpanel2.default);
+	}).component('adminpanel', _adminpanel2.default).service('AdminPanelService', _adminpanel4.default);
 
 	exports.default = adminpanelModule;
 
@@ -43888,7 +43892,7 @@
 /* 88 */
 /***/ function(module, exports) {
 
-	module.exports = "<div id=\"adminpanel\">\n    <div class=\"parallax-container valign-wrapper\">\n        <div class=\"section no-pad-bot\">\n            <div class=\"container\">\n                <div class=\"row\">\n                    <div class=\"form-container col s8 offset-s2 l4 offset-l4 section orange lighten-5 z-depth-2\">\n                        <div class=\"row\">\n                            <h4 class=\"center\">{{ $ctrl.name }}</h4>\n                            <div class=\"input-field col s12 l12\">\n                                {{ $ctrl.name }}\n                            </div>\n                            <div class=\"input-field col s12 l12\">\n                                {{ $ctrl.name }}\n                            </div>\n                        </div>\n                        <div class=\"row center\">\n                            {{ $ctrl.name }}\n                        </div>\n                        <div class=\"row center\">\n                            {{ $ctrl.name }}\n                        </div>\n                    </div>\n                </div>\n            </div>\n            <div parallax>\n                <img class=\"top-banner\" src=\"image01.jpg\">\n            </div>\n        </div>\n    </div>\n</div>\n"
+	module.exports = "<div id=\"adminpanel\">\n    <div class=\"row\">\n        <div class=\"top-banner orange lighten-5\">\n            <h4 class=\"center page-title\">Users</h4>\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"container\">\n            <button type=\"button\" class=\"btn waves-effect waves-light\" ng-click=\"$ctrl.getUsers()\">Get Users</button>\n            <table>\n                <thead>\n                    <tr>\n                        <th>Name</th>\n                        <th>Email</th>\n                        <th>Admin</th>\n                    </tr>\n                </thead>\n                <tbody>\n                    <tr ng-repeat=\"user in $ctrl.users\">\n                        <td>{{user.name}}</td>\n                        <td>{{user.email}}</td>\n                        <td>{{user.isAdmin}}</td>\n                    </tr>\n                </tbody>\n            </table>\n        </div>\n    </div>\n</div>\n"
 
 /***/ },
 /* 89 */
@@ -43904,13 +43908,37 @@
 
 	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
 
+	var _createClass2 = __webpack_require__(18);
+
+	var _createClass3 = _interopRequireDefault(_createClass2);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var AdminPanelController = function AdminPanelController() {
-	  (0, _classCallCheck3.default)(this, AdminPanelController);
+	var AdminPanelController = function () {
+	  function AdminPanelController(AdminPanelService) {
+	    'ngInject';
 
-	  this.name = 'adminpanel';
-	};
+	    (0, _classCallCheck3.default)(this, AdminPanelController);
+	    this.name = 'adminpanel';
+	    this.AdminPanelService = AdminPanelService;
+	  }
+
+	  (0, _createClass3.default)(AdminPanelController, [{
+	    key: 'getUsers',
+	    value: function getUsers() {
+	      var _this = this;
+
+	      console.log('ADMIN CONTROLLER GET USERS !#!@#!@#!@#');
+	      this.AdminPanelService.getUsers().then(function (response) {
+	        console.log('RES', response.data);
+	        _this.users = response.data.users;
+	      }).catch(function (response) {
+	        console.error('ERROR RES', response.data);
+	      });
+	    }
+	  }]);
+	  return AdminPanelController;
+	}();
 
 	exports.default = AdminPanelController;
 
@@ -43949,13 +43977,53 @@
 
 
 	// module
-	exports.push([module.id, "#adminpanels > .parallax-container > .section {\n  position: absolute;\n  width: 100vw;\n  background-color: rgba(0, 0, 0, 0.3);\n  padding: 0px;\n}\n\n#adminpanels .form-container {\n  opacity: 1.0;\n  border-radius: 20px;\n  padding: 0vw 2vw;\n}\n", ""]);
+	exports.push([module.id, "#adminpanel .top-banner {\n  padding: 5px;\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
 /* 92 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _classCallCheck2 = __webpack_require__(17);
+
+	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+	var _createClass2 = __webpack_require__(18);
+
+	var _createClass3 = _interopRequireDefault(_createClass2);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var AdminPanelService = function () {
+	  function AdminPanelService($http) {
+	    (0, _classCallCheck3.default)(this, AdminPanelService);
+
+	    this.name = 'AdminPanelService';
+	    this.$http = $http;
+	  }
+
+	  (0, _createClass3.default)(AdminPanelService, [{
+	    key: 'getUsers',
+	    value: function getUsers() {
+	      console.log('ADMIN PANEL SERVICE GET USERS !@#!@#!@#!@#!@#');
+	      return this.$http.get('/admin');
+	    }
+	  }]);
+	  return AdminPanelService;
+	}();
+
+	exports.default = AdminPanelService;
+
+/***/ },
+/* 93 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43972,11 +44040,11 @@
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _account = __webpack_require__(93);
+	var _account = __webpack_require__(94);
 
 	var _account2 = _interopRequireDefault(_account);
 
-	var _account3 = __webpack_require__(98);
+	var _account3 = __webpack_require__(99);
 
 	var _account4 = _interopRequireDefault(_account3);
 
@@ -44001,7 +44069,7 @@
 	exports.default = accountModule;
 
 /***/ },
-/* 93 */
+/* 94 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -44010,15 +44078,15 @@
 	  value: true
 	});
 
-	var _account = __webpack_require__(94);
+	var _account = __webpack_require__(95);
 
 	var _account2 = _interopRequireDefault(_account);
 
-	var _account3 = __webpack_require__(95);
+	var _account3 = __webpack_require__(96);
 
 	var _account4 = _interopRequireDefault(_account3);
 
-	__webpack_require__(96);
+	__webpack_require__(97);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -44030,13 +44098,13 @@
 	exports.default = accountComponent;
 
 /***/ },
-/* 94 */
+/* 95 */
 /***/ function(module, exports) {
 
 	module.exports = "<div id=\"account\">\n    <div class=\"row\">\n        <div class=\"top-banner orange lighten-5\">\n            <h4 class=\"center page-title\">My Account</h4>\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"mid-banner section orange lighten-4 z-depth-5\">\n            <div class=\"row section\">\n                <div class=\"icon-block col s10 offset-s1 m6 offset-m3 orange lighten-5 z-depth-2\">\n                    <form ng-submit=\"$ctrl.updateAccount()\">\n                        <h5 class=\"center\">Update Email</h5>\n                        <label for=\"email\">Email</label>\n                        <input type=\"email\" name=\"email\" id=\"email\" ng-model=\"$ctrl.account.email\">\n                        <div class=\"center\">\n                            <button type=\"submit\" class=\"btn waves-effect waves-light\">Update Email</button>\n                        </div>\n                    </form>\n                </div>\n            </div>\n            <div class=\"row section\">\n                <div class=\"icon-block col s10 offset-s1 m6 offset-m3 orange lighten-5 z-depth-2\">\n                    <form ng-submit=\"$ctrl.changePassword()\">\n                        <h5 class=\"center\">Change Password</h5>\n                        <label for=\"password\">New Password</label>\n                        <input type=\"password\" name=\"password\" id=\"password\" ng-model=\"$ctrl.account.password\">\n                        <label for=\"confirm\">Confirm Password</label>\n                        <input type=\"password\" name=\"confirm\" id=\"confirm\" ng-model=\"$ctrl.account.confirm\">\n                        <div class=\"center\">\n                            <button type=\"submit\" class=\"btn waves-effect waves-light\">Change Password</button>\n                        </div>\n                    </form>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n"
 
 /***/ },
-/* 95 */
+/* 96 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -44081,6 +44149,7 @@
 	      this.AccountService.updateAccount(this.account).then(function (response) {
 	        _this.$rootScope.currentUser = response.data.user;
 	        _this.$window.localStorage.user = (0, _stringify2.default)(response.data.user);
+	        console.log('UPDATE USERS', response.data);
 	        _this.messages = {
 	          success: [response.data]
 	        };
@@ -44125,13 +44194,13 @@
 	exports.default = AccountController;
 
 /***/ },
-/* 96 */
+/* 97 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(97);
+	var content = __webpack_require__(98);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(40)(content, {});
@@ -44140,8 +44209,8 @@
 	if(true) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept(97, function() {
-				var newContent = __webpack_require__(97);
+			module.hot.accept(98, function() {
+				var newContent = __webpack_require__(98);
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -44151,7 +44220,7 @@
 	}
 
 /***/ },
-/* 97 */
+/* 98 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(39)();
@@ -44165,7 +44234,7 @@
 
 
 /***/ },
-/* 98 */
+/* 99 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -44220,7 +44289,7 @@
 	exports.default = AccountService;
 
 /***/ },
-/* 99 */
+/* 100 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -44229,11 +44298,11 @@
 	  value: true
 	});
 
-	var _app = __webpack_require__(100);
+	var _app = __webpack_require__(101);
 
 	var _app2 = _interopRequireDefault(_app);
 
-	__webpack_require__(101);
+	__webpack_require__(102);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -44244,19 +44313,19 @@
 	exports.default = AppComponent;
 
 /***/ },
-/* 100 */
+/* 101 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"app\">\n    <navbar></navbar>\n    <main>\n        <div ui-view></div>\n    </main>\n    <footbar></footbar>\n</div>\n"
 
 /***/ },
-/* 101 */
+/* 102 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(102);
+	var content = __webpack_require__(103);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(40)(content, {});
@@ -44265,8 +44334,8 @@
 	if(true) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept(102, function() {
-				var newContent = __webpack_require__(102);
+			module.hot.accept(103, function() {
+				var newContent = __webpack_require__(103);
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -44276,7 +44345,7 @@
 	}
 
 /***/ },
-/* 102 */
+/* 103 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(39)();

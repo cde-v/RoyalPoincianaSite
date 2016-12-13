@@ -1,6 +1,7 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import adminpanelComponent from './adminpanel.component';
+import AdminPanelService from './adminpanel.service';
 
 let adminpanelModule = angular.module('adminpanel', [
     uiRouter
@@ -21,6 +22,7 @@ let adminpanelModule = angular.module('adminpanel', [
     }
 
   })
-  .component('adminpanel', adminpanelComponent);
+  .component('adminpanel', adminpanelComponent)
+  .service('AdminPanelService', AdminPanelService);
 
 export default adminpanelModule;

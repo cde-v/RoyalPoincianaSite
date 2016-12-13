@@ -1,30 +1,45 @@
 <div id="documents">
-    <div class="parallax-container valign-wrapper">
-        <div class="section no-pad-bot">
-            <div class="container">
-                <div class="row">
-                    <div class="form-container col s8 offset-s2 l4 offset-l4 section orange lighten-5 z-depth-2">
-                        <div class="row">
-                            <h4 class="center">{{ $ctrl.name }}</h4>
-                            <div class="input-field col s12 l12">
-                                {{ $ctrl.name }}
-                            </div>
-                            <div class="input-field col s12 l12">
-                                {{ $ctrl.name }}
-                            </div>
-                        </div>
-                        <div class="row center">
-                            {{ $ctrl.name }}
-                        </div>
-                        <div class="row center">
-                            <a href="/img/myw3schoolsimage.jpg" download>DOWNLOAD</a> {{ $ctrl.name }}
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div parallax>
-                <img class="top-banner" src="image01.jpg">
-            </div>
+    <div class="row">
+        <div class="top-banner orange lighten-5">
+            <h4 class="center page-title">Download Documents</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="container">
+            <button type="button" class="btn waves-effect waves-light" ng-click="">Add New Document</button>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Document Title</th>
+                        <th>Category</th>
+                        <th>Description</th>
+                        <th>Download</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2015 Budget</td>
+                        <td>Budgets</td>
+                        <td>The accepted 2015 Royal Poinciana Budget</td>
+                        <td><a href="/img/myw3schoolsimage.jpg" download>DOWNLOAD</a></td>
+                    </tr>
+                    <tr>
+                        <td>2016 Budget</td>
+                        <td>Budgets</td>
+                        <td>The accepted 2016 Royal Poinciana Budget</td>
+                        <td><a href="/img/myw3schoolsimage.jpg" download>DOWNLOAD</a></td>
+                    </tr>
+                    <tr>
+                        <td>Parking Rules</td>
+                        <td>Rules & Regs</td>
+                        <td>Parking enforcement rules for Royal Poinciana</td>
+                        <td><a href="/img/myw3schoolsimage.jpg" download>DOWNLOAD</a></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
+
+                            
+                        

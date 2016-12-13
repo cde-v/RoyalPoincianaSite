@@ -24,6 +24,7 @@ let User = require('./models/User');
 // Routes
 let userRoutes = require('./routes/user');
 let contactRoutes = require('./routes/contact');
+let adminRoutes = require('./routes/admin');
 
 let app = express();
 
@@ -59,7 +60,6 @@ app.use(function(req, res, next) {
   if (req.isAuthenticated()) {
     let payload = req.isAuthenticated();
     User.findById(payload.sub, function(err, user) {
-      console.error(err);
       req.user = user;
       next();
    });
@@ -68,6 +68,7 @@ app.use(function(req, res, next) {
   }
 });
 
+app.get('/admin', userRoutes.ensureAuthenticated, adminRoutes.ensureAdmin, adminRoutes.adminGetUsers);
 app.post('/contact', contactRoutes.contactPost);
 app.put('/account', userRoutes.ensureAuthenticated, userRoutes.accountPut);
 app.delete('/account', userRoutes.ensureAuthenticated, userRoutes.accountDelete);

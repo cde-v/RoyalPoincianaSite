@@ -11,17 +11,18 @@ var schemaOptions = {
 
 var userSchema = new mongoose.Schema({
   name: String,
-  email: { type: String, unique: true},
+  email: { type: String, unique: true },
   password: String,
   passwordResetToken: String,
   passwordResetExpires: Date,
   ownerOrRenter: String,
-  isAdmin: Boolean
+  isAdmin: { type: Boolean, default: true }
 }, schemaOptions);
 
 userSchema.pre('save', function(next) {
   var user = this;
-  if (!user.isModified('password')) { return next(); }
+  if (!user.isModified('password')) {
+    return next(); }
   bcrypt.genSalt(10, function(err, salt) {
     bcrypt.hash(user.password, salt, null, function(err, hash) {
       user.password = hash;

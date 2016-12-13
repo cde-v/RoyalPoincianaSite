@@ -24,6 +24,9 @@
         z-index: 100;
         position: relative;
         box-shadow: 0px -5px 12px -7px black;
+        .col {
+            margin-bottom: 10px;
+        }
         .row {
             margin: 10px 0px;
         }
@@ -31,10 +34,8 @@
             width: 100%;
             height: 100%;
         }
-        .satellite-container {
-            img {
-                filter: brightness(1.4) saturate(1.7) contrast(1.1);
-            }
+        .satellite-image {
+            filter: brightness(1.4) saturate(1.7) contrast(1.1);
         }
     }
     .slider {

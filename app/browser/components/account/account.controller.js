@@ -14,6 +14,7 @@ class AccountController {
       .then((response) => {
         this.$rootScope.currentUser = response.data.user;
         this.$window.localStorage.user = JSON.stringify(response.data.user);
+        console.log('UPDATE USERS', response.data)
         this.messages = {
           success: [response.data]
         };

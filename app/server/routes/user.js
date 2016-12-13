@@ -21,23 +21,13 @@ function generateToken(user) {
  * Login required middleware
  */
 exports.ensureAuthenticated = function(req, res, next) {
+  console.log('BWHAHAHA!!! HERE!!!!!', req.body);
   if (req.isAuthenticated()) {
     next();
   } else {
     res.status(401).send({ msg: 'Unauthorized' });
   }
 };
-/**
- * Admin required middleware
- */
-// exports.ensureAdmin = function(req, res, next) {
-//   if (req.isAuthenticated()) {
-//     next();
-//   } else {
-//     res.status(401).send({ msg: 'Unauthorized' });
-//   }
-// };
-
 
 /**
  * POST /login
