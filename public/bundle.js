@@ -63,7 +63,7 @@
 /******/ 	}
 
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "f4b643af835d00ae13bb"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "1e8e09489c67dc626ee9"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 
@@ -43892,7 +43892,7 @@
 /* 88 */
 /***/ function(module, exports) {
 
-	module.exports = "<div id=\"adminpanel\">\n    <div class=\"row\">\n        <div class=\"top-banner orange lighten-5\">\n            <h4 class=\"center page-title\">Users</h4>\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"container\">\n            <button type=\"button\" class=\"btn waves-effect waves-light\" ng-click=\"$ctrl.getUsers()\">Get Users</button>\n            <table>\n                <thead>\n                    <tr>\n                        <th>Name</th>\n                        <th>Email</th>\n                        <th>Admin</th>\n                    </tr>\n                </thead>\n                <tbody>\n                    <tr ng-repeat=\"user in $ctrl.users\">\n                        <td>{{user.name}}</td>\n                        <td>{{user.email}}</td>\n                        <td>{{user.isAdmin}}</td>\n                    </tr>\n                </tbody>\n            </table>\n        </div>\n    </div>\n</div>\n"
+	module.exports = "<div id=\"adminpanel\">\n    <div class=\"row\">\n        <div class=\"top-banner orange lighten-5\">\n            <h4 class=\"center page-title\">Users</h4>\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"container\">\n            <button type=\"button\" class=\"btn waves-effect waves-light\" ng-click=\"$ctrl.getUsers()\">Get Users</button>\n            <table>\n                <thead>\n                    <tr>\n                        <th>Name</th>\n                        <th>Email</th>\n                        <!-- <th>Admin</th> -->\n                        <th></th>\n                    </tr>\n                </thead>\n                <tbody>\n                    <tr ng-repeat=\"user in $ctrl.users\">\n                        <td>{{user.name}}</td>\n                        <td>{{user.email}}</td>\n                        <!-- <td>{{user.isAdmin}}</td> -->\n                        <td><button class=\"btn\">Modify</button><button class=\"btn\">Remove</button></td>\n                    </tr>\n                </tbody>\n            </table>\n        </div>\n    </div>\n</div>\n"
 
 /***/ },
 /* 89 */
