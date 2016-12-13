@@ -12,14 +12,16 @@
                     <tr>
                         <th>Name</th>
                         <th>Email</th>
-                        <th>Admin</th>
+                        <!-- <th>Admin</th> -->
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="user in $ctrl.users">
                         <td>{{user.name}}</td>
                         <td>{{user.email}}</td>
-                        <td>{{user.isAdmin}}</td>
+                        <!-- <td>{{user.isAdmin}}</td> -->
+                        <td><button class="btn">Modify</button><button class="btn">Remove</button></td>
                     </tr>
                 </tbody>
             </table>
