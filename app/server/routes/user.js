@@ -21,7 +21,6 @@ function generateToken(user) {
  * Login required middleware
  */
 exports.ensureAuthenticated = function(req, res, next) {
-  console.log('BWHAHAHA!!! HERE!!!!!', req.body);
   if (req.isAuthenticated()) {
     next();
   } else {
@@ -62,6 +61,7 @@ exports.loginPost = function(req, res, next) {
 
 /**
  * POST /signup
+ * Allow user to sign-up using email address and PW
  */
 exports.signupPost = function(req, res, next) {
   req.assert('name', 'Name cannot be blank').notEmpty();
@@ -91,7 +91,6 @@ exports.signupPost = function(req, res, next) {
   });
 };
 
-
 /**
  * PUT /account
  * Update profile information OR change password.
@@ -116,12 +115,8 @@ exports.accountPut = function(req, res, next) {
     if ('password' in req.body) {
       user.password = req.body.password;
     } else {
-
       user.email = req.body.email;
       user.name = req.body.name;
-      user.gender = req.body.gender;
-      user.location = req.body.location;
-      user.website = req.body.website;
     }
     user.save(function(err) {
       if ('password' in req.body) {
@@ -143,36 +138,6 @@ exports.accountDelete = function(req, res, next) {
     res.send({ msg: 'Your account has been permanently deleted.' });
   });
 };
-
-// /**
-//  * GET /unlink/:provider
-//  */
-// exports.unlink = function(req, res, next) {
-//   User.findById(req.user.id, function(err, user) {
-//     switch (req.params.provider) {
-//       case 'facebook':
-//         user.facebook = undefined;
-//         break;
-//       case 'google':
-//         user.google = undefined;
-//         break;
-//       case 'twitter':
-//         user.twitter = undefined;
-//         break;
-//       case 'vk':
-//         user.vk = undefined;
-//         break;
-//       case 'github':
-//         user.github = undefined;
-//         break;
-//       default:
-//         return res.status(400).send({ msg: 'Invalid OAuth Provider' });
-//     }
-//     user.save(function(err) {
-//       res.send({ msg: 'Your account has been unlinked.' });
-//     });
-//   });
-// };
 
 /**
  * POST /forgot

@@ -15,7 +15,6 @@ let request = require('request');
 
 if (process.env.NODE_ENV !== 'prod') {
   dotenv.load();
-  console.log('BOOM')
 }
 
 // Models
@@ -68,7 +67,10 @@ app.use(function(req, res, next) {
   }
 });
 
-app.get('/admin', userRoutes.ensureAuthenticated, adminRoutes.ensureAdmin, adminRoutes.adminGetUsers);
+app.get('/admin/users', userRoutes.ensureAuthenticated, adminRoutes.ensureAdmin, adminRoutes.adminGetUsers);
+app.put('/admin/user/updateUser/:userId', userRoutes.ensureAuthenticated, adminRoutes.ensureAdmin, adminRoutes.adminUpdateUser);
+app.put('/admin/user/toggleAdmin/:userId', userRoutes.ensureAuthenticated, adminRoutes.ensureAdmin, adminRoutes.adminToggleAdmin);
+app.delete('/admin/user/delete/:userId', userRoutes.ensureAuthenticated, adminRoutes.ensureAdmin, adminRoutes.adminDeleteUser);
 app.post('/contact', contactRoutes.contactPost);
 app.put('/account', userRoutes.ensureAuthenticated, userRoutes.accountPut);
 app.delete('/account', userRoutes.ensureAuthenticated, userRoutes.accountDelete);
@@ -76,7 +78,6 @@ app.post('/signup', userRoutes.signupPost);
 app.post('/login', userRoutes.loginPost);
 app.post('/forgot', userRoutes.forgotPost);
 app.post('/reset/:token', userRoutes.resetPost);
-// app.get('/unlink/:provider', userRoutes.ensureAuthenticated, userRoutes.unlink);
 
 app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, '../../public/index.html'));

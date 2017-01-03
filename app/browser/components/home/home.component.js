@@ -5,8 +5,6 @@ import './home.scss';
 let homeComponent = {
     template,
     controller
-    // ,
-    // controllerAs: 'vmm'
 };
 
 export default homeComponent;

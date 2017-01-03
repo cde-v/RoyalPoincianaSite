@@ -9,13 +9,12 @@ import AdminPanel from './adminpanel/adminpanel';
 import Account from './account/account';
 
 const componentModule = angular.module('app.components', [
-  Home.name,
+  Home,
   About.name,
   Documents.name,
   Notices.name,
   Login.name,
-  Signup.name,
-  AdminPanel.name,
+  AdminPanel,
   Account.name
 ]);
 

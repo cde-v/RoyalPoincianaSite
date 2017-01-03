@@ -7,18 +7,17 @@ import Components from './components/components';
 import AppComponent from './app.component';
 import './app.scss';
 
-const root = angular
-  .module('app', [
-    Common.name,
-    Components.name,
+angular.module('app', [
     uiRouter,
     angularMaterialize,
-    satellizer
+    satellizer,
+    Common.name,
+    Components.name
   ])
   .config(($locationProvider, $authProvider) => {
     'ngInject';
-    // $locationProvider.html5Mode(true).hashPrefix('!');
-    $locationProvider.html5Mode(true);
+    $locationProvider.html5Mode(true).hashPrefix('!');
+    // $locationProvider.html5Mode(true);
 
     $authProvider.loginUrl = '/login';
     $authProvider.signupUrl = '/signup';
@@ -30,5 +29,3 @@ const root = angular
       $rootScope.currentUser = JSON.parse($window.localStorage.user);
     }
   });
-
-export default root;

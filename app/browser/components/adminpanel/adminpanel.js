@@ -1,9 +1,9 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
-import adminpanelComponent from './adminpanel.component';
+import AdminPanelComponent from './adminpanel.component';
 import AdminPanelService from './adminpanel.service';
 
-let adminpanelModule = angular.module('adminpanel', [
+let AdminPanelModule = angular.module('adminpanel', [
     uiRouter
   ])
   .config(($stateProvider) => {
@@ -11,8 +11,14 @@ let adminpanelModule = angular.module('adminpanel', [
     $stateProvider
       .state('adminpanel', {
         url: '/adminpanel',
-        template: '<adminpanel></adminpanel>',
-        resolve: { loginRequired: loginRequired }
+        component: 'adminpanel',
+        resolve: {
+          adminPanelService: 'AdminPanelService',
+          userList: function(AdminPanelService) {
+            return AdminPanelService.getUsers();
+          },
+          loginRequired: loginRequired
+        }
       });
 
     function loginRequired($state, $auth) {
@@ -20,9 +26,9 @@ let adminpanelModule = angular.module('adminpanel', [
         $state.go('/login');
       }
     }
-
   })
-  .component('adminpanel', adminpanelComponent)
-  .service('AdminPanelService', AdminPanelService);
+  .component('adminpanel', AdminPanelComponent)
+  .service('AdminPanelService', AdminPanelService)
+  .name;
 
-export default adminpanelModule;
+export default AdminPanelModule;

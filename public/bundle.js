@@ -63,7 +63,7 @@
 /******/ 	}
 
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "1e8e09489c67dc626ee9"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "563c035a5e072d0744b8"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 
@@ -618,11 +618,11 @@
 
 	var _components2 = _interopRequireDefault(_components);
 
-	var _app = __webpack_require__(100);
+	var _app = __webpack_require__(99);
 
 	var _app2 = _interopRequireDefault(_app);
 
-	__webpack_require__(102);
+	__webpack_require__(101);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -42829,15 +42829,14 @@
 
 	var _adminpanel = __webpack_require__(86);
 
-	var _adminpanel2 = _interopRequireDefault(_adminpanel);
-
-	var _account = __webpack_require__(93);
+	var _account = __webpack_require__(92);
 
 	var _account2 = _interopRequireDefault(_account);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var componentModule = _angular2.default.module('app.components', [_home2.default.name, _about2.default.name, _documents2.default.name, _notices2.default.name, _login2.default.name, _signup2.default.name, _adminpanel2.default.name, _account2.default.name]);
+	// import AdminPanel from './adminpanel/adminpanel';
+	var componentModule = _angular2.default.module('app.components', [_home2.default.name, _about2.default.name, _documents2.default.name, _notices2.default.name, _login2.default.name, _signup2.default.name, _adminpanel.AdminPanelModule, _account2.default.name]);
 
 	exports.default = componentModule;
 
@@ -43822,6 +43821,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	exports.AdminPanelModule = undefined;
 
 	var _angular = __webpack_require__(2);
 
@@ -43833,21 +43833,23 @@
 
 	var _adminpanel = __webpack_require__(87);
 
-	var _adminpanel2 = _interopRequireDefault(_adminpanel);
-
-	var _adminpanel3 = __webpack_require__(92);
-
-	var _adminpanel4 = _interopRequireDefault(_adminpanel3);
+	var _adminpanel2 = __webpack_require__(91);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var adminpanelModule = _angular2.default.module('adminpanel', [_angularUiRouter2.default]).config(function ($stateProvider) {
+	var AdminPanelModule = exports.AdminPanelModule = _angular2.default.module('adminpanel', [_angularUiRouter2.default]).component('adminpanel', _adminpanel.AdminPanelComponent).service('AdminPanelService', _adminpanel2.AdminPanelService).config(function ($stateProvider) {
 	  'ngInject';
 
 	  $stateProvider.state('adminpanel', {
 	    url: '/adminpanel',
+	    component: 'adminpanel',
 	    template: '<adminpanel></adminpanel>',
-	    resolve: { loginRequired: loginRequired }
+	    resolve: {
+	      loginRequired: loginRequired,
+	      userList: function userList(AdminPanelService) {
+	        return AdminPanelService.getUsers();
+	      }
+	    }
 	  });
 
 	  function loginRequired($state, $auth) {
@@ -43855,9 +43857,9 @@
 	      $state.go('/login');
 	    }
 	  }
-	}).component('adminpanel', _adminpanel2.default).service('AdminPanelService', _adminpanel4.default);
+	}).name;
 
-	exports.default = adminpanelModule;
+	// export default adminpanel;
 
 /***/ },
 /* 87 */
@@ -43868,88 +43870,53 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-
-	var _adminpanel = __webpack_require__(88);
-
-	var _adminpanel2 = _interopRequireDefault(_adminpanel);
-
-	var _adminpanel3 = __webpack_require__(89);
-
-	var _adminpanel4 = _interopRequireDefault(_adminpanel3);
-
-	__webpack_require__(90);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var adminpanelComponent = {
-	  template: _adminpanel2.default,
-	  controller: _adminpanel4.default
-	};
-
-	exports.default = adminpanelComponent;
-
-/***/ },
-/* 88 */
-/***/ function(module, exports) {
-
-	module.exports = "<div id=\"adminpanel\">\n    <div class=\"row\">\n        <div class=\"top-banner orange lighten-5\">\n            <h4 class=\"center page-title\">Users</h4>\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"container\">\n            <button type=\"button\" class=\"btn waves-effect waves-light\" ng-click=\"$ctrl.getUsers()\">Get Users</button>\n            <table>\n                <thead>\n                    <tr>\n                        <th>Name</th>\n                        <th>Email</th>\n                        <!-- <th>Admin</th> -->\n                        <th></th>\n                    </tr>\n                </thead>\n                <tbody>\n                    <tr ng-repeat=\"user in $ctrl.users\">\n                        <td>{{user.name}}</td>\n                        <td>{{user.email}}</td>\n                        <!-- <td>{{user.isAdmin}}</td> -->\n                        <td><button class=\"btn\">Modify</button><button class=\"btn\">Remove</button></td>\n                    </tr>\n                </tbody>\n            </table>\n        </div>\n    </div>\n</div>\n"
-
-/***/ },
-/* 89 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
+	exports.AdminPanelComponent = undefined;
 
 	var _classCallCheck2 = __webpack_require__(17);
 
 	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
 
-	var _createClass2 = __webpack_require__(18);
+	var _adminpanel = __webpack_require__(88);
 
-	var _createClass3 = _interopRequireDefault(_createClass2);
+	var _adminpanel2 = _interopRequireDefault(_adminpanel);
+
+	__webpack_require__(89);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var AdminPanelController = function () {
-	  function AdminPanelController(AdminPanelService) {
+	var AdminPanelComponent = exports.AdminPanelComponent = {
+	  bindings: {
+	    userList: '<'
+	  },
+	  template: _adminpanel2.default,
+	  controller: function AdminPanelComponent(userList) {
 	    'ngInject';
 
-	    (0, _classCallCheck3.default)(this, AdminPanelController);
+	    (0, _classCallCheck3.default)(this, AdminPanelComponent);
 	    this.name = 'adminpanel';
-	    this.AdminPanelService = AdminPanelService;
+	    console.log('HOLY WTF', this);
+	    // console.log('HOLY WTF STATE', $state);
 	  }
+	};
 
-	  (0, _createClass3.default)(AdminPanelController, [{
-	    key: 'getUsers',
-	    value: function getUsers() {
-	      var _this = this;
+	// export default adminpanelComponent;
 
-	      console.log('ADMIN CONTROLLER GET USERS !#!@#!@#!@#');
-	      this.AdminPanelService.getUsers().then(function (response) {
-	        console.log('RES', response.data);
-	        _this.users = response.data.users;
-	      }).catch(function (response) {
-	        console.error('ERROR RES', response.data);
-	      });
-	    }
-	  }]);
-	  return AdminPanelController;
-	}();
-
-	exports.default = AdminPanelController;
+	// import controller from './adminpanel.controller';
 
 /***/ },
-/* 90 */
+/* 88 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"adminpanel\" id=\"adminpanel\">\n    <div class=\"row\">\n        <div class=\"top-banner orange lighten-5\">\n            <h4 class=\"center page-title\">Users</h4>\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"container\">\n            <button type=\"button\" class=\"btn waves-effect waves-light\" ng-click=\"$ctrl.getUsers()\">Get Users</button>\n            <table>\n                <thead>\n                    <tr>\n                        <th>\n                            <h5>Name</h5>\n                        </th>\n                        <th>\n                            <h5>Email</h5>\n                        </th>\n                        <th></th>\n                    </tr>\n                </thead>\n                <tbody>\n                    <tr ng-repeat=\"user in $ctrl.userList\">\n                        <td>\n                            <input type=\"text\" name=\"name\" id=\"name\" ng-model=\"$ctrl.account.name\">\n                        </td>\n                        <td>\n                            <input type=\"email\" name=\"email\" id=\"email\" ng-model=\"$ctrl.account.email\">\n                        </td>\n                        <!-- <td>{{user.isAdmin}}</td> -->\n                        <td>\n                            <button class=\"btn\">Update</button>\n                            <button class=\"btn\">Remove</button>\n                        </td>\n                    </tr>\n                </tbody>\n            </table>\n        </div>\n    </div>\n</div>\n"
+
+/***/ },
+/* 89 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(91);
+	var content = __webpack_require__(90);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(40)(content, {});
@@ -43958,8 +43925,8 @@
 	if(true) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept(91, function() {
-				var newContent = __webpack_require__(91);
+			module.hot.accept(90, function() {
+				var newContent = __webpack_require__(90);
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -43969,7 +43936,7 @@
 	}
 
 /***/ },
-/* 91 */
+/* 90 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(39)();
@@ -43983,7 +43950,7 @@
 
 
 /***/ },
-/* 92 */
+/* 91 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43991,6 +43958,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	exports.AdminPanelService = undefined;
 
 	var _classCallCheck2 = __webpack_require__(17);
 
@@ -44002,10 +43970,11 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var AdminPanelService = function () {
+	var AdminPanelService = exports.AdminPanelService = function () {
 	  function AdminPanelService($http) {
-	    (0, _classCallCheck3.default)(this, AdminPanelService);
+	    'ngInject';
 
+	    (0, _classCallCheck3.default)(this, AdminPanelService);
 	    this.name = 'AdminPanelService';
 	    this.$http = $http;
 	  }
@@ -44014,16 +43983,28 @@
 	    key: 'getUsers',
 	    value: function getUsers() {
 	      console.log('ADMIN PANEL SERVICE GET USERS !@#!@#!@#!@#!@#');
-	      return this.$http.get('/admin');
+	      return this.$http.get('/admin').then(function (response) {
+	        return response.data.users;
+	      });
+	      // .catch((response) => console.error('ERROR RES', response.data));
+	      // .then((response) => {
+	      //   console.log('response.data.users #$*@#($#$*@#)%', response.data.users);
+	      //   return response.data.users;
+	      // })
+	      // .catch((response) => {
+	      //   console.error('ERRRRRR');
+	      //   return console.error('ERROR RES', response.data)
+	      // });
+	      // return this.$http.get('/admin');
 	    }
 	  }]);
 	  return AdminPanelService;
 	}();
 
-	exports.default = AdminPanelService;
+	// export default AdminPanelService;
 
 /***/ },
-/* 93 */
+/* 92 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -44040,11 +44021,11 @@
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _account = __webpack_require__(94);
+	var _account = __webpack_require__(93);
 
 	var _account2 = _interopRequireDefault(_account);
 
-	var _account3 = __webpack_require__(99);
+	var _account3 = __webpack_require__(98);
 
 	var _account4 = _interopRequireDefault(_account3);
 
@@ -44069,7 +44050,7 @@
 	exports.default = accountModule;
 
 /***/ },
-/* 94 */
+/* 93 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -44078,15 +44059,15 @@
 	  value: true
 	});
 
-	var _account = __webpack_require__(95);
+	var _account = __webpack_require__(94);
 
 	var _account2 = _interopRequireDefault(_account);
 
-	var _account3 = __webpack_require__(96);
+	var _account3 = __webpack_require__(95);
 
 	var _account4 = _interopRequireDefault(_account3);
 
-	__webpack_require__(97);
+	__webpack_require__(96);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -44098,13 +44079,13 @@
 	exports.default = accountComponent;
 
 /***/ },
-/* 95 */
+/* 94 */
 /***/ function(module, exports) {
 
 	module.exports = "<div id=\"account\">\n    <div class=\"row\">\n        <div class=\"top-banner orange lighten-5\">\n            <h4 class=\"center page-title\">My Account</h4>\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"mid-banner section orange lighten-4 z-depth-5\">\n            <div class=\"row section\">\n                <div class=\"icon-block col s10 offset-s1 m6 offset-m3 orange lighten-5 z-depth-2\">\n                    <form ng-submit=\"$ctrl.updateAccount()\">\n                        <h5 class=\"center\">Update Email</h5>\n                        <label for=\"email\">Email</label>\n                        <input type=\"email\" name=\"email\" id=\"email\" ng-model=\"$ctrl.account.email\">\n                        <div class=\"center\">\n                            <button type=\"submit\" class=\"btn waves-effect waves-light\">Update Email</button>\n                        </div>\n                    </form>\n                </div>\n            </div>\n            <div class=\"row section\">\n                <div class=\"icon-block col s10 offset-s1 m6 offset-m3 orange lighten-5 z-depth-2\">\n                    <form ng-submit=\"$ctrl.changePassword()\">\n                        <h5 class=\"center\">Change Password</h5>\n                        <label for=\"password\">New Password</label>\n                        <input type=\"password\" name=\"password\" id=\"password\" ng-model=\"$ctrl.account.password\">\n                        <label for=\"confirm\">Confirm Password</label>\n                        <input type=\"password\" name=\"confirm\" id=\"confirm\" ng-model=\"$ctrl.account.confirm\">\n                        <div class=\"center\">\n                            <button type=\"submit\" class=\"btn waves-effect waves-light\">Change Password</button>\n                        </div>\n                    </form>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n"
 
 /***/ },
-/* 96 */
+/* 95 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -44194,13 +44175,13 @@
 	exports.default = AccountController;
 
 /***/ },
-/* 97 */
+/* 96 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(98);
+	var content = __webpack_require__(97);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(40)(content, {});
@@ -44209,8 +44190,8 @@
 	if(true) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept(98, function() {
-				var newContent = __webpack_require__(98);
+			module.hot.accept(97, function() {
+				var newContent = __webpack_require__(97);
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -44220,7 +44201,7 @@
 	}
 
 /***/ },
-/* 98 */
+/* 97 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(39)();
@@ -44234,7 +44215,7 @@
 
 
 /***/ },
-/* 99 */
+/* 98 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -44289,7 +44270,7 @@
 	exports.default = AccountService;
 
 /***/ },
-/* 100 */
+/* 99 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -44298,11 +44279,11 @@
 	  value: true
 	});
 
-	var _app = __webpack_require__(101);
+	var _app = __webpack_require__(100);
 
 	var _app2 = _interopRequireDefault(_app);
 
-	__webpack_require__(102);
+	__webpack_require__(101);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -44313,19 +44294,19 @@
 	exports.default = AppComponent;
 
 /***/ },
-/* 101 */
+/* 100 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"app\">\n    <navbar></navbar>\n    <main>\n        <div ui-view></div>\n    </main>\n    <footbar></footbar>\n</div>\n"
 
 /***/ },
-/* 102 */
+/* 101 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(103);
+	var content = __webpack_require__(102);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(40)(content, {});
@@ -44334,8 +44315,8 @@
 	if(true) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept(103, function() {
-				var newContent = __webpack_require__(103);
+			module.hot.accept(102, function() {
+				var newContent = __webpack_require__(102);
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -44345,7 +44326,7 @@
 	}
 
 /***/ },
-/* 103 */
+/* 102 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(39)();
