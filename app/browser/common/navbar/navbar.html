@@ -8,7 +8,7 @@
                     </div>
                 </a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li ng-repeat="option in $ctrl.options" ng-if="option.authOnly === $ctrl.isAuthenticated() || option.authOnly === 'both'">
+                    <li ng-repeat="option in $ctrl.options" ng-if="(option.authOnly === $ctrl.isAuthenticated() || option.authOnly === 'both') && (option.adminOnly === $ctrl.isAdmin() || option.adminOnly === 'both')">
                         <a class="black-text" ui-sref="{{option.state}}">
                             <span>{{option.label}}</span>
                         </a>
@@ -21,7 +21,7 @@
                     <i id="menu-button" class="material-icons black-text mr2">menu</i>
                 </a>
                 <ul id="menuDropdown" class="dropdown-content">
-                    <li ng-repeat="option in $ctrl.options" ng-if="option.authOnly === $ctrl.isAuthenticated() || option.authOnly === 'both'">
+                    <li ng-repeat="option in $ctrl.options" ng-if="(option.authOnly === $ctrl.isAuthenticated() || option.authOnly === 'both') && (option.adminOnly === $ctrl.isAdmin() || option.adminOnly === 'both')">
                         <a class="black-text" ui-sref="{{option.state}}">
                             <span>{{option.label}}</span>
                         </a>

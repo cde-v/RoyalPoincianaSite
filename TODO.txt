@@ -1,5 +1,7 @@
 TODO:
 
+GET LOGIN LOGOUT to properly remove account and allow for isadmin is auth stuff to work properly
+
 add account/profile page
 move sign up page to admin only / add users page
 add admin routes

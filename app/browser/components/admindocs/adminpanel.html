@@ -1,0 +1,37 @@
+<div class="adminpanel" id="adminpanel">
+
+
+    <div class="row">
+        <div class="top-banner orange lighten-5">
+            <h4 class="center page-title">Users</h4>
+        </div>
+    </div>
+    <div class="row z-depth-2">
+        <table class="bordered">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="user in $ctrl.userList">
+                    <td>
+                        <input type="text" name="name" id="name" ng-model="user.name">
+                    </td>
+                    <td>
+                        <input type="email" name="email" id="email" ng-model="user.email">
+                    </td>
+                    <td>
+                        <button class="btn waves-effect waves-light green darken-2" type="button" ng-click="$ctrl.updateUser(user)">Update</button>
+                        <button class="btn waves-effect waves-light" type="button" ng-if="user.isAdmin" ng-click="$ctrl.toggleAdmin(user)">- Admin</button>
+                        <button class="btn waves-effect waves-light blue darken-2" type="button" ng-if="!user.isAdmin" ng-click="$ctrl.toggleAdmin(user)">+ Admin</button>
+                        <button class="btn waves-effect waves-light red darken-3" type="button" ng-click="$ctrl.deleteUser(user)">Remove</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- </div> -->
+</div>

@@ -12,17 +12,9 @@ let signupModule = angular.module('signup', [
     $stateProvider
       .state('signup', {
         url: '/signup',
-        template: '<signup></signup>',
-        resolve: { skipIfAuthenticated: skipIfAuthenticated }
+        template: '<signup></signup>'
       });
-
     $authProvider.signupUrl = '/signup';
-
-    function skipIfAuthenticated($location, $auth) {
-      if ($auth.isAuthenticated()) {
-        $location.path('/');
-      }
-    }
   })
   .component('signup', signupComponent);
 

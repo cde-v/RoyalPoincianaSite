@@ -68,13 +68,13 @@ app.use(function(req, res, next) {
 });
 
 app.get('/admin/users', userRoutes.ensureAuthenticated, adminRoutes.ensureAdmin, adminRoutes.adminGetUsers);
-app.put('/admin/user/updateUser/:userId', userRoutes.ensureAuthenticated, adminRoutes.ensureAdmin, adminRoutes.adminUpdateUser);
-app.put('/admin/user/toggleAdmin/:userId', userRoutes.ensureAuthenticated, adminRoutes.ensureAdmin, adminRoutes.adminToggleAdmin);
-app.delete('/admin/user/delete/:userId', userRoutes.ensureAuthenticated, adminRoutes.ensureAdmin, adminRoutes.adminDeleteUser);
+app.put('/admin/users/updateUser/:userId', userRoutes.ensureAuthenticated, adminRoutes.ensureAdmin, adminRoutes.adminUpdateUser);
+app.put('/admin/users/toggleAdmin/:userId', userRoutes.ensureAuthenticated, adminRoutes.ensureAdmin, adminRoutes.adminToggleAdmin);
+app.delete('/admin/users/delete/:userId', userRoutes.ensureAuthenticated, adminRoutes.ensureAdmin, adminRoutes.adminDeleteUser);
 app.post('/contact', contactRoutes.contactPost);
 app.put('/account', userRoutes.ensureAuthenticated, userRoutes.accountPut);
 app.delete('/account', userRoutes.ensureAuthenticated, userRoutes.accountDelete);
-app.post('/signup', userRoutes.signupPost);
+app.post('/signup', userRoutes.ensureAuthenticated, adminRoutes.ensureAdmin, userRoutes.signupPost);
 app.post('/login', userRoutes.loginPost);
 app.post('/forgot', userRoutes.forgotPost);
 app.post('/reset/:token', userRoutes.resetPost);

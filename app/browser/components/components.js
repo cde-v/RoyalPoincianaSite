@@ -14,6 +14,7 @@ const componentModule = angular.module('app.components', [
   Documents.name,
   Notices.name,
   Login.name,
+  Signup.name,
   AdminPanel,
   Account.name
 ]);

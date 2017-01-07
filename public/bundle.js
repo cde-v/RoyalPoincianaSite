@@ -63,7 +63,7 @@
 /******/ 	}
 
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "517ee9e83e632a4abc00"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "b635014c8d7e0b9b2d88"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 
@@ -45745,7 +45745,7 @@
 /* 15 */
 /***/ function(module, exports) {
 
-	module.exports = "<header>\n    <div class=\"navbar-fixed\">\n        <nav class=\"z-depth-2\">\n            <div class=\"nav-wrapper orange lighten-4\">\n                <a ui-sref=\"home\" class=\"brand-logo left\">\n                    <div class=\"logo-back orange lighten-5 z-depth-2\">\n                        <img src=\"fullrplogotransparent.png\">\n                    </div>\n                </a>\n                <ul id=\"nav-mobile\" class=\"right hide-on-med-and-down\">\n                    <li ng-repeat=\"option in $ctrl.options\" ng-if=\"option.authOnly === $ctrl.isAuthenticated() || option.authOnly === 'both'\">\n                        <a class=\"black-text\" ui-sref=\"{{option.state}}\">\n                            <span>{{option.label}}</span>\n                        </a>\n                    </li>\n                    <li ng-if=\"$ctrl.isAuthenticated()\">\n                        <a class=\"black-text\" ng-click=\"$ctrl.logout()\">Log Out</a>\n                    </li>\n                </ul>\n                <a class=\"button-collapse dropdown-button right\" href=\"#\" data-activates=\"menuDropdown\" data-beloworigin=\"true\" dropdown>\n                    <i id=\"menu-button\" class=\"material-icons black-text mr2\">menu</i>\n                </a>\n                <ul id=\"menuDropdown\" class=\"dropdown-content\">\n                    <li ng-repeat=\"option in $ctrl.options\" ng-if=\"option.authOnly === $ctrl.isAuthenticated() || option.authOnly === 'both'\">\n                        <a class=\"black-text\" ui-sref=\"{{option.state}}\">\n                            <span>{{option.label}}</span>\n                        </a>\n                    </li>\n                    <li ng-if=\"$ctrl.isAuthenticated()\">\n                        <a class=\"black-text\" ng-click=\"$ctrl.logout()\">Log Out</a>\n                    </li>\n                </ul>\n            </div>\n        </nav>\n    </div>\n</header>\n"
+	module.exports = "<header>\n    <div class=\"navbar-fixed\">\n        <nav class=\"z-depth-2\">\n            <div class=\"nav-wrapper orange lighten-4\">\n                <a ui-sref=\"home\" class=\"brand-logo left\">\n                    <div class=\"logo-back orange lighten-5 z-depth-2\">\n                        <img src=\"fullrplogotransparent.png\">\n                    </div>\n                </a>\n                <ul id=\"nav-mobile\" class=\"right hide-on-med-and-down\">\n                    <li ng-repeat=\"option in $ctrl.options\" ng-if=\"(option.authOnly === $ctrl.isAuthenticated() || option.authOnly === 'both') && (option.adminOnly === $ctrl.isAdmin() || option.adminOnly === 'both')\">\n                        <a class=\"black-text\" ui-sref=\"{{option.state}}\">\n                            <span>{{option.label}}</span>\n                        </a>\n                    </li>\n                    <li ng-if=\"$ctrl.isAuthenticated()\">\n                        <a class=\"black-text\" ng-click=\"$ctrl.logout()\">Log Out</a>\n                    </li>\n                </ul>\n                <a class=\"button-collapse dropdown-button right\" href=\"#\" data-activates=\"menuDropdown\" data-beloworigin=\"true\" dropdown>\n                    <i id=\"menu-button\" class=\"material-icons black-text mr2\">menu</i>\n                </a>\n                <ul id=\"menuDropdown\" class=\"dropdown-content\">\n                    <li ng-repeat=\"option in $ctrl.options\" ng-if=\"(option.authOnly === $ctrl.isAuthenticated() || option.authOnly === 'both') && (option.adminOnly === $ctrl.isAdmin() || option.adminOnly === 'both')\">\n                        <a class=\"black-text\" ui-sref=\"{{option.state}}\">\n                            <span>{{option.label}}</span>\n                        </a>\n                    </li>\n                    <li ng-if=\"$ctrl.isAuthenticated()\">\n                        <a class=\"black-text\" ng-click=\"$ctrl.logout()\">Log Out</a>\n                    </li>\n                </ul>\n            </div>\n        </nav>\n    </div>\n</header>\n"
 
 /***/ },
 /* 16 */
@@ -45768,14 +45768,15 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var NavbarController = function () {
-	  function NavbarController($location, $window, $auth) {
+	  function NavbarController($location, $window, $auth, $rootScope) {
 	    (0, _classCallCheck3.default)(this, NavbarController);
 
 	    this.name = 'navbar';
 	    this.$location = $location;
 	    this.$window = $window;
 	    this.$auth = $auth;
-	    this.options = [{ label: 'Home', state: 'home', authOnly: 'both' }, { label: 'About', state: 'about', authOnly: 'both' }, { label: 'Community Notices', state: 'notices', authOnly: true }, { label: 'Download Documents', state: 'documents', authOnly: true }, { label: 'Log In', state: 'login', authOnly: false }, { label: 'Sign Up', state: 'signup', authOnly: false }, { label: 'Admin Panel', state: 'adminpanel', authOnly: true }, { label: 'My Account', state: 'account', authOnly: true }];
+	    this.$rootScope = $rootScope;
+	    this.options = [{ label: 'Home', state: 'home', authOnly: 'both', adminOnly: 'both' }, { label: 'About', state: 'about', authOnly: 'both', adminOnly: 'both' }, { label: 'Community Notices', state: 'notices', authOnly: true, adminOnly: 'both' }, { label: 'Download Documents', state: 'documents', authOnly: true, adminOnly: 'both' }, { label: 'Log In', state: 'login', authOnly: false, adminOnly: 'both' }, { label: 'Sign Up', state: 'signup', authOnly: true, adminOnly: true }, { label: 'Admin Panel', state: 'adminpanel', authOnly: true, adminOnly: true }, { label: 'My Account', state: 'account', authOnly: true, adminOnly: 'both' }];
 	  }
 
 	  (0, _createClass3.default)(NavbarController, [{
@@ -45789,10 +45790,16 @@
 	      return this.$auth.isAuthenticated();
 	    }
 	  }, {
+	    key: 'isAdmin',
+	    value: function isAdmin() {
+	      return this.$rootScope.currentUser && this.$rootScope.currentUser.isAdmin;
+	    }
+	  }, {
 	    key: 'logout',
 	    value: function logout() {
 	      this.$auth.logout();
 	      delete this.$window.localStorage.user;
+	      delete this.$rootScope.currentUser;
 	      this.$location.path('/');
 	    }
 	  }]);
@@ -46636,7 +46643,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var componentModule = _angular2.default.module('app.components', [_home2.default, _about2.default.name, _documents2.default.name, _notices2.default.name, _login2.default.name, _adminpanel2.default, _account2.default.name]);
+	var componentModule = _angular2.default.module('app.components', [_home2.default, _about2.default.name, _documents2.default.name, _notices2.default.name, _login2.default.name, _signup2.default.name, _adminpanel2.default, _account2.default.name]);
 
 	exports.default = componentModule;
 
@@ -47298,7 +47305,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var LoginController = function () {
-	  function LoginController($rootScope, $location, $window, $auth) {
+	  function LoginController($rootScope, $location, $window, $auth, $state) {
 	    'ngInject';
 
 	    (0, _classCallCheck3.default)(this, LoginController);
@@ -47307,7 +47314,7 @@
 	    this.$location = $location;
 	    this.$window = $window;
 	    this.$auth = $auth;
-	    this.slideshow = [{ imagePath: 'image02.jpg' }, { imagePath: 'image03.jpg' }, { imagePath: 'image04.jpg' }, { imagePath: 'image05.jpg' }, { imagePath: 'image06.jpg' }, { imagePath: 'image07.jpg' }, { imagePath: 'image08.jpg' }];
+	    this.$state = $state;
 	  }
 
 	  (0, _createClass3.default)(LoginController, [{
@@ -47441,17 +47448,9 @@
 
 	  $stateProvider.state('signup', {
 	    url: '/signup',
-	    template: '<signup></signup>',
-	    resolve: { skipIfAuthenticated: skipIfAuthenticated }
+	    template: '<signup></signup>'
 	  });
-
 	  $authProvider.signupUrl = '/signup';
-
-	  function skipIfAuthenticated($location, $auth) {
-	    if ($auth.isAuthenticated()) {
-	      $location.path('/');
-	    }
-	  }
 	}).component('signup', _signup2.default);
 
 	exports.default = signupModule;
@@ -47501,10 +47500,6 @@
 	  value: true
 	});
 
-	var _stringify = __webpack_require__(76);
-
-	var _stringify2 = _interopRequireDefault(_stringify);
-
 	var _classCallCheck2 = __webpack_require__(17);
 
 	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
@@ -47516,15 +47511,13 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var SignupController = function () {
-	  function SignupController($rootScope, $location, $window, $auth) {
+	  function SignupController($auth, $state) {
 	    'ngInject';
 
 	    (0, _classCallCheck3.default)(this, SignupController);
 	    this.name = 'signup';
-	    this.$rootScope = $rootScope;
-	    this.$location = $location;
-	    this.$window = $window;
 	    this.$auth = $auth;
+	    this.$state = $state;
 	  }
 
 	  (0, _createClass3.default)(SignupController, [{
@@ -47533,35 +47526,12 @@
 	      var _this = this;
 
 	      this.$auth.signup(this.user).then(function (response) {
-	        _this.$auth.setToken(response);
-	        _this.$rootScope.currentUser = response.data.user;
-	        _this.$window.localStorage.user = (0, _stringify2.default)(response.data.user);
-	        _this.$location.path('/');
+	        _this.$state.reload();
+	        return response;
 	      }).catch(function (response) {
 	        _this.messages = {
 	          error: Array.isArray(response.data) ? response.data : [response.data]
 	        };
-	      });
-	    }
-	  }, {
-	    key: 'authenticate',
-	    value: function authenticate(provider) {
-	      var _this2 = this;
-
-	      this.$auth.authenticate(provider).then(function (response) {
-	        _this2.$rootScope.currentUser = response.data.user;
-	        _this2.$window.localStorage.user = (0, _stringify2.default)(response.data.user);
-	        _this2.$location.path('/');
-	      }).catch(function (response) {
-	        if (response.error) {
-	          _this2.messages = {
-	            error: [{ msg: response.error }]
-	          };
-	        } else if (response.data) {
-	          _this2.messages = {
-	            error: [response.data]
-	          };
-	        }
 	      });
 	    }
 	  }]);
@@ -47827,17 +47797,17 @@
 	  }, {
 	    key: 'updateUser',
 	    value: function updateUser(user) {
-	      return this.$http.put('/admin/user/updateUser/' + user._id, user);
+	      return this.$http.put('/admin/users/updateUser/' + user._id, user);
 	    }
 	  }, {
 	    key: 'toggleAdmin',
 	    value: function toggleAdmin(user) {
-	      return this.$http.put('/admin/user/toggleAdmin/' + user._id);
+	      return this.$http.put('/admin/users/toggleAdmin/' + user._id);
 	    }
 	  }, {
 	    key: 'deleteUser',
 	    value: function deleteUser(user) {
-	      return this.$http.delete('/admin/user/delete/' + user._id);
+	      return this.$http.delete('/admin/users/delete/' + user._id);
 	    }
 	  }]);
 	  return AdminPanelService;

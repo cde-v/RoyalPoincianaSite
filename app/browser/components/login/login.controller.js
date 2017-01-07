@@ -1,20 +1,12 @@
 class LoginController {
-  constructor($rootScope, $location, $window, $auth) {
+  constructor($rootScope, $location, $window, $auth, $state) {
     'ngInject';
     this.name = 'login';
     this.$rootScope = $rootScope;
     this.$location = $location;
     this.$window = $window;
     this.$auth = $auth;
-    this.slideshow = [
-      { imagePath: 'image02.jpg' },
-      { imagePath: 'image03.jpg' },
-      { imagePath: 'image04.jpg' },
-      { imagePath: 'image05.jpg' },
-      { imagePath: 'image06.jpg' },
-      { imagePath: 'image07.jpg' },
-      { imagePath: 'image08.jpg' }
-    ];
+    this.$state = $state;
   }
   login() {
     this.$auth.login(this.user)
