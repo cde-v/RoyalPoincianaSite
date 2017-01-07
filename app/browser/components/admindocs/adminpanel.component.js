@@ -1,5 +1,5 @@
-import template from './adminpanel.html';
-import './adminpanel.scss';
+import template from './admindocs.html';
+import './admindocs.scss';
 
 let AdminPanelComponent = {
   bindings: {
@@ -9,7 +9,7 @@ let AdminPanelComponent = {
   controller: class AdminPanelComponent {
     constructor($state, AdminPanelService) {
       'ngInject';
-      this.name = 'adminpanel';
+      this.name = 'admindocs';
       this.$state = $state;
       this.AdminPanelService = AdminPanelService;
     }

@@ -63,7 +63,7 @@
 /******/ 	}
 
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "b635014c8d7e0b9b2d88"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "0714de3f854ce47de95e"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 
@@ -47664,12 +47664,13 @@
 	  },
 	  template: _adminpanel2.default,
 	  controller: function () {
-	    function AdminPanelComponent($state, AdminPanelService) {
+	    function AdminPanelComponent($state, $rootScope, AdminPanelService) {
 	      'ngInject';
 
 	      (0, _classCallCheck3.default)(this, AdminPanelComponent);
 	      this.name = 'adminpanel';
 	      this.$state = $state;
+	      this.$rootScope = $rootScope;
 	      this.AdminPanelService = AdminPanelService;
 	    }
 
@@ -47714,7 +47715,7 @@
 /* 88 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"adminpanel\" id=\"adminpanel\">\n\n\n    <div class=\"row\">\n        <div class=\"top-banner orange lighten-5\">\n            <h4 class=\"center page-title\">Users</h4>\n        </div>\n    </div>\n    <div class=\"row z-depth-2\">\n        <table class=\"bordered\">\n            <thead>\n                <tr>\n                    <th>Name</th>\n                    <th>Email</th>\n                    <th></th>\n                </tr>\n            </thead>\n            <tbody>\n                <tr ng-repeat=\"user in $ctrl.userList\">\n                    <td>\n                        <input type=\"text\" name=\"name\" id=\"name\" ng-model=\"user.name\">\n                    </td>\n                    <td>\n                        <input type=\"email\" name=\"email\" id=\"email\" ng-model=\"user.email\">\n                    </td>\n                    <td>\n                        <button class=\"btn waves-effect waves-light green darken-2\" type=\"button\" ng-click=\"$ctrl.updateUser(user)\">Update</button>\n                        <button class=\"btn waves-effect waves-light\" type=\"button\" ng-if=\"user.isAdmin\" ng-click=\"$ctrl.toggleAdmin(user)\">- Admin</button>\n                        <button class=\"btn waves-effect waves-light blue darken-2\" type=\"button\" ng-if=\"!user.isAdmin\" ng-click=\"$ctrl.toggleAdmin(user)\">+ Admin</button>\n                        <button class=\"btn waves-effect waves-light red darken-3\" type=\"button\" ng-click=\"$ctrl.deleteUser(user)\">Remove</button>\n                    </td>\n                </tr>\n            </tbody>\n        </table>\n    </div>\n    <!-- </div> -->\n</div>\n"
+	module.exports = "<div class=\"adminpanel\" id=\"adminpanel\">\n\n\n    <div class=\"row\">\n        <div class=\"top-banner orange lighten-5\">\n            <h4 class=\"center page-title\">Users</h4>\n        </div>\n    </div>\n    <div class=\"row z-depth-2\">\n        <table class=\"bordered\">\n            <thead>\n                <tr>\n                    <th>Name</th>\n                    <th>Email</th>\n                    <th></th>\n                </tr>\n            </thead>\n            <tbody>\n                <tr ng-repeat=\"user in $ctrl.userList\">\n                    <td>\n                        <input type=\"text\" name=\"name\" id=\"name\" ng-model=\"user.name\">\n                    </td>\n                    <td>\n                        <input type=\"email\" name=\"email\" id=\"email\" ng-model=\"user.email\">\n                    </td>\n                    <td>\n                        <button class=\"btn waves-effect waves-light green darken-2\" type=\"button\" ng-click=\"$ctrl.updateUser(user)\">Update</button>\n                        <button class=\"btn waves-effect waves-light disabled\" type=\"button\" ng-if=\"(user.isAdmin && user._id === $ctrl.$rootScope.currentUser._id)\">- Admin</button>\n                        <button class=\"btn waves-effect waves-light\" type=\"button\" ng-if=\"user.isAdmin && user._id != $ctrl.$rootScope.currentUser._id\" ng-click=\"$ctrl.toggleAdmin(user)\">- Admin</button>\n                        <button class=\"btn waves-effect waves-light blue darken-2\" type=\"button\" ng-if=\"!user.isAdmin\" ng-click=\"$ctrl.toggleAdmin(user)\">+ Admin</button>\n                        <button class=\"btn waves-effect waves-light red darken-3\" type=\"button\" ng-click=\"$ctrl.deleteUser(user)\">Remove</button>\n                    </td>\n                </tr>\n            </tbody>\n        </table>\n    </div>\n    <!-- </div> -->\n</div>\n"
 
 /***/ },
 /* 89 */
