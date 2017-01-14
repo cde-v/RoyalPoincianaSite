@@ -1,0 +1,47 @@
+<div class="admindocs" id="admindocs">
+    <div class="row">
+        <div class="top-banner orange lighten-5">
+            <h4 class="center page-title">Document Management</h4>
+        </div>
+    </div>
+    <div class="row uploadform">
+        <div class="col s12 m12 l12 container">
+            <form ng-submit="$ctrl.uploadFile()">
+                <div class="file-field input-field">
+                    <div class="btn blue">
+                        <span>Choose File</span>
+                        <input type="file" file-model="$ctrl.myFile">
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text">
+                    </div>
+                </div>
+                <div class="row center">
+                    <button type="submit" class="btn-large waves-effect waves-light">Upload File</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s6 m6 l6">
+            <table class="bordered">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="document in $ctrl.documentList">
+                        <td>
+                            <span>{{document}}</span>
+                        </td>
+                        <td>
+                            <button class="btn waves-effect waves-light red darken-3" type="button" ng-click="$ctrl.deleteFile(document)">Delete File</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

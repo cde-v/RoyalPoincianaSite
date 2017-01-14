@@ -10,6 +10,8 @@ let mongoose = require('mongoose');
 let jwt = require('jsonwebtoken');
 let moment = require('moment');
 let request = require('request');
+let multer = require('multer');
+let fs = require('fs');
 
 // Load environment variables from .env file, only for LOCAL env, .env not on heroku, actually part of vars
 
@@ -61,10 +63,61 @@ app.use(function(req, res, next) {
     User.findById(payload.sub, function(err, user) {
       req.user = user;
       next();
-   });
+    });
   } else {
     next();
   }
+});
+
+// File upload/storage using multer
+
+let storage = multer.diskStorage({
+  destination: './uploads/',
+  filename: function(req, file, cb) {
+    cb(null, file.originalname.replace(path.extname(file.originalname), '') + '-' + Date.now() + path.extname(file.originalname))
+  }
+})
+
+var upload = multer({
+  storage: storage
+}).single('file');
+
+app.post('/admin/documents/upload', function(req, res) {
+  console.log('Uploade Successful ', req.file, req.body);
+  upload(req, res, function(err) {
+    if (err) {
+      res.json({ errorCode: 1, errDesc: err });
+      return;
+    }
+    res.json({ errorCode: 0, errDesc: null });
+  })
+});
+
+app.get('/admin/documents', function(req, res) {
+  fs.readdir('./uploads/', function(error, files) {
+    if (error) {
+      throw error;
+    } else {
+      res.json(files);
+    }
+  });
+});
+
+app.delete('/admin/documents/delete/:documentId', function(req, res) {
+  fs.stat('./uploads/' + req.params.documentId, function(err, stats) {
+    console.log('file stats:', stats);
+
+    if (err) {
+      return console.error(err);
+    }
+
+    fs.unlink('./uploads/' + req.params.documentId, function(err) {
+      if (err) return console.log(err);
+      res.send({ msg: 'Your account has been permanently deleted.' });
+      console.log('file deleted successfully');
+    });
+  });
+
 });
 
 app.get('/admin/users', userRoutes.ensureAuthenticated, adminRoutes.ensureAdmin, adminRoutes.adminGetUsers);

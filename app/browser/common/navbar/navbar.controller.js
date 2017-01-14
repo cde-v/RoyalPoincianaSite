@@ -11,8 +11,9 @@ class NavbarController {
       { label: 'Community Notices', state: 'notices', authOnly: true, adminOnly: 'both' },
       { label: 'Download Documents', state: 'documents', authOnly: true, adminOnly: 'both' },
       { label: 'Log In', state: 'login', authOnly: false, adminOnly: 'both' },
-      { label: 'Sign Up', state: 'signup', authOnly: true, adminOnly: true },
-      { label: 'Admin Panel', state: 'adminpanel', authOnly: true, adminOnly: true },
+      { label: 'Admin: Add User', state: 'signup', authOnly: true, adminOnly: true },
+      { label: 'Admin: Users', state: 'adminpanel', authOnly: true, adminOnly: true },
+      { label: 'Admin: Docs', state: 'admindocs', authOnly: true, adminOnly: true },
       { label: 'My Account', state: 'account', authOnly: true, adminOnly: 'both' }
     ];
   }

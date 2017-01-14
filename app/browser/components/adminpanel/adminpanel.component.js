@@ -8,7 +8,7 @@ let AdminPanelComponent = {
   },
   template: template,
   controller: class AdminPanelComponent {
-constructor($state, $rootScope, AdminPanelService) {
+    constructor($state, $rootScope, AdminPanelService) {
       'ngInject';
       this.name = 'adminpanel';
       this.$state = $state;
