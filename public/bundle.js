@@ -63,7 +63,7 @@
 /******/ 	}
 
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "945e3f1351abe2b92398"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "07a9c99addc3e342b137"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 
@@ -46647,7 +46647,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var componentModule = _angular2.default.module('app.components', [_home2.default, _about2.default.name, _documents2.default.name, _notices2.default.name, _login2.default.name, _signup2.default.name, _adminpanel2.default, _admindocs2.default, _account2.default.name]);
+	var componentModule = _angular2.default.module('app.components', [_home2.default, _about2.default.name, _documents2.default, _notices2.default.name, _login2.default.name, _signup2.default.name, _adminpanel2.default, _admindocs2.default, _account2.default.name]);
 
 	exports.default = componentModule;
 
@@ -46946,15 +46946,25 @@
 
 	var _documents2 = _interopRequireDefault(_documents);
 
+	var _documents3 = __webpack_require__(65);
+
+	var _documents4 = _interopRequireDefault(_documents3);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var documentsModule = _angular2.default.module('documents', [_angularUiRouter2.default]).config(function ($stateProvider) {
+	var DocumentsModule = _angular2.default.module('documents', [_angularUiRouter2.default]).config(function ($stateProvider) {
 	  'ngInject';
 
 	  $stateProvider.state('documents', {
 	    url: '/documents',
-	    template: '<documents></documents>',
-	    resolve: { loginRequired: loginRequired }
+	    component: 'documents',
+	    resolve: {
+	      documentsService: 'DocumentsService',
+	      documentList: function documentList(DocumentsService) {
+	        return DocumentsService.getDocList();
+	      },
+	      loginRequired: loginRequired
+	    }
 	  });
 
 	  function loginRequired($state, $auth) {
@@ -46962,47 +46972,12 @@
 	      $state.go('/login');
 	    }
 	  }
-	}).component('documents', _documents2.default);
+	}).component('documents', _documents2.default).service('DocumentsService', _documents4.default).name;
 
-	exports.default = documentsModule;
+	exports.default = DocumentsModule;
 
 /***/ },
 /* 61 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _documents = __webpack_require__(62);
-
-	var _documents2 = _interopRequireDefault(_documents);
-
-	var _documents3 = __webpack_require__(63);
-
-	var _documents4 = _interopRequireDefault(_documents3);
-
-	__webpack_require__(64);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var documentsComponent = {
-	  template: _documents2.default,
-	  controller: _documents4.default
-	};
-
-	exports.default = documentsComponent;
-
-/***/ },
-/* 62 */
-/***/ function(module, exports) {
-
-	module.exports = "<div id=\"documents\">\n    <div class=\"row\">\n        <div class=\"top-banner orange lighten-5\">\n            <h4 class=\"center page-title\">Download Documents</h4>\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"container\">\n            <button type=\"button\" class=\"btn waves-effect waves-light\" ng-click=\"\">Add New Document</button>\n            <table>\n                <thead>\n                    <tr>\n                        <th>Document Title</th>\n                        <th>Category</th>\n                        <th>Description</th>\n                        <th>Download</th>\n                    </tr>\n                </thead>\n                <tbody>\n                    <tr>\n                        <td>2015 Budget</td>\n                        <td>Budgets</td>\n                        <td>The accepted 2015 Royal Poinciana Budget</td>\n                        <td><a href=\"/img/myw3schoolsimage.jpg\" download>DOWNLOAD</a></td>\n                    </tr>\n                    <tr>\n                        <td>2016 Budget</td>\n                        <td>Budgets</td>\n                        <td>The accepted 2016 Royal Poinciana Budget</td>\n                        <td><a href=\"/img/myw3schoolsimage.jpg\" download>DOWNLOAD</a></td>\n                    </tr>\n                    <tr>\n                        <td>Parking Rules</td>\n                        <td>Rules & Regs</td>\n                        <td>Parking enforcement rules for Royal Poinciana</td>\n                        <td><a href=\"/img/myw3schoolsimage.jpg\" download>DOWNLOAD</a></td>\n                    </tr>\n                </tbody>\n            </table>\n        </div>\n    </div>\n</div>\n\n                            \n                        "
-
-/***/ },
-/* 63 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -47015,25 +46990,72 @@
 
 	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
 
+	var _createClass2 = __webpack_require__(18);
+
+	var _createClass3 = _interopRequireDefault(_createClass2);
+
+	var _documents = __webpack_require__(62);
+
+	var _documents2 = _interopRequireDefault(_documents);
+
+	__webpack_require__(63);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var DocumentsController = function DocumentsController() {
-	  (0, _classCallCheck3.default)(this, DocumentsController);
+	var DocumentsComponent = {
+	  bindings: {
+	    documentList: '<'
+	  },
+	  template: _documents2.default,
+	  controller: function () {
+	    function DocumentsComponent($state, DocumentsService) {
+	      'ngInject';
 
-	  this.name = 'documents';
-	  this.downloadList = [{ downloadPath: 'sample.pdf' }, { downloadPath: 'example.pdf' }, { downloadPath: 'document.pdf' }, { downloadPath: 'stuff.pdf' }, { downloadPath: 'community.pdf' }, { downloadPath: 'rules.pdf' }];
+	      (0, _classCallCheck3.default)(this, DocumentsComponent);
+	      this.name = 'documents';
+	      this.$state = $state;
+	      this.DocumentsService = DocumentsService;
+	    }
+
+	    (0, _createClass3.default)(DocumentsComponent, [{
+	      key: 'uploadDoc',
+	      value: function uploadDoc(doc) {
+	        var _this = this;
+
+	        this.DocumentsService.uploadDoc(doc).then(function () {
+	          return _this.$state.reload();
+	        });
+	      }
+	    }, {
+	      key: 'deleteDoc',
+	      value: function deleteDoc(doc) {
+	        var _this2 = this;
+
+	        this.DocumentsService.deleteDoc(doc).then(function () {
+	          return _this2.$state.reload();
+	        });
+	      }
+	    }]);
+	    return DocumentsComponent;
+	  }()
 	};
 
-	exports.default = DocumentsController;
+	exports.default = DocumentsComponent;
 
 /***/ },
-/* 64 */
+/* 62 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"documents\" id=\"documents\">\n    <div class=\"row\">\n        <div class=\"top-banner orange lighten-5\">\n            <h4 class=\"center page-title\">Community Documents</h4>\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"col s12 m12 l12\">\n            <table class=\"bordered\">\n                <thead>\n                    <tr>\n                        <th>Document Name</th>\n                        <th class=\"center\">Description</th>\n                        <th></th>\n                    </tr>\n                </thead>\n                <tbody>\n                    <tr ng-repeat=\"doc in $ctrl.documentList\">\n                        <td>\n                            <span>{{doc.name}}</span>\n                        </td>\n                        <td>\n                            <span>{{doc.desc}}</span>\n                        </td>\n                        <td>\n                            <a class=\"btn waves-effect waves-light green darken-3\" ng-href=\"/documents/download/{{doc.name}}\" target=\"_self\">Download</a>\n                        </td>\n                    </tr>\n                </tbody>\n            </table>\n        </div>\n    </div>\n</div>\n"
+
+/***/ },
+/* 63 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(65);
+	var content = __webpack_require__(64);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(40)(content, {});
@@ -47042,8 +47064,8 @@
 	if(true) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept(65, function() {
-				var newContent = __webpack_require__(65);
+			module.hot.accept(64, function() {
+				var newContent = __webpack_require__(64);
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -47053,7 +47075,7 @@
 	}
 
 /***/ },
-/* 65 */
+/* 64 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(39)();
@@ -47061,10 +47083,55 @@
 
 
 	// module
-	exports.push([module.id, "#documents > .parallax-container > .section {\n  position: absolute;\n  width: 100vw;\n  background-color: rgba(0, 0, 0, 0.3);\n  padding: 0px;\n}\n\n#documents .form-container {\n  opacity: 1.0;\n  border-radius: 20px;\n  padding: 0vw 2vw;\n}\n", ""]);
+	exports.push([module.id, "#documents .top-banner {\n  padding: 5px;\n}\n", ""]);
 
 	// exports
 
+
+/***/ },
+/* 65 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _classCallCheck2 = __webpack_require__(17);
+
+	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+	var _createClass2 = __webpack_require__(18);
+
+	var _createClass3 = _interopRequireDefault(_createClass2);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var DocumentsService = function () {
+	  function DocumentsService($http) {
+	    'ngInject';
+
+	    (0, _classCallCheck3.default)(this, DocumentsService);
+	    this.name = 'DocumentsService';
+	    this.$http = $http;
+	  }
+
+	  (0, _createClass3.default)(DocumentsService, [{
+	    key: 'getDocList',
+	    value: function getDocList() {
+	      return this.$http.get('/documents').then(function (response) {
+	        console.log(response.data.docs);
+	        return response.data.docs;
+	      }).catch(function (response) {
+	        console.error('getDocList error: ', response.data);
+	      });
+	    }
+	  }]);
+	  return DocumentsService;
+	}();
+
+	exports.default = DocumentsService;
 
 /***/ },
 /* 66 */
@@ -47868,9 +47935,7 @@
 	      $state.go('/login');
 	    }
 	  }
-	}).component('admindocs', _admindocs2.default)
-	// .directive('docModel', () => new AdminDocsUpload())
-	.directive('docModel', ['$parse', function ($parse) {
+	}).component('admindocs', _admindocs2.default).directive('docModel', ['$parse', function ($parse) {
 	  return {
 	    restrict: 'A',
 	    link: function link(scope, element, attrs) {
@@ -47885,7 +47950,7 @@
 	    }
 	  };
 	}]).service('AdminDocsService', _admindocs4.default).name;
-	// import AdminDocsUpload from './admindocs.directive';
+
 	exports.default = AdminDocsModule;
 
 /***/ },
@@ -47958,7 +48023,7 @@
 /* 94 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"admindocs\" id=\"admindocs\">\n    <div class=\"row\">\n        <div class=\"top-banner orange lighten-5\">\n            <h4 class=\"center page-title\">Document Management</h4>\n        </div>\n    </div>\n    <div class=\"row uploadform\">\n        <form ng-submit=\"$ctrl.uploadDoc($ctrl.myDoc)\">\n            <div class=\"col s12 m12 l12 container\">\n                <div class=\"file-field input-field\">\n                    <div class=\"btn blue\">\n                        <span>Choose Document</span>\n                        <input type=\"file\" doc-model=\"$ctrl.myDoc.file\" required>\n                    </div>\n                    <div class=\"file-path-wrapper\">\n                        <input class=\"file-path validate\" type=\"text\" required>\n                    </div>\n                </div>\n            </div>\n            <div class=\"col s12 m12 l12 container\">\n                <div class=\"input-field\">\n                    <input id=\"desc\" type=\"text\" ng-model=\"$ctrl.myDoc.desc\">\n                    <label for=\"desc\">Description</label>\n                </div>\n            </div>\n            <div class=\"col s12 m12 l12 container\">\n                <div class=\"row center\">\n                    <button type=\"submit\" class=\"btn-large waves-effect waves-light\">Upload Document</button>\n                </div>\n            </div>\n        </form>\n    </div>\n</div>\n<div class=\"row\">\n    <div class=\"col s12 m12 l12\">\n        <table class=\"bordered\">\n            <thead>\n                <tr>\n                    <th>Document Name</th>\n                    <th>Description</th>\n                    <th></th>\n                </tr>\n            </thead>\n            <tbody>\n                <tr ng-repeat=\"doc in $ctrl.documentList\">\n                    <td>\n                        <span>{{doc.name}}</span>\n                    </td>\n                    <td>\n                        <span>{{doc.desc}}</span>\n                    </td>\n                    <td>\n                        <button class=\"btn waves-effect waves-light red darken-3\" type=\"button\" ng-click=\"$ctrl.deleteDoc(doc)\">Delete Document</button>\n                        <a class=\"btn waves-effect waves-light green darken-3\" ng-href=\"/documents/download/{{doc.name}}\" target=\"_self\">Download</a>\n                    </td>\n                </tr>\n            </tbody>\n        </table>\n    </div>\n</div>\n</div>\n"
+	module.exports = "<div class=\"admindocs\" id=\"admindocs\">\n    <div class=\"row\">\n        <div class=\"top-banner orange lighten-5\">\n            <h4 class=\"center page-title\">Document Management</h4>\n        </div>\n    </div>\n    <div class=\"row uploadform\">\n        <form ng-submit=\"$ctrl.uploadDoc($ctrl.myDoc)\">\n            <div class=\"col s12 m12 l12 container\">\n                <div class=\"file-field input-field\">\n                    <div class=\"btn blue\">\n                        <span>Choose Document</span>\n                        <input type=\"file\" doc-model=\"$ctrl.myDoc.file\" required>\n                    </div>\n                    <div class=\"file-path-wrapper\">\n                        <input class=\"file-path validate\" type=\"text\" required>\n                    </div>\n                </div>\n            </div>\n            <div class=\"col s12 m12 l12 container\">\n                <div class=\"input-field\">\n                    <input id=\"desc\" type=\"text\" ng-model=\"$ctrl.myDoc.desc\">\n                    <label for=\"desc\">Description</label>\n                </div>\n            </div>\n            <div class=\"col s12 m12 l12 container\">\n                <div class=\"row center\">\n                    <button type=\"submit\" class=\"btn-large waves-effect waves-light\">Upload Document</button>\n                </div>\n            </div>\n        </form>\n    </div>\n    <div class=\"row\">\n        <div class=\"col s12 m12 l12\">\n            <table class=\"bordered\">\n                <thead>\n                    <tr>\n                        <th>Document Name</th>\n                        <th>Description</th>\n                        <th></th>\n                    </tr>\n                </thead>\n                <tbody>\n                    <tr ng-repeat=\"doc in $ctrl.documentList\">\n                        <td>\n                            <span>{{doc.name}}</span>\n                        </td>\n                        <td>\n                            <span>{{doc.desc}}</span>\n                        </td>\n                        <td>\n                            <button class=\"btn waves-effect waves-light red darken-3\" type=\"button\" ng-click=\"$ctrl.deleteDoc(doc)\">Delete Document</button>\n                            <a class=\"btn waves-effect waves-light green darken-3\" ng-href=\"/documents/download/{{doc.name}}\" target=\"_self\">Download</a>\n                        </td>\n                    </tr>\n                </tbody>\n            </table>\n        </div>\n    </div>\n</div>\n"
 
 /***/ },
 /* 95 */

@@ -30,32 +30,31 @@
             </div>
         </form>
     </div>
-</div>
-<div class="row">
-    <div class="col s12 m12 l12">
-        <table class="bordered">
-            <thead>
-                <tr>
-                    <th>Document Name</th>
-                    <th>Description</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="doc in $ctrl.documentList">
-                    <td>
-                        <span>{{doc.name}}</span>
-                    </td>
-                    <td>
-                        <span>{{doc.desc}}</span>
-                    </td>
-                    <td>
-                        <button class="btn waves-effect waves-light red darken-3" type="button" ng-click="$ctrl.deleteDoc(doc)">Delete Document</button>
-                        <a class="btn waves-effect waves-light green darken-3" ng-href="/documents/download/{{doc.name}}" target="_self">Download</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="row">
+        <div class="col s12 m12 l12">
+            <table class="bordered">
+                <thead>
+                    <tr>
+                        <th>Document Name</th>
+                        <th>Description</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="doc in $ctrl.documentList">
+                        <td>
+                            <span>{{doc.name}}</span>
+                        </td>
+                        <td>
+                            <span>{{doc.desc}}</span>
+                        </td>
+                        <td>
+                            <button class="btn waves-effect waves-light red darken-3" type="button" ng-click="$ctrl.deleteDoc(doc)">Delete Document</button>
+                            <a class="btn waves-effect waves-light green darken-3" ng-href="/documents/download/{{doc.name}}" target="_self">Download</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
-</div>
 </div>

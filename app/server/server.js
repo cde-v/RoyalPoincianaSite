@@ -119,13 +119,6 @@ let adminSaveDoc = function(req, res, next) {
 app.post('/admin/documents/upload', adminSaveDoc, adminAddDoc);
 
 app.get('/admin/documents', function(req, res, next) {
-  // fs.readdir('./uploads/', function(err, files) {
-  //   if (err) {
-  //     res.json({ errorCode: 1, errDesc: err });
-  //     return;
-  //   }
-  //   res.json(files);
-  // });
   Doc.find({}, function(err, docs) {
     if (err) {
       res.json({ errorCode: 1, errDesc: err });
@@ -173,6 +166,20 @@ app.get('/documents/download/:docId', function(req, res, next) {
   res.setHeader('Content-type', 'application/pdf');
 
   stream.pipe(res);
+});
+
+app.get('/documents', function(req, res, next) {
+  Doc.find({}, function(err, docs) {
+    if (err) {
+      res.json({ errorCode: 1, errDesc: err });
+      return;
+    }
+    if (!docs) {
+      res.json({ errorCode: 1, errDesc: 'No documents found' });
+      return;
+    }
+    res.send({ docs });
+  });
 });
 
 app.get('/admin/users', userRoutes.ensureAuthenticated, adminRoutes.ensureAdmin, adminRoutes.adminGetUsers);

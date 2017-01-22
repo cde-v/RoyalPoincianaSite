@@ -1,45 +1,33 @@
-<div id="documents">
+<div class="documents" id="documents">
     <div class="row">
         <div class="top-banner orange lighten-5">
-            <h4 class="center page-title">Download Documents</h4>
+            <h4 class="center page-title">Community Documents</h4>
         </div>
     </div>
     <div class="row">
-        <div class="container">
-            <button type="button" class="btn waves-effect waves-light" ng-click="">Add New Document</button>
-            <table>
+        <div class="col s12 m12 l12">
+            <table class="bordered">
                 <thead>
                     <tr>
-                        <th>Document Title</th>
-                        <th>Category</th>
-                        <th>Description</th>
-                        <th>Download</th>
+                        <th>Document Name</th>
+                        <th class="center">Description</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>2015 Budget</td>
-                        <td>Budgets</td>
-                        <td>The accepted 2015 Royal Poinciana Budget</td>
-                        <td><a href="/img/myw3schoolsimage.jpg" download>DOWNLOAD</a></td>
-                    </tr>
-                    <tr>
-                        <td>2016 Budget</td>
-                        <td>Budgets</td>
-                        <td>The accepted 2016 Royal Poinciana Budget</td>
-                        <td><a href="/img/myw3schoolsimage.jpg" download>DOWNLOAD</a></td>
-                    </tr>
-                    <tr>
-                        <td>Parking Rules</td>
-                        <td>Rules & Regs</td>
-                        <td>Parking enforcement rules for Royal Poinciana</td>
-                        <td><a href="/img/myw3schoolsimage.jpg" download>DOWNLOAD</a></td>
+                    <tr ng-repeat="doc in $ctrl.documentList">
+                        <td>
+                            <span>{{doc.name}}</span>
+                        </td>
+                        <td>
+                            <span>{{doc.desc}}</span>
+                        </td>
+                        <td>
+                            <a class="btn waves-effect waves-light green darken-3" ng-href="/documents/download/{{doc.name}}" target="_self">Download</a>
+                        </td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
 </div>
-
-                            
-                        

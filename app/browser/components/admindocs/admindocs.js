@@ -1,7 +1,6 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import AdminDocsComponent from './admindocs.component';
-// import AdminDocsUpload from './admindocs.directive';
 import AdminDocsService from './admindocs.service';
 
 let AdminDocsModule = angular.module('admindocs', [
@@ -29,7 +28,6 @@ let AdminDocsModule = angular.module('admindocs', [
     }
   })
   .component('admindocs', AdminDocsComponent)
-  // .directive('docModel', () => new AdminDocsUpload())
   .directive('docModel', ['$parse', function($parse) {
     return {
       restrict: 'A',

@@ -12,7 +12,7 @@ import Account from './account/account';
 const componentModule = angular.module('app.components', [
   Home,
   About.name,
-  Documents.name,
+  Documents,
   Notices.name,
   Login.name,
   Signup.name,

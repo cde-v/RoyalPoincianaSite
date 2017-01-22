@@ -1,10 +1,27 @@
 import template from './documents.html';
-import controller from './documents.controller';
 import './documents.scss';
 
-let documentsComponent = {
-  template,
-  controller
+let DocumentsComponent = {
+  bindings: {
+    documentList: '<'
+  },
+  template: template,
+  controller: class DocumentsComponent {
+    constructor($state, DocumentsService) {
+      'ngInject';
+      this.name = 'documents';
+      this.$state = $state;
+      this.DocumentsService = DocumentsService;
+    }
+    uploadDoc(doc) {
+      this.DocumentsService.uploadDoc(doc)
+        .then(() => this.$state.reload())
+    }
+    deleteDoc(doc) {
+      this.DocumentsService.deleteDoc(doc)
+        .then(() => this.$state.reload());
+    }
+  }
 };
 
-export default documentsComponent;
+export default DocumentsComponent;

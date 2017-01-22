@@ -1,8 +1,9 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
-import documentsComponent from './documents.component';
+import DocumentsComponent from './documents.component';
+import DocumentsService from './documents.service';
 
-let documentsModule = angular.module('documents', [
+let DocumentsModule = angular.module('documents', [
     uiRouter
   ])
   .config(($stateProvider) => {
@@ -10,8 +11,14 @@ let documentsModule = angular.module('documents', [
     $stateProvider
       .state('documents', {
         url: '/documents',
-        template: '<documents></documents>',
-        resolve: { loginRequired: loginRequired }
+        component: 'documents',
+        resolve: {
+          documentsService: 'DocumentsService',
+          documentList: function(DocumentsService) {
+            return DocumentsService.getDocList();
+          },
+          loginRequired: loginRequired
+        }
       });
 
     function loginRequired($state, $auth) {
@@ -21,6 +28,8 @@ let documentsModule = angular.module('documents', [
     }
 
   })
-  .component('documents', documentsComponent);
+  .component('documents', DocumentsComponent)
+  .service('DocumentsService', DocumentsService)
+  .name;
 
-export default documentsModule;
+export default DocumentsModule;
