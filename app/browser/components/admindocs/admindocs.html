@@ -5,43 +5,57 @@
         </div>
     </div>
     <div class="row uploadform">
-        <div class="col s12 m12 l12 container">
-            <form ng-submit="$ctrl.uploadFile()">
+        <form ng-submit="$ctrl.uploadDoc($ctrl.myDoc)">
+            <div class="col s12 m12 l12 container">
                 <div class="file-field input-field">
                     <div class="btn blue">
-                        <span>Choose File</span>
-                        <input type="file" file-model="$ctrl.myFile">
+                        <span>Choose Document</span>
+                        <input type="file" doc-model="$ctrl.myDoc.file" required>
                     </div>
                     <div class="file-path-wrapper">
-                        <input class="file-path validate" type="text">
+                        <input class="file-path validate" type="text" required>
                     </div>
                 </div>
-                <div class="row center">
-                    <button type="submit" class="btn-large waves-effect waves-light">Upload File</button>
+            </div>
+            <div class="col s12 m12 l12 container">
+                <div class="input-field">
+                    <input id="desc" type="text" ng-model="$ctrl.myDoc.desc">
+                    <label for="desc">Description</label>
                 </div>
-            </form>
-        </div>
+            </div>
+            <div class="col s12 m12 l12 container">
+                <div class="row center">
+                    <button type="submit" class="btn-large waves-effect waves-light">Upload Document</button>
+                </div>
+            </div>
+        </form>
     </div>
-    <div class="row">
-        <div class="col s6 m6 l6">
-            <table class="bordered">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="document in $ctrl.documentList">
-                        <td>
-                            <span>{{document}}</span>
-                        </td>
-                        <td>
-                            <button class="btn waves-effect waves-light red darken-3" type="button" ng-click="$ctrl.deleteFile(document)">Delete File</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+</div>
+<div class="row">
+    <div class="col s12 m12 l12">
+        <table class="bordered">
+            <thead>
+                <tr>
+                    <th>Document Name</th>
+                    <th>Description</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="doc in $ctrl.documentList">
+                    <td>
+                        <span>{{doc.name}}</span>
+                    </td>
+                    <td>
+                        <span>{{doc.desc}}</span>
+                    </td>
+                    <td>
+                        <button class="btn waves-effect waves-light red darken-3" type="button" ng-click="$ctrl.deleteDoc(doc)">Delete Document</button>
+                        <a class="btn waves-effect waves-light green darken-3" ng-href="/documents/download/{{doc.name}}" target="_self">Download</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
+</div>
 </div>

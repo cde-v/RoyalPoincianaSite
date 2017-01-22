@@ -2,7 +2,7 @@ import template from './admindocs.html';
 import './admindocs.scss';
 
 let AdminDocsComponent = {
-    bindings: {
+  bindings: {
     documentList: '<'
   },
   template: template,
@@ -13,24 +13,13 @@ let AdminDocsComponent = {
       this.$state = $state;
       this.AdminDocsService = AdminDocsService;
     }
-    uploadFile(){
-        let file = this.myFile;
-        console.log('file is: ', file);
-        this.AdminDocsService.uploadFile(file);
+    uploadDoc(doc) {
+      this.AdminDocsService.uploadDoc(doc)
+        .then(() => this.$state.reload())
     }
-    // getDocs() {
-    //   this.AdminDocsService.getDocs()
-    //   .then((docs) => {
-    //     // this.$state.reload();
-    //       return docs;
-    //   })
-    // }
-    deleteFile(document) {
-      this.AdminDocsService.deleteFile(document)
-        .then((deletedDocument) => {
-          this.$state.reload();
-          return deletedDocument;
-        });
+    deleteDoc(doc) {
+      this.AdminDocsService.deleteDoc(doc)
+        .then(() => this.$state.reload());
     }
   }
 };

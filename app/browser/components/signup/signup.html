@@ -14,19 +14,19 @@
                                 <h4 class="center">Create Account</h4>
                                 <div class="input-field col s12 l12">
                                     <label for="email">Email</label>
-                                    <input type="email" name="email" id="email" placeholder="Email" class="validate" ng-model="$ctrl.user.email" autofocus>
+                                    <input type="email" name="email" id="email" placeholder="Email" class="validate" ng-model="$ctrl.user.email" autofocus required>
                                 </div>
                                 <div class="input-field col s12 l12">
                                     <label for="name">Name</label>
-                                    <input type="text" name="name" id="name" placeholder="Name" class="validate" ng-model="$ctrl.user.name">
+                                    <input type="text" name="name" id="name" placeholder="Name" class="validate" ng-model="$ctrl.user.name" required>
                                 </div>
                                 <div class="input-field col s12 l12">
                                     <label for="password">Password</label>
-                                    <input type="password" name="password" id="password" placeholder="Password" class="validate" ng-model="$ctrl.user.password">
+                                    <input type="password" name="password" id="password" placeholder="Password" class="validate" ng-model="$ctrl.user.password" required>
                                 </div>
                             </div>
                             <div class="row center">
-                                <button type="submit" class="btn btn-success center-align center">Log in</button>
+                                <button type="submit" class="btn btn-success center-align center">Add User</button>
                             </div>
                             <div class="row center">
                                 <a ui-sref="forgot">

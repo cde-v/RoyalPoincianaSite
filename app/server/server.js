@@ -21,6 +21,7 @@ if (process.env.NODE_ENV !== 'prod') {
 
 // Models
 let User = require('./models/User');
+let Doc = require('./models/Doc');
 
 // Routes
 let userRoutes = require('./routes/user');
@@ -29,10 +30,11 @@ let adminRoutes = require('./routes/admin');
 
 let app = express();
 
-let npmPath = path.join(__dirname, './node_modules');
-let browserPath = path.join(__dirname, './browser');
-app.use(express.static(npmPath));
-app.use(express.static(browserPath));
+// let npmPath = path.join(__dirname, './node_modules');
+// let browserPath = path.join(__dirname, './browser');
+
+// app.use(express.static(npmPath));
+// app.use(express.static(browserPath));
 
 mongoose.connect(process.env.MONGODB_URI);
 mongoose.connection.on('error', function() {
@@ -46,7 +48,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(expressValidator());
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, '../../public')));
+// app.use(express.static(path.join(__dirname, '../../public')));
+app.use(express.static(path.join(__dirname, '../../uploads')));
 
 app.use(function(req, res, next) {
   req.isAuthenticated = function() {
@@ -78,46 +81,98 @@ let storage = multer.diskStorage({
   }
 })
 
-var upload = multer({
-  storage: storage
-}).single('file');
+let upload = multer({ storage: storage }).single('file');
 
-app.post('/admin/documents/upload', function(req, res) {
-  console.log('Uploade Successful ', req.file, req.body);
+let adminAddDoc = function(req, res, next) {
+  Doc.findOne({ name: req.file.filename }, function(err, doc) {
+    if (err) {
+      res.json({ errorCode: 1, errDesc: err });
+      return;
+    }
+    if (doc) {
+      return res.status(400).send({ msg: 'A document already exists with this name.' });
+    }
+    doc = new Doc({
+      name: req.file.filename,
+      desc: req.body.desc
+    });
+    doc.save(function(err) {
+      if (err) {
+        res.json({ errorCode: 1, errDesc: err });
+        return;
+      }
+      res.send({ doc });
+    });
+  });
+};
+
+let adminSaveDoc = function(req, res, next) {
   upload(req, res, function(err) {
     if (err) {
       res.json({ errorCode: 1, errDesc: err });
       return;
     }
-    res.json({ errorCode: 0, errDesc: null });
+    next();
   })
-});
+};
 
-app.get('/admin/documents', function(req, res) {
-  fs.readdir('./uploads/', function(error, files) {
-    if (error) {
-      throw error;
-    } else {
-      res.json(files);
+app.post('/admin/documents/upload', adminSaveDoc, adminAddDoc);
+
+app.get('/admin/documents', function(req, res, next) {
+  // fs.readdir('./uploads/', function(err, files) {
+  //   if (err) {
+  //     res.json({ errorCode: 1, errDesc: err });
+  //     return;
+  //   }
+  //   res.json(files);
+  // });
+  Doc.find({}, function(err, docs) {
+    if (err) {
+      res.json({ errorCode: 1, errDesc: err });
+      return;
     }
+    if (!docs) {
+      res.json({ errorCode: 1, errDesc: 'No documents found' });
+      return;
+    }
+    res.send({ docs });
   });
 });
 
-app.delete('/admin/documents/delete/:documentId', function(req, res) {
-  fs.stat('./uploads/' + req.params.documentId, function(err, stats) {
-    console.log('file stats:', stats);
-
+app.delete('/admin/documents/delete/:docId', function(req, res, next) {
+  fs.stat('./uploads/' + req.params.docId, function(err, stats) {
     if (err) {
-      return console.error(err);
+      console.error('stats: ', stats)
+      res.json({ errorCode: 1, errDesc: err });
+      return;
     }
-
-    fs.unlink('./uploads/' + req.params.documentId, function(err) {
-      if (err) return console.log(err);
-      res.send({ msg: 'Your account has been permanently deleted.' });
-      console.log('file deleted successfully');
+    fs.unlink('./uploads/' + req.params.docId, function(err) {
+      if (err) {
+        res.json({ errorCode: 1, errDesc: err });
+        return;
+      }
+      Doc.remove({ name: req.params.docId }, function(err) {
+        if (err) {
+          res.json({ errorCode: 1, errDesc: err });
+          return;
+        }
+        res.send({ msg: 'Document has been successfully deleted.' });
+      });
     });
   });
 
+});
+
+app.get('/documents/download/:docId', function(req, res, next) {
+  let stream = fs.createReadStream(path.resolve(__dirname, '../../uploads/' + req.params.docId));
+  let filename = req.params.docId;
+
+  filename = encodeURIComponent(filename);
+
+  res.setHeader('Content-disposition', 'attachment; filename="' + filename + '"');
+  res.setHeader('Content-type', 'application/pdf');
+
+  stream.pipe(res);
 });
 
 app.get('/admin/users', userRoutes.ensureAuthenticated, adminRoutes.ensureAdmin, adminRoutes.adminGetUsers);

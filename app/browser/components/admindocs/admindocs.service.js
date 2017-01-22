@@ -4,30 +4,40 @@ class AdminDocsService {
     this.name = 'AdminDocsService';
     this.$http = $http;
   }
-  getDocs() {
+  getDocList() {
     return this.$http.get('/admin/documents')
-      .then((response) => {
-        console.log('RES', response.data);
-        return response.data;
+      .then(function(response) {
+        console.log(response.data.docs);
+        return response.data.docs;
       })
-      .catch((response) => {
-        console.error('Admin GET all docs error: ', response);
-    });
+      .catch(function(response) {
+        console.error('getDocList error: ', response.data);
+      });
   }
-  uploadFile(file) {
+  uploadDoc(myDoc) {
     let fd = new FormData();
-    fd.append('file', file);
+    fd.append('file', myDoc.file);
+    fd.append('desc', myDoc.desc);
 
-    this.$http.post('/admin/documents/upload', fd, {
+    return this.$http.post('/admin/documents/upload', fd, {
         transformRequest: angular.identity,
         headers: { 'Content-Type': undefined }
       })
-      .success(function() {})
-      .error(function() {})
+      .then(function(response) {
+        return response.data;
+      })
+      .catch(function(response) {
+        console.error('uploadDoc error:', response.data);
+      })
   }
-  deleteFile(document) {
-    console.log('typeof document', typeof document);
-    return this.$http.delete('/admin/documents/delete/' + document);
+  deleteDoc(doc) {
+    return this.$http.delete('/admin/documents/delete/' + doc.name)
+      .then(function(response) {
+        return response.data;
+      })
+      .catch(function(response) {
+        console.error('deleteDoc error:', response.data);
+      })
   }
 }
 

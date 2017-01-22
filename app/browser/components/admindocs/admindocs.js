@@ -16,7 +16,7 @@ let AdminDocsModule = angular.module('admindocs', [
         resolve: {
           adminDocsService: 'AdminDocsService',
           documentList: function(AdminDocsService) {
-            return AdminDocsService.getDocs();
+            return AdminDocsService.getDocList();
           },
           loginRequired: loginRequired
         }
@@ -29,12 +29,12 @@ let AdminDocsModule = angular.module('admindocs', [
     }
   })
   .component('admindocs', AdminDocsComponent)
-  // .directive('fileModel', () => new AdminDocsUpload())
-  .directive('fileModel', ['$parse', function($parse) {
+  // .directive('docModel', () => new AdminDocsUpload())
+  .directive('docModel', ['$parse', function($parse) {
     return {
       restrict: 'A',
       link: function(scope, element, attrs) {
-        var model = $parse(attrs.fileModel);
+        var model = $parse(attrs.docModel);
         var modelSetter = model.assign;
 
         element.bind('change', function() {
