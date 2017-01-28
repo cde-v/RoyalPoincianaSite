@@ -14,6 +14,7 @@ class NavbarController {
       { label: 'Admin: Add User', state: 'signup', authOnly: true, adminOnly: true },
       { label: 'Admin: Users', state: 'adminpanel', authOnly: true, adminOnly: true },
       { label: 'Admin: Docs', state: 'admindocs', authOnly: true, adminOnly: true },
+      { label: 'Admin: Notices', state: 'adminnotices', authOnly: true, adminOnly: true },
       { label: 'My Account', state: 'account', authOnly: true, adminOnly: 'both' }
     ];
   }

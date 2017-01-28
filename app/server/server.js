@@ -10,8 +10,6 @@ let mongoose = require('mongoose');
 let jwt = require('jsonwebtoken');
 let moment = require('moment');
 let request = require('request');
-let multer = require('multer');
-let fs = require('fs');
 
 // Load environment variables from .env file, only for LOCAL env, .env not on heroku, actually part of vars
 
@@ -21,12 +19,13 @@ if (process.env.NODE_ENV !== 'prod') {
 
 // Models
 let User = require('./models/User');
-let Doc = require('./models/Doc');
 
 // Routes
 let userRoutes = require('./routes/user');
 let contactRoutes = require('./routes/contact');
 let adminRoutes = require('./routes/admin');
+let documentsRoutes = require('./routes/documents');
+let noticesRoutes = require('./routes/notices');
 
 let app = express();
 
@@ -72,116 +71,15 @@ app.use(function(req, res, next) {
   }
 });
 
-// File upload/storage using multer
-
-let storage = multer.diskStorage({
-  destination: './uploads/',
-  filename: function(req, file, cb) {
-    cb(null, file.originalname.replace(path.extname(file.originalname), '') + '-' + Date.now() + path.extname(file.originalname))
-  }
-})
-
-let upload = multer({ storage: storage }).single('file');
-
-let adminAddDoc = function(req, res, next) {
-  Doc.findOne({ name: req.file.filename }, function(err, doc) {
-    if (err) {
-      res.json({ errorCode: 1, errDesc: err });
-      return;
-    }
-    if (doc) {
-      return res.status(400).send({ msg: 'A document already exists with this name.' });
-    }
-    doc = new Doc({
-      name: req.file.filename,
-      desc: req.body.desc
-    });
-    doc.save(function(err) {
-      if (err) {
-        res.json({ errorCode: 1, errDesc: err });
-        return;
-      }
-      res.send({ doc });
-    });
-  });
-};
-
-let adminSaveDoc = function(req, res, next) {
-  upload(req, res, function(err) {
-    if (err) {
-      res.json({ errorCode: 1, errDesc: err });
-      return;
-    }
-    next();
-  })
-};
-
-app.post('/admin/documents/upload', adminSaveDoc, adminAddDoc);
-
-app.get('/admin/documents', function(req, res, next) {
-  Doc.find({}, function(err, docs) {
-    if (err) {
-      res.json({ errorCode: 1, errDesc: err });
-      return;
-    }
-    if (!docs) {
-      res.json({ errorCode: 1, errDesc: 'No documents found' });
-      return;
-    }
-    res.send({ docs });
-  });
-});
-
-app.delete('/admin/documents/delete/:docId', function(req, res, next) {
-  fs.stat('./uploads/' + req.params.docId, function(err, stats) {
-    if (err) {
-      console.error('stats: ', stats)
-      res.json({ errorCode: 1, errDesc: err });
-      return;
-    }
-    fs.unlink('./uploads/' + req.params.docId, function(err) {
-      if (err) {
-        res.json({ errorCode: 1, errDesc: err });
-        return;
-      }
-      Doc.remove({ name: req.params.docId }, function(err) {
-        if (err) {
-          res.json({ errorCode: 1, errDesc: err });
-          return;
-        }
-        res.send({ msg: 'Document has been successfully deleted.' });
-      });
-    });
-  });
-
-});
-
-app.get('/documents/download/:docId', function(req, res, next) {
-  let stream = fs.createReadStream(path.resolve(__dirname, '../../uploads/' + req.params.docId));
-  let filename = req.params.docId;
-
-  filename = encodeURIComponent(filename);
-
-  res.setHeader('Content-disposition', 'attachment; filename="' + filename + '"');
-  res.setHeader('Content-type', 'application/pdf');
-
-  stream.pipe(res);
-});
-
-app.get('/documents', function(req, res, next) {
-  Doc.find({}, function(err, docs) {
-    if (err) {
-      res.json({ errorCode: 1, errDesc: err });
-      return;
-    }
-    if (!docs) {
-      res.json({ errorCode: 1, errDesc: 'No documents found' });
-      return;
-    }
-    res.send({ docs });
-  });
-});
-
+app.get('/documents/download/:docId', documentsRoutes.downloadDocument);
+app.get('/documents', userRoutes.ensureAuthenticated, documentsRoutes.getDocumentList);
+app.get('/admin/documents', userRoutes.ensureAuthenticated, adminRoutes.ensureAdmin, adminRoutes.adminGetDocs);
+app.delete('/admin/documents/delete/:docId', userRoutes.ensureAuthenticated, adminRoutes.ensureAdmin, adminRoutes.adminDeleteDoc);
+app.post('/admin/documents/upload', userRoutes.ensureAuthenticated, adminRoutes.ensureAdmin, adminRoutes.adminSaveDoc, adminRoutes.adminPostDoc);
+app.get('/notices', userRoutes.ensureAuthenticated, noticesRoutes.getNoticeList);
+app.get('/admin/notices', userRoutes.ensureAuthenticated, adminRoutes.ensureAdmin, adminRoutes.adminGetNotices);
+app.delete('/admin/notices/delete/:docId', userRoutes.ensureAuthenticated, adminRoutes.ensureAdmin, adminRoutes.adminDeleteNotice);
+app.post('/admin/notices/upload', userRoutes.ensureAuthenticated, adminRoutes.ensureAdmin, adminRoutes.adminPostNotice);
 app.get('/admin/users', userRoutes.ensureAuthenticated, adminRoutes.ensureAdmin, adminRoutes.adminGetUsers);
 app.put('/admin/users/updateUser/:userId', userRoutes.ensureAuthenticated, adminRoutes.ensureAdmin, adminRoutes.adminUpdateUser);
 app.put('/admin/users/toggleAdmin/:userId', userRoutes.ensureAuthenticated, adminRoutes.ensureAdmin, adminRoutes.adminToggleAdmin);

@@ -1,0 +1,51 @@
+<div class="adminnotices" id="adminnotices">
+    <div class="row">
+        <div class="top-banner orange lighten-5">
+            <h4 class="center page-title">Notice Management</h4>
+        </div>
+    </div>
+    <div class="row addForm">
+        <form ng-submit="$ctrl.addNotice($ctrl.notice)">
+            <div class="col s12 m12 l12 container">
+                <div class="input-field">
+                    <input id="title" type="text" ng-model="$ctrl.notice.title">
+                    <label for="title">Notice Title</label>
+                </div>
+            </div>
+            <div class="col s12 m12 l12 container">
+                <div class="input-field">
+                    <textarea id="textContent" class="materialize-textarea" ng-model="$ctrl.notice.textContent"></textarea>
+                    <label for="textContent">Notice Text</label>
+                </div>
+            </div>
+            <div class="col s12 m12 l12 container">
+                <div class="row center">
+                    <button type="submit" class="btn-large waves-effect waves-light">Post Notice</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="row">
+        <div class="col s12 m12 l12">
+            <table class="bordered">
+                <thead>
+                    <tr>
+                        <th>Notice Title</th>
+                        <th>Notice Content</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="notice in $ctrl.noticeList">
+                        <td>
+                            <span>{{notice.name}}</span>
+                        </td>
+                        <td>
+                            <button class="btn waves-effect waves-light red darken-3" type="button" ng-click="$ctrl.deleteNotice(notice)">Delete Notice</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

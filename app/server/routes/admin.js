@@ -5,7 +5,11 @@ var jwt = require('jsonwebtoken');
 var moment = require('moment');
 var request = require('request');
 var qs = require('querystring');
+let path = require('path');
+let fs = require('fs');
+let multer = require('multer');
 var User = require('../models/User');
+var Doc = require('../models/Doc');
 
 function generateToken(user) {
   var payload = {
@@ -124,5 +128,86 @@ exports.adminToggleAdmin = function(req, res, next) {
 exports.adminDeleteUser = function(req, res, next) {
   User.remove({ _id: req.params.userId }, function(err) {
     res.send({ msg: 'The account has been permanently deleted.' });
+  });
+};
+
+// File upload/storage using multer
+
+let storage = multer.diskStorage({
+  destination: './uploads/',
+  filename: function(req, file, cb) {
+    cb(null, file.originalname.replace(path.extname(file.originalname), '') + '-' + Date.now() + path.extname(file.originalname))
+  }
+})
+
+let upload = multer({ storage: storage }).single('file');
+
+exports.adminPostDoc = function(req, res, next) {
+  Doc.findOne({ name: req.file.filename }, function(err, doc) {
+    if (err) {
+      res.json({ errorCode: 1, errDesc: err });
+      return;
+    }
+    if (doc) {
+      return res.status(400).send({ msg: 'A document already exists with this name.' });
+    }
+    doc = new Doc({
+      name: req.file.filename,
+      desc: req.body.desc
+    });
+    doc.save(function(err) {
+      if (err) {
+        res.json({ errorCode: 1, errDesc: err });
+        return;
+      }
+      res.send({ doc });
+    });
+  });
+};
+
+exports.adminSaveDoc = function(req, res, next) {
+  upload(req, res, function(err) {
+    if (err) {
+      res.json({ errorCode: 1, errDesc: err });
+      return;
+    }
+    next();
+  })
+};
+
+exports.adminGetDocs = function(req, res, next) {
+  Doc.find({}, function(err, docs) {
+    if (err) {
+      res.json({ errorCode: 1, errDesc: err });
+      return;
+    }
+    if (!docs) {
+      res.json({ errorCode: 1, errDesc: 'No documents found' });
+      return;
+    }
+    res.send({ docs });
+  });
+};
+
+exports.adminDeleteDoc = function(req, res, next) {
+  fs.stat('./uploads/' + req.params.docId, function(err, stats) {
+    if (err) {
+      console.error('stats: ', stats)
+      res.json({ errorCode: 1, errDesc: err });
+      return;
+    }
+    fs.unlink('./uploads/' + req.params.docId, function(err) {
+      if (err) {
+        res.json({ errorCode: 1, errDesc: err });
+        return;
+      }
+      Doc.remove({ name: req.params.docId }, function(err) {
+        if (err) {
+          res.json({ errorCode: 1, errDesc: err });
+          return;
+        }
+        res.send({ msg: 'Document has been successfully deleted.' });
+      });
+    });
   });
 };
