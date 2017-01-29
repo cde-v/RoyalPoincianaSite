@@ -30,10 +30,10 @@ let noticesRoutes = require('./routes/notices');
 let app = express();
 
 let npmPath = path.join(__dirname, '../../node_modules');
-// let browserPath = path.join(__dirname, '../../browser');
+let browserPath = path.join(__dirname, '../../browser'); //needed?
 
 app.use('/node_modules', express.static(npmPath));
-// app.use(express.static(browserPath));
+app.use(express.static(browserPath)); //needed?
 
 mongoose.connect(process.env.MONGODB_URI);
 mongoose.connection.on('error', function() {
@@ -47,8 +47,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(expressValidator());
 app.use(cookieParser());
-// app.use(express.static(path.join(__dirname, '../../public')));
-// app.use(express.static(path.join(__dirname, '../../uploads')));
+app.use(express.static(path.join(__dirname, '../../public')));
+app.use(express.static(path.join(__dirname, '../../uploads'))); //needed?
 
 app.use(function(req, res, next) {
   req.isAuthenticated = function() {
