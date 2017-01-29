@@ -1,10 +1,19 @@
 import template from './notices.html';
-import controller from './notices.controller';
 import './notices.scss';
 
-let noticesComponent = {
-  template,
-  controller
+let NoticesComponent = {
+	bindings: {
+    noticeList: '<'
+  },
+  template: template,
+  controller: class NoticesComponent {
+    constructor($state, NoticesService) {
+      'ngInject';
+      this.name = 'notices';
+      this.$state = $state;
+      this.NoticesService = NoticesService;
+    }
+  }
 };
 
-export default noticesComponent;
+export default NoticesComponent;

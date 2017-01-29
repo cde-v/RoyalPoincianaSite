@@ -8,14 +8,13 @@
         <form ng-submit="$ctrl.addNotice($ctrl.notice)">
             <div class="col s12 m12 l12 container">
                 <div class="input-field">
-                    <input id="title" type="text" ng-model="$ctrl.notice.title">
+                    <input id="title" type="text" ng-model="$ctrl.notice.title" required>
                     <label for="title">Notice Title</label>
                 </div>
             </div>
             <div class="col s12 m12 l12 container">
                 <div class="input-field">
-                    <textarea id="textContent" class="materialize-textarea" ng-model="$ctrl.notice.textContent"></textarea>
-                    <label for="textContent">Notice Text</label>
+                    <trix-editor id="noticeContent" angular-trix ng-model="$ctrl.notice.noticeContent" class="trix-content noticeText" required></trix-editor>
                 </div>
             </div>
             <div class="col s12 m12 l12 container">
@@ -38,7 +37,10 @@
                 <tbody>
                     <tr ng-repeat="notice in $ctrl.noticeList">
                         <td>
-                            <span>{{notice.name}}</span>
+                            <div>{{notice.title}}
+                        </td>
+                        <td>
+                            <div class="noticeText" ng-bind-html="notice.noticeContent"></div>
                         </td>
                         <td>
                             <button class="btn waves-effect waves-light red darken-3" type="button" ng-click="$ctrl.deleteNotice(notice)">Delete Notice</button>

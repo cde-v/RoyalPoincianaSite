@@ -10,6 +10,7 @@ let fs = require('fs');
 let multer = require('multer');
 var User = require('../models/User');
 var Doc = require('../models/Doc');
+var Notice = require('../models/Notice');
 
 function generateToken(user) {
   var payload = {
@@ -209,5 +210,30 @@ exports.adminDeleteDoc = function(req, res, next) {
         res.send({ msg: 'Document has been successfully deleted.' });
       });
     });
+  });
+};
+
+exports.adminPostNotice = function(req, res, next) {
+  console.log(req.body);
+  let notice = new Notice({
+    title: req.body.title,
+    noticeContent: req.body.noticeContent
+  });
+  notice.save(function(err) {
+    if (err) {
+      res.json({ errorCode: 1, errDesc: err });
+      return;
+    }
+    res.send({ notice });
+  });
+};
+
+exports.adminDeleteNotice = function(req, res, next) {
+  Notice.remove({ _id: req.params.noticeId }, function(err) {
+    if (err) {
+      res.json({ errorCode: 1, errDesc: err });
+      return;
+    }
+    res.send({ msg: 'Notice has been successfully deleted.' });
   });
 };

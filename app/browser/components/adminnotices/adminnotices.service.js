@@ -5,7 +5,7 @@ class AdminNoticesService {
     this.$http = $http;
   }
   getNoticeList() {
-    return this.$http.get('/admin/notices')
+    return this.$http.get('/notices')
       .then(function(response) {
         return response.data.notices;
       })
@@ -13,11 +13,17 @@ class AdminNoticesService {
         console.error('getNoticeList error: ', response.data);
       });
   }
-  uploadNotice(notice) {
-
+  addNotice(notice) {
+    return this.$http.post('/admin/notices/add/', notice)
+      .then(function(response) {
+        return response.data;
+      })
+      .catch(function(response) {
+        console.error('addNotice error: ', response.data);
+      });
   }
   deleteNotice(notice) {
-    return this.$http.delete('/admin/notices/delete/' + notice.name)
+    return this.$http.delete('/admin/notices/delete/' + notice._id)
       .then(function(response) {
         return response.data;
       })

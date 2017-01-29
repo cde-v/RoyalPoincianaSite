@@ -1,6 +1,8 @@
-import angular from 'angular';
+// import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import angularMaterialize from 'angular-materialize';
+import angularSanitize from 'angular-sanitize';
+// import angularTrix from 'angular-trix';
 import satellizer from 'satellizer';
 import Common from './common/common';
 import Components from './components/components';
@@ -11,6 +13,8 @@ angular.module('app', [
     uiRouter,
     angularMaterialize,
     satellizer,
+    angularSanitize,
+    'angularTrix',
     Common.name,
     Components.name
   ])

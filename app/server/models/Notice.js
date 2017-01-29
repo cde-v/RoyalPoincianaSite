@@ -8,8 +8,8 @@ var schemaOptions = {
 };
 
 var noticeSchema = new mongoose.Schema({
-  title: String,
-  textContent: String
+  title: { type: String, required: true },
+  noticeContent: { type: String, required: true }
 }, schemaOptions);
 
 var Notice = mongoose.model('Notice', noticeSchema);

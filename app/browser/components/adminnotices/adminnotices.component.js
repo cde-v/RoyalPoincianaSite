@@ -14,7 +14,7 @@ let AdminNoticesComponent = {
       this.AdminNoticesService = AdminNoticesService;
     }
     addNotice(notice) {
-      this.AdminNoticesService.uploadNotice(notice)
+      this.AdminNoticesService.addNotice(notice)
         .then(() => this.$state.reload())
     }
     deleteNotice(notice) {

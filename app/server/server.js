@@ -29,10 +29,11 @@ let noticesRoutes = require('./routes/notices');
 
 let app = express();
 
-// let npmPath = path.join(__dirname, './node_modules');
-// let browserPath = path.join(__dirname, './browser');
+let npmPath = path.join(__dirname, '../../node_modules');
+// let browserPath = path.join(__dirname, '../../browser');
 
-// app.use(express.static(npmPath));
+app.use('/node_modules', express.static(npmPath));
+console.log("NPM PATH+++++++++++++++++++++++++", npmPath);
 // app.use(express.static(browserPath));
 
 mongoose.connect(process.env.MONGODB_URI);
@@ -47,8 +48,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(expressValidator());
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, '../../public')));
-app.use(express.static(path.join(__dirname, '../../uploads')));
+// app.use(express.static(path.join(__dirname, '../../public')));
+// app.use(express.static(path.join(__dirname, '../../uploads')));
 
 app.use(function(req, res, next) {
   req.isAuthenticated = function() {
@@ -77,9 +78,8 @@ app.get('/admin/documents', userRoutes.ensureAuthenticated, adminRoutes.ensureAd
 app.delete('/admin/documents/delete/:docId', userRoutes.ensureAuthenticated, adminRoutes.ensureAdmin, adminRoutes.adminDeleteDoc);
 app.post('/admin/documents/upload', userRoutes.ensureAuthenticated, adminRoutes.ensureAdmin, adminRoutes.adminSaveDoc, adminRoutes.adminPostDoc);
 app.get('/notices', userRoutes.ensureAuthenticated, noticesRoutes.getNoticeList);
-app.get('/admin/notices', userRoutes.ensureAuthenticated, adminRoutes.ensureAdmin, adminRoutes.adminGetNotices);
-app.delete('/admin/notices/delete/:docId', userRoutes.ensureAuthenticated, adminRoutes.ensureAdmin, adminRoutes.adminDeleteNotice);
-app.post('/admin/notices/upload', userRoutes.ensureAuthenticated, adminRoutes.ensureAdmin, adminRoutes.adminPostNotice);
+app.delete('/admin/notices/delete/:noticeId', userRoutes.ensureAuthenticated, adminRoutes.ensureAdmin, adminRoutes.adminDeleteNotice);
+app.post('/admin/notices/add', userRoutes.ensureAuthenticated, adminRoutes.ensureAdmin, adminRoutes.adminPostNotice);
 app.get('/admin/users', userRoutes.ensureAuthenticated, adminRoutes.ensureAdmin, adminRoutes.adminGetUsers);
 app.put('/admin/users/updateUser/:userId', userRoutes.ensureAuthenticated, adminRoutes.ensureAdmin, adminRoutes.adminUpdateUser);
 app.put('/admin/users/toggleAdmin/:userId', userRoutes.ensureAuthenticated, adminRoutes.ensureAdmin, adminRoutes.adminToggleAdmin);

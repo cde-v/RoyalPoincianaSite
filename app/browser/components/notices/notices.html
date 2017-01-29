@@ -1,18 +1,18 @@
-<div id="notices">
-    <div class="parallax-container valign-wrapper">
-        <div class="section no-pad-bot">
-            <div class="container">
-                <div class="row">
-                    <div class="form-container col s8 offset-s2 l4 offset-l4 section orange lighten-5 z-depth-2">
-                        <div class="row">
-                            <h4 class="center">Community Notices</h4>
-                        </div>
-                        <p>This is a notice about recent or upcoming events / important dates related to the community.</p>
-                    </div>
+<div class="notices" id="notices">
+    <div class="row pageTitle">
+        <div class="top-banner orange lighten-5">
+            <h4 class="center page-title">Notices</h4>
+        </div>
+    </div>
+    <div class="row pageContent">
+        <div class="container section">
+            <div ng-repeat="notice in $ctrl.noticeList">
+                <div class="row noticeContainer orange lighten-5 col s12 m12 l12">
+                    <h5>{{notice.title}}</h5>
+                    <div class="timestamp">{{notice.timestamp}}</div>
+                    <hr>
+                    <div class="noticeText" ng-bind-html="notice.noticeContent"></div>
                 </div>
-            </div>
-            <div parallax>
-                <img class="top-banner" src="image01.jpg">
             </div>
         </div>
     </div>

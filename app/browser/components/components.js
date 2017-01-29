@@ -14,7 +14,7 @@ const componentModule = angular.module('app.components', [
   Home,
   About.name,
   Documents,
-  Notices.name,
+  Notices,
   Login.name,
   Signup.name,
   AdminPanel,

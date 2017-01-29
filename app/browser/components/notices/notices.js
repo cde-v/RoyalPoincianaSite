@@ -1,8 +1,9 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
-import noticesComponent from './notices.component';
+import NoticesComponent from './notices.component';
+import NoticesService from './notices.service';
 
-let noticesModule = angular.module('notices', [
+let NoticesModule = angular.module('notices', [
     uiRouter
   ])
   .config(($stateProvider) => {
@@ -10,8 +11,13 @@ let noticesModule = angular.module('notices', [
     $stateProvider
       .state('notices', {
         url: '/notices',
-        template: '<notices></notices>',
-        resolve: { loginRequired: loginRequired }
+        component: 'notices',
+        resolve: { 
+          noticesService: 'NoticesService',
+          noticeList: function(NoticesService) {
+            return NoticesService.getNoticeList();
+          },
+          loginRequired: loginRequired }
       });
 
     function loginRequired($state, $auth) {
@@ -21,6 +27,8 @@ let noticesModule = angular.module('notices', [
     }
 
   })
-  .component('notices', noticesComponent);
+  .component('notices', NoticesComponent)
+  .service('NoticesService', NoticesService)
+  .name;
 
-export default noticesModule;
+export default NoticesModule;
