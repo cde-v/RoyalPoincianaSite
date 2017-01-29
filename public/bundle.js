@@ -63,7 +63,7 @@
 /******/ 	}
 
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "815f8eafeb9c62f2dde5"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "ce7b4de50ee116e7255a"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 
@@ -47749,10 +47749,6 @@
 
 	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
 
-	var _createClass2 = __webpack_require__(20);
-
-	var _createClass3 = _interopRequireDefault(_createClass2);
-
 	var _documents = __webpack_require__(64);
 
 	var _documents2 = _interopRequireDefault(_documents);
@@ -47766,37 +47762,14 @@
 	    documentList: '<'
 	  },
 	  template: _documents2.default,
-	  controller: function () {
-	    function DocumentsComponent($state, DocumentsService) {
-	      'ngInject';
+	  controller: function DocumentsComponent($state, DocumentsService) {
+	    'ngInject';
 
-	      (0, _classCallCheck3.default)(this, DocumentsComponent);
-	      this.name = 'documents';
-	      this.$state = $state;
-	      this.DocumentsService = DocumentsService;
-	    }
-
-	    (0, _createClass3.default)(DocumentsComponent, [{
-	      key: 'uploadDoc',
-	      value: function uploadDoc(doc) {
-	        var _this = this;
-
-	        this.DocumentsService.uploadDoc(doc).then(function () {
-	          return _this.$state.reload();
-	        });
-	      }
-	    }, {
-	      key: 'deleteDoc',
-	      value: function deleteDoc(doc) {
-	        var _this2 = this;
-
-	        this.DocumentsService.deleteDoc(doc).then(function () {
-	          return _this2.$state.reload();
-	        });
-	      }
-	    }]);
-	    return DocumentsComponent;
-	  }()
+	    (0, _classCallCheck3.default)(this, DocumentsComponent);
+	    this.name = 'documents';
+	    this.$state = $state;
+	    this.DocumentsService = DocumentsService;
+	  }
 	};
 
 	exports.default = DocumentsComponent;
@@ -47986,7 +47959,7 @@
 /* 70 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"notices\" id=\"notices\">\n    <div class=\"row pageTitle\">\n        <div class=\"top-banner orange lighten-5\">\n            <h4 class=\"center page-title\">Notices</h4>\n        </div>\n    </div>\n    <div class=\"row pageContent\">\n        <div class=\"container section\">\n            <div ng-repeat=\"notice in $ctrl.noticeList\">\n                <div class=\"row noticeContainer orange lighten-5 col s12 m12 l12\">\n                    <h5>{{notice.title}}</h5>\n                    <div class=\"timestamp\">{{notice.timestamp}}</div>\n                    <hr>\n                    <div class=\"noticeText\" ng-bind-html=\"notice.noticeContent\"></div>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n"
+	module.exports = "<div class=\"notices\" id=\"notices\">\n    <div class=\"row pageTitle\">\n        <div class=\"top-banner orange lighten-5\">\n            <h4 class=\"center page-title\">Notices</h4>\n        </div>\n    </div>\n    <div class=\"row pageContent\">\n        <div class=\"container section\">\n            <div ng-repeat=\"notice in $ctrl.noticeList\">\n                <div class=\"row noticeContainer orange lighten-5 col s12 m12 l12 z-depth-2\">\n                    <h5>{{notice.title}}</h5>\n                    <div class=\"timestamp\">{{notice.timestamp}}</div>\n                    <hr>\n                    <div class=\"noticeText\" ng-bind-html=\"notice.noticeContent\"></div>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n"
 
 /***/ },
 /* 71 */
@@ -48023,7 +47996,7 @@
 
 
 	// module
-	exports.push([module.id, "#notices .top-banner {\n  padding: 5px;\n}\n\n#notices .pageContent {\n  margin-top: -20px;\n  box-shadow: 0px -5px 12px -7px black;\n}\n\n#notices .noticeContainer {\n  border-radius: 10px 10px;\n}\n\n#notices .noticeContainer h5 {\n  text-align: center;\n}\n\n#notices .noticeContainer .timestamp {\n  text-align: center;\n}\n\n#notices .noticeContainer .noticeText {\n  padding-bottom: 10px;\n}\n\n#notices .noticeContainer .noticeText ul {\n  padding-left: 10px;\n  list-style: circle;\n}\n\n#notices .noticeContainer .noticeText ul li {\n  list-style: circle;\n}\n", ""]);
+	exports.push([module.id, "#notices .top-banner {\n  padding: 5px;\n}\n\n#notices .pageContent {\n  margin-top: -20px;\n  box-shadow: 0px -5px 12px -7px black;\n}\n\n#notices .noticeContainer {\n  border-radius: 10px 10px;\n}\n\n#notices .noticeContainer h5 {\n  text-align: center;\n}\n\n#notices .noticeContainer .timestamp {\n  text-align: center;\n}\n\n#notices .noticeContainer .noticeText {\n  padding-bottom: 10px;\n}\n\n#notices .noticeContainer .noticeText ul {\n  padding-left: 20px;\n  list-style: circle;\n}\n\n#notices .noticeContainer .noticeText ul li {\n  list-style: circle;\n}\n", ""]);
 
 	// exports
 
@@ -48152,7 +48125,7 @@
 /* 76 */
 /***/ function(module, exports) {
 
-	module.exports = "<div id=\"login\">\n    <div class=\"parallax-container valign-wrapper\">\n        <div class=\"section no-pad-bot\">\n            <div class=\"container\">\n                <div ng-if=\"messages.error\" role=\"alert\" class=\"alert alert-danger\">\n                    <div ng-repeat=\"error in messages.error\">{{error.msg}}</div>\n                </div>\n                <div class=\"row\">\n                    <div class=\"form-container col s8 offset-s2 l4 offset-l4 section orange lighten-5 z-depth-2\">\n                        <form ng-submit=\"$ctrl.login()\">\n                            <div class=\"row\">\n                                <h4 class=\"center\">Log In</h4>\n                                <div class=\"input-field col s12 l12\">\n                                    <label for=\"email\">Email</label>\n                                    <input type=\"email\" name=\"email\" id=\"email\" placeholder=\"Email\" class=\"validate\" ng-model=\"$ctrl.user.email\" autofocus>\n                                </div>\n                                <div class=\"input-field col s12 l12\">\n                                    <label for=\"password\">Password</label>\n                                    <input type=\"password\" name=\"password\" id=\"password\" placeholder=\"Password\" class=\"validate\" ng-model=\"$ctrl.user.password\">\n                                </div>\n                            </div>\n                            <div class=\"row center\">\n                                <button type=\"submit\" class=\"btn waves-effect waves-light\">Log in</button>\n                            </div>\n                            <div class=\"row center\">\n                                <a ui-sref=\"forgot\">\n                                    <strong>Forgot your password?</strong>\n                                </a>\n                            </div>\n                        </form>\n                    </div>\n                </div>\n            </div>\n            <div parallax>\n                <img class=\"top-banner\" src=\"image01.jpg\">\n            </div>\n        </div>\n    </div>\n</div>\n"
+	module.exports = "<div id=\"login\">\n    <div class=\"parallax-container valign-wrapper\">\n        <div class=\"section no-pad-bot\">\n            <div class=\"container\">\n                <div ng-if=\"messages.error\" role=\"alert\" class=\"alert alert-danger\">\n                    <div ng-repeat=\"error in messages.error\">{{error.msg}}</div>\n                </div>\n                <div class=\"row\">\n                    <div class=\"form-container col s8 offset-s2 l4 offset-l4 section orange lighten-5 z-depth-2\">\n                        <form ng-submit=\"$ctrl.login()\">\n                            <div class=\"row\">\n                                <h4 class=\"center\">Log In</h4>\n                                <div class=\"input-field col s12 l12\">\n                                    <label for=\"email\">Email</label>\n                                    <input type=\"email\" name=\"email\" id=\"email\" placeholder=\"Email\" class=\"validate\" ng-model=\"$ctrl.user.email\" autofocus>\n                                </div>\n                                <div class=\"input-field col s12 l12\">\n                                    <label for=\"password\">Password</label>\n                                    <input type=\"password\" name=\"password\" id=\"password\" placeholder=\"Password\" class=\"validate\" ng-model=\"$ctrl.user.password\">\n                                </div>\n                            </div>\n                            <div class=\"row center\">\n                                <button type=\"submit\" class=\"btn waves-effect waves-light\">Log in</button>\n                            </div>\n                            <!-- <div class=\"row center\">\n                                <a ui-sref=\"forgot\">\n                                    <strong>Forgot your password?</strong>\n                                </a>\n                            </div> -->\n                        </form>\n                    </div>\n                </div>\n            </div>\n            <div parallax>\n                <img class=\"top-banner\" src=\"image01.jpg\">\n            </div>\n        </div>\n    </div>\n</div>\n"
 
 /***/ },
 /* 77 */
@@ -48362,7 +48335,7 @@
 /* 84 */
 /***/ function(module, exports) {
 
-	module.exports = "<div id=\"signup\">\n    <div class=\"parallax-container valign-wrapper\">\n        <div class=\"section no-pad-bot\">\n            <div class=\"container\">\n                <!-- ERROR WARNING MESSAGES!!!!!! -->\n                <div ng-if=\"messages.error\" role=\"alert\" class=\"alert alert-danger\">\n                    <div ng-repeat=\"error in messages.error\">{{error.msg}}</div>\n                </div>\n                <!-- ERROR WARNING MESSAGES!!!!!! -->\n                <div class=\"row\">\n                    <div class=\"form-container col s8 offset-s2 l4 offset-l4 section orange lighten-5 z-depth-2\">\n                        <form ng-submit=\"$ctrl.signup()\">\n                            <div class=\"row\">\n                                <h4 class=\"center\">Create Account</h4>\n                                <div class=\"input-field col s12 l12\">\n                                    <label for=\"email\">Email</label>\n                                    <input type=\"email\" name=\"email\" id=\"email\" placeholder=\"Email\" class=\"validate\" ng-model=\"$ctrl.user.email\" autofocus required>\n                                </div>\n                                <div class=\"input-field col s12 l12\">\n                                    <label for=\"name\">Name</label>\n                                    <input type=\"text\" name=\"name\" id=\"name\" placeholder=\"Name\" class=\"validate\" ng-model=\"$ctrl.user.name\" required>\n                                </div>\n                                <div class=\"input-field col s12 l12\">\n                                    <label for=\"password\">Password</label>\n                                    <input type=\"password\" name=\"password\" id=\"password\" placeholder=\"Password\" class=\"validate\" ng-model=\"$ctrl.user.password\" required>\n                                </div>\n                            </div>\n                            <div class=\"row center\">\n                                <button type=\"submit\" class=\"btn btn-success center-align center\">Add User</button>\n                            </div>\n                            <div class=\"row center\">\n                                <a ui-sref=\"forgot\">\n                                    <strong>Forgot your password?</strong>\n                                </a>\n                            </div>\n                        </form>\n                    </div>\n                </div>\n            </div>\n            <div parallax>\n                <img class=\"top-banner\" src=\"image01.jpg\">\n            </div>\n        </div>\n    </div>\n</div>\n"
+	module.exports = "<div id=\"signup\">\n    <div class=\"parallax-container valign-wrapper\">\n        <div class=\"section no-pad-bot\">\n            <div class=\"container\">\n                <div class=\"row\">\n                    <div class=\"form-container col s8 offset-s2 l4 offset-l4 section orange lighten-5 z-depth-2\">\n                        <form ng-submit=\"$ctrl.signup()\">\n                            <div class=\"row\">\n                                <h4 class=\"center\">Create Account</h4>\n                                <div class=\"input-field col s12 l12\">\n                                    <label for=\"name\">Name</label>\n                                    <input type=\"text\" name=\"name\" id=\"name\" class=\"validate\" ng-model=\"$ctrl.user.name\" autofocus required>\n                                </div>\n                                <div class=\"input-field col s12 l12\">\n                                    <label for=\"email\">Email</label>\n                                    <input type=\"email\" name=\"email\" id=\"email\" class=\"validate\" ng-model=\"$ctrl.user.email\" required>\n                                </div>\n                                <div class=\"input-field col s12 l12\">\n                                    <label for=\"password\">Temp Password</label>\n                                    <input type=\"text\" name=\"password\" id=\"password\" class=\"validate\" ng-model=\"$ctrl.user.password\" required>\n                                </div>\n                                <div class=\"input-field col s12 l12\">\n                                    <label for=\"confirm\">Confirm Temp Password</label>\n                                    <input type=\"text\" name=\"confirm\" id=\"confirm\" class=\"validate\" ng-model=\"$ctrl.user.confirm\" required>\n                                </div>\n                            </div>\n                            <div class=\"row center\">\n                                <button type=\"submit\" class=\"btn btn-success center-align center\">Add User</button>\n                            </div>\n                        </form>\n                    </div>\n                </div>\n            </div>\n            <div parallax>\n                <img class=\"top-banner\" src=\"image01.jpg\">\n            </div>\n        </div>\n    </div>\n</div>\n"
 
 /***/ },
 /* 85 */
@@ -48400,12 +48373,16 @@
 	      var _this = this;
 
 	      this.$auth.signup(this.user).then(function (response) {
+	        var messages = Array.isArray(response.data) ? response.data : [response.data];
+	        for (var i = 0; i < messages.length; i++) {
+	          Materialize.toast(messages[i].msg, 4000, 'green darken-1');
+	        }
 	        _this.$state.reload();
-	        return response;
 	      }).catch(function (response) {
-	        _this.messages = {
-	          error: Array.isArray(response.data) ? response.data : [response.data]
-	        };
+	        var messages = Array.isArray(response.data) ? response.data : [response.data];
+	        for (var i = 0; i < messages.length; i++) {
+	          Materialize.toast(messages[i].msg, 4000, 'red darken-4');
+	        }
 	      });
 	    }
 	  }]);
@@ -48553,9 +48530,17 @@
 	      value: function updateUser(user) {
 	        var _this = this;
 
-	        this.AdminPanelService.updateUser(user).then(function (updatedUser) {
+	        this.AdminPanelService.updateUser(user).then(function (response) {
+	          var messages = Array.isArray(response.data) ? response.data : [response.data];
+	          for (var i = 0; i < messages.length; i++) {
+	            Materialize.toast(messages[i].msg, 4000, 'green darken-1');
+	          }
 	          _this.$state.reload();
-	          return updatedUser;
+	        }).catch(function (response) {
+	          var messages = Array.isArray(response.data) ? response.data : [response.data];
+	          for (var i = 0; i < messages.length; i++) {
+	            Materialize.toast(messages[i].msg, 4000, 'red darken-4');
+	          }
 	        });
 	      }
 	    }, {
@@ -48563,9 +48548,17 @@
 	      value: function toggleAdmin(user) {
 	        var _this2 = this;
 
-	        this.AdminPanelService.toggleAdmin(user).then(function (toggledUser) {
+	        this.AdminPanelService.toggleAdmin(user).then(function (response) {
+	          var messages = Array.isArray(response.data) ? response.data : [response.data];
+	          for (var i = 0; i < messages.length; i++) {
+	            Materialize.toast(messages[i].msg, 4000, 'green darken-1');
+	          }
 	          _this2.$state.reload();
-	          return toggledUser;
+	        }).catch(function (response) {
+	          var messages = Array.isArray(response.data) ? response.data : [response.data];
+	          for (var i = 0; i < messages.length; i++) {
+	            Materialize.toast(messages[i].msg, 4000, 'red darken-4');
+	          }
 	        });
 	      }
 	    }, {
@@ -48573,9 +48566,17 @@
 	      value: function deleteUser(user) {
 	        var _this3 = this;
 
-	        this.AdminPanelService.deleteUser(user).then(function (deletedUser) {
+	        this.AdminPanelService.deleteUser(user).then(function (response) {
+	          var messages = Array.isArray(response.data) ? response.data : [response.data];
+	          for (var i = 0; i < messages.length; i++) {
+	            Materialize.toast(messages[i].msg, 4000, 'green darken-1');
+	          }
 	          _this3.$state.reload();
-	          return deletedUser;
+	        }).catch(function (response) {
+	          var messages = Array.isArray(response.data) ? response.data : [response.data];
+	          for (var i = 0; i < messages.length; i++) {
+	            Materialize.toast(messages[i].msg, 4000, 'red darken-4');
+	          }
 	        });
 	      }
 	    }]);
@@ -48802,8 +48803,17 @@
 	      value: function uploadDoc(doc) {
 	        var _this = this;
 
-	        this.AdminDocsService.uploadDoc(doc).then(function () {
-	          return _this.$state.reload();
+	        this.AdminDocsService.uploadDoc(doc).then(function (response) {
+	          var messages = Array.isArray(response.data) ? response.data : [response.data];
+	          for (var i = 0; i < messages.length; i++) {
+	            Materialize.toast(messages[i].msg, 4000, 'green darken-1');
+	          }
+	          _this.$state.reload();
+	        }).catch(function (response) {
+	          var messages = Array.isArray(response.data) ? response.data : [response.data];
+	          for (var i = 0; i < messages.length; i++) {
+	            Materialize.toast(messages[i].msg, 4000, 'red darken-4');
+	          }
 	        });
 	      }
 	    }, {
@@ -48811,8 +48821,17 @@
 	      value: function deleteDoc(doc) {
 	        var _this2 = this;
 
-	        this.AdminDocsService.deleteDoc(doc).then(function () {
-	          return _this2.$state.reload();
+	        this.AdminDocsService.deleteDoc(doc).then(function (response) {
+	          var messages = Array.isArray(response.data) ? response.data : [response.data];
+	          for (var i = 0; i < messages.length; i++) {
+	            Materialize.toast(messages[i].msg, 4000, 'green darken-1');
+	          }
+	          _this2.$state.reload();
+	        }).catch(function (response) {
+	          var messages = Array.isArray(response.data) ? response.data : [response.data];
+	          for (var i = 0; i < messages.length; i++) {
+	            Materialize.toast(messages[i].msg, 4000, 'red darken-4');
+	          }
 	        });
 	      }
 	    }]);
@@ -48917,20 +48936,24 @@
 	      return this.$http.post('/admin/documents/upload', fd, {
 	        transformRequest: angular.identity,
 	        headers: { 'Content-Type': undefined }
-	      }).then(function (response) {
-	        return response.data;
-	      }).catch(function (response) {
-	        console.error('uploadDoc error:', response.data);
 	      });
+	      // .then(function(response) {
+	      //   return response.data;
+	      // })
+	      // .catch(function(response) {
+	      //   console.error('uploadDoc error:', response.data);
+	      // })
 	    }
 	  }, {
 	    key: 'deleteDoc',
 	    value: function deleteDoc(doc) {
-	      return this.$http.delete('/admin/documents/delete/' + doc.name).then(function (response) {
-	        return response.data;
-	      }).catch(function (response) {
-	        console.error('deleteDoc error:', response.data);
-	      });
+	      return this.$http.delete('/admin/documents/delete/' + doc.name);
+	      // .then(function(response) {
+	      //   return response.data;
+	      // })
+	      // .catch(function(response) {
+	      //   console.error('deleteDoc error:', response.data);
+	      // })
 	    }
 	  }]);
 	  return AdminDocsService;
@@ -49036,8 +49059,18 @@
 	      value: function addNotice(notice) {
 	        var _this = this;
 
-	        this.AdminNoticesService.addNotice(notice).then(function () {
-	          return _this.$state.reload();
+	        this.AdminNoticesService.addNotice(notice).then(function (response) {
+	          console.log(response.data);
+	          var messages = Array.isArray(response.data) ? response.data : [response.data];
+	          for (var i = 0; i < messages.length; i++) {
+	            Materialize.toast(messages[i].msg, 4000, 'green darken-1');
+	          }
+	          _this.$state.reload();
+	        }).catch(function (response) {
+	          var messages = Array.isArray(response.data) ? response.data : [response.data];
+	          for (var i = 0; i < messages.length; i++) {
+	            Materialize.toast(messages[i].msg, 4000, 'red darken-4');
+	          }
 	        });
 	      }
 	    }, {
@@ -49045,8 +49078,17 @@
 	      value: function deleteNotice(notice) {
 	        var _this2 = this;
 
-	        this.AdminNoticesService.deleteNotice(notice).then(function () {
-	          return _this2.$state.reload();
+	        this.AdminNoticesService.deleteNotice(notice).then(function (response) {
+	          var messages = Array.isArray(response.data) ? response.data : [response.data];
+	          for (var i = 0; i < messages.length; i++) {
+	            Materialize.toast(messages[i].msg, 4000, 'green darken-1');
+	          }
+	          _this2.$state.reload();
+	        }).catch(function (response) {
+	          var messages = Array.isArray(response.data) ? response.data : [response.data];
+	          for (var i = 0; i < messages.length; i++) {
+	            Materialize.toast(messages[i].msg, 4000, 'red darken-4');
+	          }
 	        });
 	      }
 	    }]);
@@ -49143,20 +49185,24 @@
 	  }, {
 	    key: 'addNotice',
 	    value: function addNotice(notice) {
-	      return this.$http.post('/admin/notices/add/', notice).then(function (response) {
-	        return response.data;
-	      }).catch(function (response) {
-	        console.error('addNotice error: ', response.data);
-	      });
+	      return this.$http.post('/admin/notices/add/', notice);
+	      // .then(function(response) {
+	      //   return response.data;
+	      // })
+	      // .catch(function(response) {
+	      //   console.error('addNotice error: ', response.data);
+	      // });
 	    }
 	  }, {
 	    key: 'deleteNotice',
 	    value: function deleteNotice(notice) {
-	      return this.$http.delete('/admin/notices/delete/' + notice._id).then(function (response) {
-	        return response.data;
-	      }).catch(function (response) {
-	        console.error('deleteNotice error:', response.data);
-	      });
+	      return this.$http.delete('/admin/notices/delete/' + notice._id);
+	      // .then(function(response) {
+	      //   return response.data;
+	      // })
+	      // .catch(function(response) {
+	      //   console.error('deleteNotice error:', response.data);
+	      // })
 	    }
 	  }]);
 	  return AdminNoticesService;
@@ -49243,7 +49289,7 @@
 /* 108 */
 /***/ function(module, exports) {
 
-	module.exports = "<div id=\"account\">\n    <div class=\"row\">\n        <div class=\"top-banner orange lighten-5\">\n            <h4 class=\"center page-title\">My Account</h4>\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"mid-banner section orange lighten-4 z-depth-2\">\n            <div class=\"row section\">\n                <div class=\"icon-block col s10 offset-s1 m6 offset-m3 orange lighten-5 z-depth-2\">\n                    <form ng-submit=\"$ctrl.updateAccount()\">\n                        <h5 class=\"center\">Update Email</h5>\n                        <label for=\"email\">Email</label>\n                        <input type=\"email\" name=\"email\" id=\"email\" ng-model=\"$ctrl.account.email\">\n                        <div class=\"center\">\n                            <button type=\"submit\" class=\"btn waves-effect waves-light\">Update Email</button>\n                        </div>\n                    </form>\n                </div>\n            </div>\n            <div class=\"row section\">\n                <div class=\"icon-block col s10 offset-s1 m6 offset-m3 orange lighten-5 z-depth-2\">\n                    <form ng-submit=\"$ctrl.changePassword()\">\n                        <h5 class=\"center\">Change Password</h5>\n                        <label for=\"password\">New Password</label>\n                        <input type=\"password\" name=\"password\" id=\"password\" ng-model=\"$ctrl.account.password\">\n                        <label for=\"confirm\">Confirm Password</label>\n                        <input type=\"password\" name=\"confirm\" id=\"confirm\" ng-model=\"$ctrl.account.confirm\">\n                        <div class=\"center\">\n                            <button type=\"submit\" class=\"btn waves-effect waves-light\">Change Password</button>\n                        </div>\n                    </form>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n"
+	module.exports = "<div id=\"account\">\n    <div class=\"row\">\n        <div class=\"top-banner orange lighten-5\">\n            <h4 class=\"center page-title\">My Account</h4>\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"mid-banner section orange lighten-4 z-depth-2\">\n            <div class=\"row section\">\n                <div class=\"icon-block col s10 offset-s1 m6 offset-m3 orange lighten-5 z-depth-2\">\n                    <form ng-submit=\"$ctrl.updateAccount()\">\n                        <h5 class=\"center\">Update Email</h5>\n                        <label for=\"email\">Email</label>\n                        <input type=\"email\" name=\"email\" id=\"email\" ng-model=\"$ctrl.account.email\">\n                        <div class=\"center\">\n                            <button type=\"submit\" class=\"btn waves-effect waves-light\">Update Email</button>\n                        </div>\n                    </form>\n                </div>\n            </div>\n            <div class=\"row section\">\n                <div class=\"icon-block col s10 offset-s1 m6 offset-m3 orange lighten-5 z-depth-2\">\n                    <form ng-submit=\"$ctrl.changePassword()\">\n                        <h5 class=\"center\">Change Password</h5>\n                        <label for=\"password\">New Password</label>\n                        <input type=\"password\" name=\"password\" id=\"password\" ng-model=\"$ctrl.account.password\">\n                        <label for=\"confirm\">Confirm New Password</label>\n                        <input type=\"password\" name=\"confirm\" id=\"confirm\" ng-model=\"$ctrl.account.confirm\">\n                        <div class=\"center\">\n                            <button type=\"submit\" class=\"btn waves-effect waves-light\">Change Password</button>\n                        </div>\n                    </form>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n"
 
 /***/ },
 /* 109 */
@@ -49291,29 +49337,30 @@
 	      this.AccountService.updateAccount(this.account).then(function (response) {
 	        _this.$rootScope.currentUser = response.data.user;
 	        _this.$window.localStorage.user = (0, _stringify2.default)(response.data.user);
-	        console.log('UPDATE USERS', response.data);
-	        _this.messages = {
-	          success: [response.data]
-	        };
+	        var messages = Array.isArray(response.data) ? response.data : [response.data];
+	        for (var i = 0; i < messages.length; i++) {
+	          Materialize.toast(messages[i].msg, 4000, 'green darken-1');
+	        }
 	      }).catch(function (response) {
-	        _this.messages = {
-	          error: Array.isArray(response.data) ? response.data : [response.data]
-	        };
+	        var messages = Array.isArray(response.data) ? response.data : [response.data];
+	        for (var i = 0; i < messages.length; i++) {
+	          Materialize.toast(messages[i].msg, 4000, 'red darken-4');
+	        }
 	      });
 	    }
 	  }, {
 	    key: 'changePassword',
 	    value: function changePassword() {
-	      var _this2 = this;
-
 	      this.AccountService.changePassword(this.account).then(function (response) {
-	        _this2.messages = {
-	          success: [response.data]
-	        };
+	        var messages = Array.isArray(response.data) ? response.data : [response.data];
+	        for (var i = 0; i < messages.length; i++) {
+	          Materialize.toast(messages[i].msg, 4000, 'green darken-1');
+	        }
 	      }).catch(function (response) {
-	        _this2.messages = {
-	          error: Array.isArray(response.data) ? response.data : [response.data]
-	        };
+	        var messages = Array.isArray(response.data) ? response.data : [response.data];
+	        for (var i = 0; i < messages.length; i++) {
+	          Materialize.toast(messages[i].msg, 4000, 'red darken-4');
+	        }
 	      });
 	    }
 	  }, {
@@ -49324,9 +49371,10 @@
 	        delete this.$window.localStorage.user;
 	        this.$location.path('/');
 	      }).catch(function (response) {
-	        this.messages = {
-	          error: [response.data]
-	        };
+	        var messages = Array.isArray(response.data) ? response.data : [response.data];
+	        for (var i = 0; i < messages.length; i++) {
+	          Materialize.toast(messages[i].msg, 4000, 'red darken-4');
+	        }
 	      });
 	    }
 	  }]);
@@ -49406,7 +49454,6 @@
 	  (0, _createClass3.default)(AccountService, [{
 	    key: 'updateAccount',
 	    value: function updateAccount(data) {
-	      console.log(data);
 	      return this.$http.put('/account', data);
 	    }
 	  }, {

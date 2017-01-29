@@ -1,7 +1,7 @@
-class DocumentsController {
-  constructor() {
-    this.name = 'documents';
-  }
-}
+// class DocumentsController {
+//   constructor() {
+//     this.name = 'documents';
+//   }
+// }
 
-export default DocumentsController;
+// export default DocumentsController;

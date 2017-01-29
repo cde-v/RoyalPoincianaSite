@@ -1,7 +1,7 @@
-class NoticesController {
-  constructor() {
-    this.name = 'notices';
-  }
-}
+// class NoticesController {
+//   constructor() {
+//     this.name = 'notices';
+//   }
+// }
 
-export default NoticesController;
+// export default NoticesController;

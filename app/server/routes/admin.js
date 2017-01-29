@@ -44,7 +44,7 @@ exports.adminSignupPost = function(req, res, next) {
   req.assert('password', 'Password must be at least 4 characters long').len(4);
   req.sanitize('email').normalizeEmail({ remove_dots: false });
 
-  var errors = req.validationErrors();
+  let errors = req.validationErrors();
 
   if (errors) {
     return res.status(400).send(errors);
@@ -60,7 +60,7 @@ exports.adminSignupPost = function(req, res, next) {
       password: req.body.password
     });
     user.save(function(err) {
-      res.send({ token: generateToken(user), user: user });
+      res.send({ token: generateToken(user), user: user, msg: 'User added.' });
     });
   });
 };
@@ -81,11 +81,12 @@ exports.adminGetUsers = function(req, res, next) {
  * Update user info
  */
 exports.adminUpdateUser = function(req, res, next) {
+  req.assert('name', 'Name cannot be blank').notEmpty();
   req.assert('email', 'Email is not valid').isEmail();
   req.assert('email', 'Email cannot be blank').notEmpty();
   req.sanitize('email').normalizeEmail({ remove_dots: false });
 
-  var errors = req.validationErrors();
+  let errors = req.validationErrors();
 
   if (errors) {
     return res.status(400).send(errors);
@@ -98,8 +99,9 @@ exports.adminUpdateUser = function(req, res, next) {
     user.save(function(err) {
       if (err) {
         res.status(500).send({ msg: 'Internal server error.' });
+        return;
       } else {
-        res.send({ user: user, msg: 'User admin status has been changed.' });
+        res.send({ user: user, msg: 'User updated.' });
       }
     });
   });
@@ -115,6 +117,7 @@ exports.adminToggleAdmin = function(req, res, next) {
     user.save(function(err) {
       if (err) {
         res.status(500).send({ msg: 'Internal server error.' });
+        return;
       } else {
         res.send({ user: user, msg: 'User admin status has been changed.' });
       }
@@ -146,7 +149,7 @@ let upload = multer({ storage: storage }).single('file');
 exports.adminPostDoc = function(req, res, next) {
   Doc.findOne({ name: req.file.filename }, function(err, doc) {
     if (err) {
-      res.json({ errorCode: 1, errDesc: err });
+      res.status(500).send({ msg: 'Internal server error.' });
       return;
     }
     if (doc) {
@@ -158,10 +161,10 @@ exports.adminPostDoc = function(req, res, next) {
     });
     doc.save(function(err) {
       if (err) {
-        res.json({ errorCode: 1, errDesc: err });
+        res.status(500).send({ msg: 'Internal server error.' });
         return;
       }
-      res.send({ doc });
+      res.send({ doc: doc, msg: 'Document added.' });
     });
   });
 };
@@ -169,7 +172,7 @@ exports.adminPostDoc = function(req, res, next) {
 exports.adminSaveDoc = function(req, res, next) {
   upload(req, res, function(err) {
     if (err) {
-      res.json({ errorCode: 1, errDesc: err });
+      res.status(500).send({ msg: 'Internal server error.' });
       return;
     }
     next();
@@ -179,32 +182,31 @@ exports.adminSaveDoc = function(req, res, next) {
 exports.adminGetDocs = function(req, res, next) {
   Doc.find({}, function(err, docs) {
     if (err) {
-      res.json({ errorCode: 1, errDesc: err });
+      res.status(500).send({ msg: 'Internal server error.' });
       return;
     }
     if (!docs) {
-      res.json({ errorCode: 1, errDesc: 'No documents found' });
+      res.status(404).send({ msg: 'Document not found.' });
       return;
     }
-    res.send({ docs });
+    res.send({ docs: docs, msg: 'Documents found.' });
   });
 };
 
 exports.adminDeleteDoc = function(req, res, next) {
   fs.stat('./uploads/' + req.params.docId, function(err, stats) {
     if (err) {
-      console.error('stats: ', stats)
-      res.json({ errorCode: 1, errDesc: err });
+      res.status(500).send({ msg: 'Internal server error.' });
       return;
     }
     fs.unlink('./uploads/' + req.params.docId, function(err) {
       if (err) {
-        res.json({ errorCode: 1, errDesc: err });
+        res.status(500).send({ msg: 'Internal server error.' });
         return;
       }
       Doc.remove({ name: req.params.docId }, function(err) {
         if (err) {
-          res.json({ errorCode: 1, errDesc: err });
+          res.status(500).send({ msg: 'Internal server error.' });
           return;
         }
         res.send({ msg: 'Document has been successfully deleted.' });
@@ -214,24 +216,23 @@ exports.adminDeleteDoc = function(req, res, next) {
 };
 
 exports.adminPostNotice = function(req, res, next) {
-  console.log(req.body);
   let notice = new Notice({
     title: req.body.title,
     noticeContent: req.body.noticeContent
   });
   notice.save(function(err) {
     if (err) {
-      res.json({ errorCode: 1, errDesc: err });
+      res.status(500).send({ msg: 'Internal server error.' });
       return;
     }
-    res.send({ notice });
+    res.send({ notice: notice, msg: 'Notice added.' });
   });
 };
 
 exports.adminDeleteNotice = function(req, res, next) {
   Notice.remove({ _id: req.params.noticeId }, function(err) {
     if (err) {
-      res.json({ errorCode: 1, errDesc: err });
+      res.status(500).send({ msg: 'Internal server error.' });
       return;
     }
     res.send({ msg: 'Notice has been successfully deleted.' });

@@ -14,29 +14,32 @@ class AccountController {
       .then((response) => {
         this.$rootScope.currentUser = response.data.user;
         this.$window.localStorage.user = JSON.stringify(response.data.user);
-        console.log('UPDATE USERS', response.data)
-        this.messages = {
-          success: [response.data]
-        };
+        let messages = Array.isArray(response.data) ? response.data : [response.data];
+        for (let i = 0; i < messages.length; i++) {
+          Materialize.toast(messages[i].msg, 4000, 'green darken-1')
+        }
       })
       .catch((response) => {
-        this.messages = {
-          error: Array.isArray(response.data) ? response.data : [response.data]
-        };
+        let messages = Array.isArray(response.data) ? response.data : [response.data];
+        for (let i = 0; i < messages.length; i++) {
+          Materialize.toast(messages[i].msg, 4000, 'red darken-4')
+        }
       });
   }
 
   changePassword() {
     this.AccountService.changePassword(this.account)
       .then((response) => {
-        this.messages = {
-          success: [response.data]
-        };
+        let messages = Array.isArray(response.data) ? response.data : [response.data];
+        for (let i = 0; i < messages.length; i++) {
+          Materialize.toast(messages[i].msg, 4000, 'green darken-1')
+        }
       })
       .catch((response) => {
-        this.messages = {
-          error: Array.isArray(response.data) ? response.data : [response.data]
-        };
+        let messages = Array.isArray(response.data) ? response.data : [response.data];
+        for (let i = 0; i < messages.length; i++) {
+          Materialize.toast(messages[i].msg, 4000, 'red darken-4')
+        }
       });
   }
 
@@ -48,9 +51,10 @@ class AccountController {
         this.$location.path('/');
       })
       .catch(function(response) {
-        this.messages = {
-          error: [response.data]
-        };
+        let messages = Array.isArray(response.data) ? response.data : [response.data];
+        for (let i = 0; i < messages.length; i++) {
+          Materialize.toast(messages[i].msg, 4000, 'red darken-4')
+        }
       });
   }
 }

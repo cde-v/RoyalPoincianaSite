@@ -4,7 +4,6 @@ class AccountService {
     this.$http = $http;
   }
   updateAccount(data) {
-    console.log(data);
     return this.$http.put('/account', data);
   }
   changePassword(data) {

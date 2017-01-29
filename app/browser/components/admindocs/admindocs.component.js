@@ -15,11 +15,35 @@ let AdminDocsComponent = {
     }
     uploadDoc(doc) {
       this.AdminDocsService.uploadDoc(doc)
-        .then(() => this.$state.reload())
+        .then((response) => {
+          let messages = Array.isArray(response.data) ? response.data : [response.data];
+          for (let i = 0; i < messages.length; i++) {
+            Materialize.toast(messages[i].msg, 4000, 'green darken-1')
+          }
+          this.$state.reload()
+        })
+        .catch((response) => {
+          let messages = Array.isArray(response.data) ? response.data : [response.data];
+          for (let i = 0; i < messages.length; i++) {
+            Materialize.toast(messages[i].msg, 4000, 'red darken-4')
+          }
+        });
     }
     deleteDoc(doc) {
       this.AdminDocsService.deleteDoc(doc)
-        .then(() => this.$state.reload());
+        .then((response) => {
+          let messages = Array.isArray(response.data) ? response.data : [response.data];
+          for (let i = 0; i < messages.length; i++) {
+            Materialize.toast(messages[i].msg, 4000, 'green darken-1')
+          }
+          this.$state.reload()
+        })
+        .catch((response) => {
+          let messages = Array.isArray(response.data) ? response.data : [response.data];
+          for (let i = 0; i < messages.length; i++) {
+            Materialize.toast(messages[i].msg, 4000, 'red darken-4')
+          }
+        });
     }
   }
 };

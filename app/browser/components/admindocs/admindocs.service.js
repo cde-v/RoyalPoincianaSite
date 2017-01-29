@@ -22,22 +22,22 @@ class AdminDocsService {
     return this.$http.post('/admin/documents/upload', fd, {
         transformRequest: angular.identity,
         headers: { 'Content-Type': undefined }
-      })
-      .then(function(response) {
-        return response.data;
-      })
-      .catch(function(response) {
-        console.error('uploadDoc error:', response.data);
-      })
+      });
+      // .then(function(response) {
+      //   return response.data;
+      // })
+      // .catch(function(response) {
+      //   console.error('uploadDoc error:', response.data);
+      // })
   }
   deleteDoc(doc) {
-    return this.$http.delete('/admin/documents/delete/' + doc.name)
-      .then(function(response) {
-        return response.data;
-      })
-      .catch(function(response) {
-        console.error('deleteDoc error:', response.data);
-      })
+    return this.$http.delete('/admin/documents/delete/' + doc.name);
+      // .then(function(response) {
+      //   return response.data;
+      // })
+      // .catch(function(response) {
+      //   console.error('deleteDoc error:', response.data);
+      // })
   }
 }
 

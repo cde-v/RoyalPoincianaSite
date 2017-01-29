@@ -13,14 +13,6 @@ let DocumentsComponent = {
       this.$state = $state;
       this.DocumentsService = DocumentsService;
     }
-    uploadDoc(doc) {
-      this.DocumentsService.uploadDoc(doc)
-        .then(() => this.$state.reload())
-    }
-    deleteDoc(doc) {
-      this.DocumentsService.deleteDoc(doc)
-        .then(() => this.$state.reload());
-    }
   }
 };
 

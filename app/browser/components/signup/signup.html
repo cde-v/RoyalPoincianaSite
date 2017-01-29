@@ -2,36 +2,30 @@
     <div class="parallax-container valign-wrapper">
         <div class="section no-pad-bot">
             <div class="container">
-                <!-- ERROR WARNING MESSAGES!!!!!! -->
-                <div ng-if="messages.error" role="alert" class="alert alert-danger">
-                    <div ng-repeat="error in messages.error">{{error.msg}}</div>
-                </div>
-                <!-- ERROR WARNING MESSAGES!!!!!! -->
                 <div class="row">
                     <div class="form-container col s8 offset-s2 l4 offset-l4 section orange lighten-5 z-depth-2">
                         <form ng-submit="$ctrl.signup()">
                             <div class="row">
                                 <h4 class="center">Create Account</h4>
                                 <div class="input-field col s12 l12">
-                                    <label for="email">Email</label>
-                                    <input type="email" name="email" id="email" placeholder="Email" class="validate" ng-model="$ctrl.user.email" autofocus required>
-                                </div>
-                                <div class="input-field col s12 l12">
                                     <label for="name">Name</label>
-                                    <input type="text" name="name" id="name" placeholder="Name" class="validate" ng-model="$ctrl.user.name" required>
+                                    <input type="text" name="name" id="name" class="validate" ng-model="$ctrl.user.name" autofocus required>
                                 </div>
                                 <div class="input-field col s12 l12">
-                                    <label for="password">Password</label>
-                                    <input type="password" name="password" id="password" placeholder="Password" class="validate" ng-model="$ctrl.user.password" required>
+                                    <label for="email">Email</label>
+                                    <input type="email" name="email" id="email" class="validate" ng-model="$ctrl.user.email" required>
+                                </div>
+                                <div class="input-field col s12 l12">
+                                    <label for="password">Temp Password</label>
+                                    <input type="text" name="password" id="password" class="validate" ng-model="$ctrl.user.password" required>
+                                </div>
+                                <div class="input-field col s12 l12">
+                                    <label for="confirm">Confirm Temp Password</label>
+                                    <input type="text" name="confirm" id="confirm" class="validate" ng-model="$ctrl.user.confirm" required>
                                 </div>
                             </div>
                             <div class="row center">
                                 <button type="submit" class="btn btn-success center-align center">Add User</button>
-                            </div>
-                            <div class="row center">
-                                <a ui-sref="forgot">
-                                    <strong>Forgot your password?</strong>
-                                </a>
                             </div>
                         </form>
                     </div>

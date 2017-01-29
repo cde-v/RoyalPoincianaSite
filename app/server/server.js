@@ -33,7 +33,6 @@ let npmPath = path.join(__dirname, '../../node_modules');
 // let browserPath = path.join(__dirname, '../../browser');
 
 app.use('/node_modules', express.static(npmPath));
-console.log("NPM PATH+++++++++++++++++++++++++", npmPath);
 // app.use(express.static(browserPath));
 
 mongoose.connect(process.env.MONGODB_URI);

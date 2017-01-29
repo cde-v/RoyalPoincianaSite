@@ -17,15 +17,13 @@ exports.downloadDocument = function(req, res, next) {
 exports.getDocumentList = function(req, res, next) {
   Doc.find({}, function(err, docs) {
     if (err) {
-      res.json({ errorCode: 1, errDesc: err });
+      res.status(500).send({ msg: 'Internal server error.' });
       return;
     }
     if (!docs) {
-      res.json({ errorCode: 1, errDesc: 'No documents found' });
+      res.status(404).send({ msg: 'Document not found.' });
       return;
     }
-    res.send({ docs });
+    res.send({ docs: docs, msg: 'Documents found' });
   });
 };
-
-

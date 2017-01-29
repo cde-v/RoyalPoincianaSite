@@ -38,7 +38,8 @@ exports.loginPost = function(req, res, next) {
   req.assert('password', 'Password cannot be blank').notEmpty();
   req.sanitize('email').normalizeEmail({ remove_dots: false });
 
-  var errors = req.validationErrors();
+  let errors = req.validationErrors();
+
   if (errors) {
     return res.status(400).send(errors);
   }
@@ -46,8 +47,7 @@ exports.loginPost = function(req, res, next) {
   User.findOne({ email: req.body.email }, function(err, user) {
     if (!user) {
       return res.status(401).send({
-        msg: 'The email address ' + req.body.email + ' is not associated with any account. ' +
-          'Double-check your email address and try again.'
+        msg: 'The email address ' + req.body.email + ' is not associated with any account. Double-check your email address and try again.'
       });
     }
     user.comparePassword(req.body.password, function(err, isMatch) {
@@ -68,9 +68,10 @@ exports.signupPost = function(req, res, next) {
   req.assert('email', 'Email is not valid').isEmail();
   req.assert('email', 'Email cannot be blank').notEmpty();
   req.assert('password', 'Password must be at least 4 characters long').len(4);
+  req.assert('confirm', 'Passwords must match').equals(req.body.password);
   req.sanitize('email').normalizeEmail({ remove_dots: false });
 
-  var errors = req.validationErrors();
+  let errors = req.validationErrors();
 
   if (errors) {
     return res.status(400).send(errors);
@@ -86,7 +87,7 @@ exports.signupPost = function(req, res, next) {
       password: req.body.password
     });
     user.save(function(err) {
-      res.send({ token: generateToken(user), user: user });
+      res.send({ token: generateToken(user), user: user, msg: 'User added.' });
     });
   });
 };
@@ -105,7 +106,7 @@ exports.accountPut = function(req, res, next) {
     req.sanitize('email').normalizeEmail({ remove_dots: false });
   }
 
-  var errors = req.validationErrors();
+  let errors = req.validationErrors();
 
   if (errors) {
     return res.status(400).send(errors);
@@ -135,7 +136,7 @@ exports.accountPut = function(req, res, next) {
  */
 exports.accountDelete = function(req, res, next) {
   User.remove({ _id: req.user.id }, function(err) {
-    res.send({ msg: 'Your account has been permanently deleted.' });
+    res.send({ msg: 'Account has been permanently deleted.' });
   });
 };
 
@@ -147,7 +148,7 @@ exports.forgotPost = function(req, res, next) {
   req.assert('email', 'Email cannot be blank').notEmpty();
   req.sanitize('email').normalizeEmail({ remove_dots: false });
 
-  var errors = req.validationErrors();
+  let errors = req.validationErrors();
 
   if (errors) {
     return res.status(400).send(errors);
