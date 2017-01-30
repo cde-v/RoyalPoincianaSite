@@ -63,7 +63,7 @@
 /******/ 	}
 
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "ce7b4de50ee116e7255a"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "282bbf1e0f7575413a0f"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 
@@ -46531,7 +46531,7 @@
 	    this.$window = $window;
 	    this.$auth = $auth;
 	    this.$rootScope = $rootScope;
-	    this.options = [{ label: 'Home', state: 'home', authOnly: 'both', adminOnly: 'both' }, { label: 'About', state: 'about', authOnly: 'both', adminOnly: 'both' }, { label: 'Community Notices', state: 'notices', authOnly: true, adminOnly: 'both' }, { label: 'Download Documents', state: 'documents', authOnly: true, adminOnly: 'both' }, { label: 'Log In', state: 'login', authOnly: false, adminOnly: 'both' }, { label: 'Admin: Add User', state: 'signup', authOnly: true, adminOnly: true }, { label: 'Admin: Users', state: 'adminpanel', authOnly: true, adminOnly: true }, { label: 'Admin: Docs', state: 'admindocs', authOnly: true, adminOnly: true }, { label: 'Admin: Notices', state: 'adminnotices', authOnly: true, adminOnly: true }, { label: 'My Account', state: 'account', authOnly: true, adminOnly: 'both' }];
+	    this.options = [{ label: 'Home', state: 'home', authOnly: 'both', adminOnly: 'both' }, { label: 'About', state: 'about', authOnly: 'both', adminOnly: 'both' }, { label: 'Community Notices', state: 'notices', authOnly: true, adminOnly: 'both' }, { label: 'Documents', state: 'documents', authOnly: true, adminOnly: 'both' }, { label: 'Log In', state: 'login', authOnly: false, adminOnly: 'both' }, { label: 'Admin: Add User', state: 'signup', authOnly: true, adminOnly: true }, { label: 'Admin: Users', state: 'adminpanel', authOnly: true, adminOnly: true }, { label: 'Admin: Docs', state: 'admindocs', authOnly: true, adminOnly: true }, { label: 'Admin: Notices', state: 'adminnotices', authOnly: true, adminOnly: true }, { label: 'My Account', state: 'account', authOnly: true, adminOnly: 'both' }];
 	  }
 
 	  (0, _createClass3.default)(NavbarController, [{
@@ -47541,7 +47541,7 @@
 
 
 	// module
-	exports.push([module.id, "#home .parallax-container {\n  height: 400px;\n}\n\n#home .mid-banner {\n  z-index: 100;\n  position: relative;\n  box-shadow: 0px -10px 24px -19px black;\n}\n\n#home .mid-banner .row {\n  margin: 10px 0px;\n}\n\n#home .icon-block {\n  padding: 1px 15px;\n  border-radius: 20px;\n}\n\n#home .icon-block .icon {\n  margin: 1.0vw 0 0 0;\n}\n\n#home .icon-block .material-icons {\n  font-size: inherit;\n}\n", ""]);
+	exports.push([module.id, "#home .parallax-container {\n  height: 500px;\n}\n\n#home .mid-banner {\n  z-index: 100;\n  position: relative;\n  box-shadow: 0px -10px 24px -19px black;\n}\n\n#home .mid-banner .row {\n  margin: 10px 0px;\n}\n\n#home .icon-block {\n  padding: 1px 15px;\n  border-radius: 20px;\n}\n\n#home .icon-block .icon {\n  margin: 1.0vw 0 0 0;\n}\n\n#home .icon-block .material-icons {\n  font-size: inherit;\n}\n", ""]);
 
 	// exports
 

@@ -9,7 +9,7 @@ class NavbarController {
       { label: 'Home', state: 'home', authOnly: 'both', adminOnly: 'both' },
       { label: 'About', state: 'about', authOnly: 'both', adminOnly: 'both' },
       { label: 'Community Notices', state: 'notices', authOnly: true, adminOnly: 'both' },
-      { label: 'Download Documents', state: 'documents', authOnly: true, adminOnly: 'both' },
+      { label: 'Documents', state: 'documents', authOnly: true, adminOnly: 'both' },
       { label: 'Log In', state: 'login', authOnly: false, adminOnly: 'both' },
       { label: 'Admin: Add User', state: 'signup', authOnly: true, adminOnly: true },
       { label: 'Admin: Users', state: 'adminpanel', authOnly: true, adminOnly: true },
