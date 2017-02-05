@@ -140,7 +140,7 @@ exports.adminDeleteUser = function(req, res, next) {
 let storage = multer.diskStorage({
   destination: './uploads/',
   filename: function(req, file, cb) {
-    cb(null, file.originalname.replace(path.extname(file.originalname), '') + '-' + Date.now() + path.extname(file.originalname))
+    cb(null, file.originalname.replace(path.extname(file.originalname), '') + path.extname(file.originalname))
   }
 })
 
@@ -155,9 +155,12 @@ exports.adminPostDoc = function(req, res, next) {
     if (doc) {
       return res.status(400).send({ msg: 'A document already exists with this name.' });
     }
+    console.log('req.body', req.body);
     doc = new Doc({
-      name: req.file.filename,
-      desc: req.body.desc
+      title: req.body.title,
+      filename: req.file.filename,
+      desc: req.body.desc,
+      category: req.body.category
     });
     doc.save(function(err) {
       if (err) {
@@ -204,7 +207,7 @@ exports.adminDeleteDoc = function(req, res, next) {
         res.status(500).send({ msg: 'Internal server error.' });
         return;
       }
-      Doc.remove({ name: req.params.docId }, function(err) {
+      Doc.remove({ filename: req.params.docId }, function(err) {
         if (err) {
           res.status(500).send({ msg: 'Internal server error.' });
           return;

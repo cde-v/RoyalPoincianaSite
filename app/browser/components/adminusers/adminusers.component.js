@@ -1,22 +1,22 @@
-import template from './adminpanel.html';
-// import controller from './adminpanel.controller';
-import './adminpanel.scss';
+import template from './adminusers.html';
+// import controller from './adminusers.controller';
+import './adminusers.scss';
 
-let AdminPanelComponent = {
+let AdminUsersComponent = {
   bindings: {
     userList: '<'
   },
   template: template,
-  controller: class AdminPanelComponent {
-    constructor($state, $rootScope, AdminPanelService) {
+  controller: class AdminUsersComponent {
+    constructor($state, $rootScope, AdminUsersService) {
       'ngInject';
-      this.name = 'adminpanel';
+      this.name = 'adminusers';
       this.$state = $state;
       this.$rootScope = $rootScope;
-      this.AdminPanelService = AdminPanelService;
+      this.AdminUsersService = AdminUsersService;
     }
     updateUser(user) {
-      this.AdminPanelService.updateUser(user)
+      this.AdminUsersService.updateUser(user)
         .then((response) => {
           let messages = Array.isArray(response.data) ? response.data : [response.data];
           for (let i = 0; i < messages.length; i++) {
@@ -32,7 +32,7 @@ let AdminPanelComponent = {
         });
     }
     toggleAdmin(user) {
-      this.AdminPanelService.toggleAdmin(user)
+      this.AdminUsersService.toggleAdmin(user)
         .then((response) => {
           let messages = Array.isArray(response.data) ? response.data : [response.data];
           for (let i = 0; i < messages.length; i++) {
@@ -48,7 +48,7 @@ let AdminPanelComponent = {
         });
     }
     deleteUser(user) {
-      this.AdminPanelService.deleteUser(user)
+      this.AdminUsersService.deleteUser(user)
         .then((response) => {
           let messages = Array.isArray(response.data) ? response.data : [response.data];
           for (let i = 0; i < messages.length; i++) {
@@ -66,4 +66,4 @@ let AdminPanelComponent = {
   }
 };
 
-export default AdminPanelComponent;
+export default AdminUsersComponent;

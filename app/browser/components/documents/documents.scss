@@ -11,4 +11,56 @@
         border-radius: 20px;
         padding: 0vw 2vw;
     }
+    .table-title {
+        border-radius: 0px 10px 0px 0px;
+        background-color: #fff3e0;
+        text-align: center;
+        margin-bottom: 0px;
+        font-weight: bold;
+        .col {
+            padding: 10px 0;
+            border-bottom: 1px solid grey;
+        }
+    }
+    .table-cell {
+        background-color: #fff3e0;
+        margin-bottom: 0px;
+        .btn {
+            padding: 1px;
+            margin-top: 5px;
+            width: 100%;
+        }
+        .col {
+            border: 1px grey solid;
+            border-top: none;
+            height: 50px;
+            border-right: none;
+            overflow-wrap: break-word;
+            overflow: hidden;
+        }
+        .col:last-child {
+            border-right: 1px grey solid;
+        }
+    }
+    .blank {
+        pointer-events: none;
+        display: none;
+    }
+    .tabs {
+        margin-top: 30px;
+        .indicator {
+            background-color: orange;
+        }
+        .tab {
+            border-radius: 100px 100px 0 0;
+            background-color: #fff3e0;
+            border-bottom: 1px orange dashed;
+            a {
+                color: black;
+            }
+            a:hover {
+                color: grey;
+            }
+        }
+    }
 }

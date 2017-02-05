@@ -8,8 +8,10 @@ var schemaOptions = {
 };
 
 var docSchema = new mongoose.Schema({
-  name: String,
-  desc: String
+	title: String,
+  filename: String,
+  desc: String,
+  category: String
 }, schemaOptions);
 
 var Doc = mongoose.model('Doc', docSchema);

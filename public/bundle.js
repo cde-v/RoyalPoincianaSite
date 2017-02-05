@@ -63,7 +63,7 @@
 /******/ 	}
 
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "282bbf1e0f7575413a0f"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "3198cb86a822f570127b"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 
@@ -610,15 +610,15 @@
 
 	var _common2 = _interopRequireDefault(_common);
 
-	var _components = __webpack_require__(49);
+	var _components = __webpack_require__(55);
 
 	var _components2 = _interopRequireDefault(_components);
 
-	var _app = __webpack_require__(113);
+	var _app = __webpack_require__(119);
 
 	var _app2 = _interopRequireDefault(_app);
 
-	__webpack_require__(115);
+	__webpack_require__(121);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -46427,13 +46427,17 @@
 
 	var _navbar2 = _interopRequireDefault(_navbar);
 
-	var _footbar = __webpack_require__(43);
+	var _adminnavbar = __webpack_require__(43);
+
+	var _adminnavbar2 = _interopRequireDefault(_adminnavbar);
+
+	var _footbar = __webpack_require__(49);
 
 	var _footbar2 = _interopRequireDefault(_footbar);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var commonModule = _angular2.default.module('app.common', [_navbar2.default.name, _footbar2.default.name]);
+	var commonModule = _angular2.default.module('app.common', [_navbar2.default.name, _adminnavbar2.default.name, _footbar2.default.name]);
 
 	exports.default = commonModule;
 
@@ -46500,7 +46504,7 @@
 /* 17 */
 /***/ function(module, exports) {
 
-	module.exports = "<header>\n    <div class=\"navbar-fixed\">\n        <nav class=\"z-depth-2\">\n            <div class=\"nav-wrapper orange lighten-4\">\n                <a ui-sref=\"home\" class=\"brand-logo left\">\n                    <div class=\"logo-back orange lighten-5 z-depth-2\">\n                        <img src=\"fullrplogotransparent.png\">\n                    </div>\n                </a>\n                <ul id=\"nav-mobile\" class=\"right hide-on-med-and-down\">\n                    <li ng-repeat=\"option in $ctrl.options\" ng-if=\"(option.authOnly === $ctrl.isAuthenticated() || option.authOnly === 'both') && (option.adminOnly === $ctrl.isAdmin() || option.adminOnly === 'both')\">\n                        <a class=\"black-text\" ui-sref=\"{{option.state}}\">\n                            <span>{{option.label}}</span>\n                        </a>\n                    </li>\n                    <li ng-if=\"$ctrl.isAuthenticated()\">\n                        <a class=\"black-text\" ng-click=\"$ctrl.logout()\">Log Out</a>\n                    </li>\n                </ul>\n                <a class=\"button-collapse dropdown-button right\" href=\"#\" data-activates=\"menuDropdown\" data-beloworigin=\"true\" dropdown>\n                    <i id=\"menu-button\" class=\"material-icons black-text mr2\">menu</i>\n                </a>\n                <ul id=\"menuDropdown\" class=\"dropdown-content\">\n                    <li ng-repeat=\"option in $ctrl.options\" ng-if=\"(option.authOnly === $ctrl.isAuthenticated() || option.authOnly === 'both') && (option.adminOnly === $ctrl.isAdmin() || option.adminOnly === 'both')\">\n                        <a class=\"black-text\" ui-sref=\"{{option.state}}\">\n                            <span>{{option.label}}</span>\n                        </a>\n                    </li>\n                    <li ng-if=\"$ctrl.isAuthenticated()\">\n                        <a class=\"black-text\" ng-click=\"$ctrl.logout()\">Log Out</a>\n                    </li>\n                </ul>\n            </div>\n        </nav>\n    </div>\n</header>\n"
+	module.exports = "<header>\n    <div id=\"navbar\" class=\"navbar-fixed\">\n        <nav class=\"z-depth-2\">\n            <div class=\"nav-wrapper orange lighten-4\">\n                <a ui-sref=\"home\" class=\"brand-logo left\">\n                    <div class=\"logo-back orange lighten-5 z-depth-2\">\n                        <img src=\"fullrplogotransparent.png\">\n                    </div>\n                </a>\n                <ul id=\"nav-mobile\" class=\"right hide-on-med-and-down\">\n                    <li ng-repeat=\"option in $ctrl.options\" ng-if=\"(option.authOnly === $ctrl.isAuthenticated() || option.authOnly === 'both') && (option.adminOnly === $ctrl.isAdmin() || option.adminOnly === 'both')\">\n                        <a class=\"black-text\" ui-sref=\"{{option.state}}\">\n                            <span>{{option.label}}</span>\n                        </a>\n                    </li>\n                    <li ng-if=\"$ctrl.isAuthenticated()\">\n                        <a class=\"black-text\" ng-click=\"$ctrl.logout()\">Log Out</a>\n                    </li>\n                </ul>\n                <a class=\"button-collapse dropdown-button right\" href=\"#\" data-activates=\"menuDropdown\" data-beloworigin=\"true\" dropdown>\n                    <i id=\"menu-button\" class=\"material-icons black-text mr2\">menu</i>\n                </a>\n                <ul id=\"menuDropdown\" class=\"dropdown-content\">\n                    <li ng-repeat=\"option in $ctrl.options\" ng-if=\"(option.authOnly === $ctrl.isAuthenticated() || option.authOnly === 'both') && (option.adminOnly === $ctrl.isAdmin() || option.adminOnly === 'both')\">\n                        <a class=\"black-text\" ui-sref=\"{{option.state}}\">\n                            <span>{{option.label}}</span>\n                        </a>\n                    </li>\n                    <li ng-if=\"$ctrl.isAuthenticated()\">\n                        <a class=\"black-text\" ng-click=\"$ctrl.logout()\">Log Out</a>\n                    </li>\n                </ul>\n            </div>\n        </nav>\n    </div>\n</header>\n"
 
 /***/ },
 /* 18 */
@@ -46531,7 +46535,7 @@
 	    this.$window = $window;
 	    this.$auth = $auth;
 	    this.$rootScope = $rootScope;
-	    this.options = [{ label: 'Home', state: 'home', authOnly: 'both', adminOnly: 'both' }, { label: 'About', state: 'about', authOnly: 'both', adminOnly: 'both' }, { label: 'Community Notices', state: 'notices', authOnly: true, adminOnly: 'both' }, { label: 'Documents', state: 'documents', authOnly: true, adminOnly: 'both' }, { label: 'Log In', state: 'login', authOnly: false, adminOnly: 'both' }, { label: 'Admin: Add User', state: 'signup', authOnly: true, adminOnly: true }, { label: 'Admin: Users', state: 'adminpanel', authOnly: true, adminOnly: true }, { label: 'Admin: Docs', state: 'admindocs', authOnly: true, adminOnly: true }, { label: 'Admin: Notices', state: 'adminnotices', authOnly: true, adminOnly: true }, { label: 'My Account', state: 'account', authOnly: true, adminOnly: 'both' }];
+	    this.options = [{ label: 'Home', state: 'home', authOnly: 'both', adminOnly: 'both' }, { label: 'About', state: 'about', authOnly: 'both', adminOnly: 'both' }, { label: 'Community Notices', state: 'notices', authOnly: true, adminOnly: 'both' }, { label: 'Documents', state: 'documents', authOnly: true, adminOnly: 'both' }, { label: 'Log In', state: 'login', authOnly: false, adminOnly: 'both' }, { label: 'Admin Panel', state: 'adminusers', authOnly: true, adminOnly: true }, { label: 'My Account', state: 'account', authOnly: true, adminOnly: 'both' }];
 	  }
 
 	  (0, _createClass3.default)(NavbarController, [{
@@ -46907,7 +46911,7 @@
 	exports.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i,900,900i);", ""]);
 
 	// module
-	exports.push([module.id, ".app {\n  display: -ms-flexbox;\n  display: flex;\n  min-height: 100vh;\n  -ms-flex-direction: column;\n      flex-direction: column;\n}\n\nmain {\n  -ms-flex: 1 0 auto;\n      flex: 1 0 auto;\n}\n\n.brand-logo {\n  left: 0px !important;\n}\n\n.brand-logo img {\n  width: 15vw;\n  height: 9.2vw;\n  min-height: 56px;\n  min-width: 91.30435px;\n}\n\n.brand-logo .logo-back {\n  min-height: 56px;\n  min-width: 91.30435px;\n  line-height: 0px;\n  border-radius: 0px 0px 20px 0px;\n  padding-bottom: 1vw;\n}\n\nnav ul a {\n  color: black;\n}\n\n#menu-button {\n  font-size: 3rem;\n}\n", ""]);
+	exports.push([module.id, ".app {\n  display: -ms-flexbox;\n  display: flex;\n  min-height: 100vh;\n  -ms-flex-direction: column;\n      flex-direction: column;\n}\n\nmain {\n  -ms-flex: 1 0 auto;\n      flex: 1 0 auto;\n}\n\n#navbar {\n  z-index: 999 !important;\n}\n\n#navbar .brand-logo {\n  z-index: 9999;\n  left: 0px !important;\n}\n\n#navbar .brand-logo img {\n  width: 15vw;\n  height: 9.2vw;\n  min-height: 56px;\n  min-width: 91.30435px;\n}\n\n#navbar .brand-logo .logo-back {\n  min-height: 56px;\n  min-width: 91.30435px;\n  line-height: 0px;\n  border-radius: 0px 0px 20px 0px;\n  padding-bottom: 1vw;\n}\n\n#navbar nav ul a {\n  color: black;\n}\n\n#navbar #menu-button {\n  font-size: 3rem;\n}\n", ""]);
 
 	// exports
 
@@ -47238,15 +47242,15 @@
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _footbar = __webpack_require__(44);
+	var _adminnavbar = __webpack_require__(44);
 
-	var _footbar2 = _interopRequireDefault(_footbar);
+	var _adminnavbar2 = _interopRequireDefault(_adminnavbar);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var footbarModule = _angular2.default.module('footbar', [_angularUiRouter2.default]).component('footbar', _footbar2.default);
+	var adminNavbarModule = _angular2.default.module('adminnavbar', [_angularUiRouter2.default]).component('adminnavbar', _adminnavbar2.default);
 
-	exports.default = footbarModule;
+	exports.default = adminNavbarModule;
 
 /***/ },
 /* 44 */
@@ -47258,32 +47262,30 @@
 	  value: true
 	});
 
-	var _footbar = __webpack_require__(45);
+	var _adminnavbar = __webpack_require__(45);
 
-	var _footbar2 = _interopRequireDefault(_footbar);
+	var _adminnavbar2 = _interopRequireDefault(_adminnavbar);
 
-	var _footbar3 = __webpack_require__(46);
+	var _adminnavbar3 = __webpack_require__(46);
 
-	var _footbar4 = _interopRequireDefault(_footbar3);
+	var _adminnavbar4 = _interopRequireDefault(_adminnavbar3);
 
 	__webpack_require__(47);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var footbarComponent = {
-	  restrict: 'E',
-	  bindings: {},
-	  template: _footbar2.default,
-	  controller: _footbar4.default
+	var adminNavbarComponent = {
+	  template: _adminnavbar2.default,
+	  controller: _adminnavbar4.default
 	};
 
-	exports.default = footbarComponent;
+	exports.default = adminNavbarComponent;
 
 /***/ },
 /* 45 */
 /***/ function(module, exports) {
 
-	module.exports = "<div id=\"footbar\">\n    <footer class=\"page-footer orange lighten-4\">\n        <div class=\"bot-banner row valign-wrapper orange lighten-5\">\n            <div class=\"col s2 m2 l2\" ng-repeat=\"slide in $ctrl.slideshow\">\n                <img class=\"valign\" ng-src=\"{{slide.imagePath}}\">\n            </div>\n        </div>\n        <div class=\"container\">\n            <p class=\"center-align\">Royal Poinciana at Boca Raton is managed by: </p>\n            <p class=\"center-align\">Mahogany Services, Inc. </p>\n            <p class=\"center-align\">Attn: Lauren Heller </p>\n            <p class=\"center-align\">21 SE 5th Street - Suite 100, Boca Raton, FL 33432 | Phone: (561) 997-6453</p>\n        </div>\n        <div class=\"footer-copyright\">\n            <div class=\"container orange-text text-darken-3\">\n                Website designed and built by: <a class=\"black-text\" href=\"mailto:cdedashv@gmail.com\">cde-v</a>\n            </div>\n        </div>\n    </footer>\n</div>\n"
+	module.exports = "<!-- <header> -->\n<div id=\"adminnavbar\" class=\"navbar-fixed adminnavbar\">\n    <nav class=\"z-depth-2\">\n        <div class=\"nav-wrapper orange\">\n            <ul id=\"nav\" class=\"right\">\n                <li ng-repeat=\"option in $ctrl.options\" ng-if=\"(option.authOnly === $ctrl.isAuthenticated() || option.authOnly === 'both') && (option.adminOnly === $ctrl.isAdmin() || option.adminOnly === 'both')\">\n                    <a class=\"black-text\" ui-sref=\"{{option.state}}\">\n                        <span>{{option.label}}</span>\n                    </a>\n                </li>\n            </ul>\n        </div>\n    </nav>\n</div>\n<!-- </header> -->\n"
 
 /***/ },
 /* 46 */
@@ -47299,16 +47301,52 @@
 
 	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
 
+	var _createClass2 = __webpack_require__(20);
+
+	var _createClass3 = _interopRequireDefault(_createClass2);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var FootbarController = function FootbarController() {
-	  (0, _classCallCheck3.default)(this, FootbarController);
+	var AdminNavbarController = function () {
+	  function AdminNavbarController($location, $window, $auth, $rootScope) {
+	    (0, _classCallCheck3.default)(this, AdminNavbarController);
 
-	  this.name = 'footbar';
-	  this.slideshow = [{ imagePath: 'image02.jpg' }, { imagePath: 'image03.jpg' }, { imagePath: 'image04.jpg' }, { imagePath: 'image05.jpg' }, { imagePath: 'image06.jpg' }, { imagePath: 'image07.jpg' }, { imagePath: 'image08.jpg' }];
-	};
+	    this.name = 'adminnavbar';
+	    this.$location = $location;
+	    this.$window = $window;
+	    this.$auth = $auth;
+	    this.$rootScope = $rootScope;
+	    this.options = [{ label: 'Add User', state: 'signup', authOnly: true, adminOnly: true }, { label: 'Manage Users', state: 'adminusers', authOnly: true, adminOnly: true }, { label: 'Manage Files', state: 'admindocs', authOnly: true, adminOnly: true }, { label: 'Manage Notices', state: 'adminnotices', authOnly: true, adminOnly: true }];
+	  }
 
-	exports.default = FootbarController;
+	  (0, _createClass3.default)(AdminNavbarController, [{
+	    key: 'isActive',
+	    value: function isActive(viewLocation) {
+	      return viewLocation === this.$location.path();
+	    }
+	  }, {
+	    key: 'isAuthenticated',
+	    value: function isAuthenticated() {
+	      return this.$auth.isAuthenticated();
+	    }
+	  }, {
+	    key: 'isAdmin',
+	    value: function isAdmin() {
+	      return this.$rootScope.currentUser && this.$rootScope.currentUser.isAdmin;
+	    }
+	  }, {
+	    key: 'logout',
+	    value: function logout() {
+	      this.$auth.logout();
+	      delete this.$window.localStorage.user;
+	      delete this.$rootScope.currentUser;
+	      this.$location.path('/');
+	    }
+	  }]);
+	  return AdminNavbarController;
+	}();
+
+	exports.default = AdminNavbarController;
 
 /***/ },
 /* 47 */
@@ -47345,13 +47383,143 @@
 	exports.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i,900,900i);", ""]);
 
 	// module
-	exports.push([module.id, ".app {\n  display: -ms-flexbox;\n  display: flex;\n  min-height: 100vh;\n  -ms-flex-direction: column;\n      flex-direction: column;\n}\n\nmain {\n  -ms-flex: 1 0 auto;\n      flex: 1 0 auto;\n}\n\n#footbar p {\n  margin: 5px 0px;\n}\n\n#footbar footer.page-footer {\n  padding-top: 0px !important;\n  margin-top: 0px !important;\n}\n\n#footbar .bot-banner {\n  z-index: 100;\n  position: relative;\n  padding: 1vw 0.5vw;\n  box-shadow: inset 0px 5px 12px -7px black, inset 0px -5px 12px -7px black;\n}\n\n#footbar .bot-banner img {\n  width: 100%;\n  height: 100%;\n}\n\n#footbar .bot-banner .col {\n  padding: 0px 0.5vw;\n}\n", ""]);
+	exports.push([module.id, ".app {\n  display: -ms-flexbox;\n  display: flex;\n  min-height: 100vh;\n  -ms-flex-direction: column;\n      flex-direction: column;\n}\n\nmain {\n  -ms-flex: 1 0 auto;\n      flex: 1 0 auto;\n}\n\n#adminnavbar nav ul a {\n  color: black;\n}\n\n#adminnavbar #menu-button {\n  font-size: 3rem;\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
 /* 49 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _angular = __webpack_require__(3);
+
+	var _angular2 = _interopRequireDefault(_angular);
+
+	var _angularUiRouter = __webpack_require__(2);
+
+	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
+
+	var _footbar = __webpack_require__(50);
+
+	var _footbar2 = _interopRequireDefault(_footbar);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var footbarModule = _angular2.default.module('footbar', [_angularUiRouter2.default]).component('footbar', _footbar2.default);
+
+	exports.default = footbarModule;
+
+/***/ },
+/* 50 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _footbar = __webpack_require__(51);
+
+	var _footbar2 = _interopRequireDefault(_footbar);
+
+	var _footbar3 = __webpack_require__(52);
+
+	var _footbar4 = _interopRequireDefault(_footbar3);
+
+	__webpack_require__(53);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var footbarComponent = {
+	  restrict: 'E',
+	  bindings: {},
+	  template: _footbar2.default,
+	  controller: _footbar4.default
+	};
+
+	exports.default = footbarComponent;
+
+/***/ },
+/* 51 */
+/***/ function(module, exports) {
+
+	module.exports = "<div id=\"footbar\">\n    <footer class=\"page-footer orange lighten-4\">\n        <div class=\"bot-banner row valign-wrapper orange lighten-5\">\n            <div class=\"col s2 m2 l2\" ng-repeat=\"slide in $ctrl.slideshow\">\n                <img class=\"valign\" ng-src=\"{{slide.imagePath}}\">\n            </div>\n        </div>\n        <div class=\"container contact-section\">\n            <div class=\"row valign-wrapper\">\n                <div class=\"col s12 m12 l12\">\n                    <p class=\"center-align\"><b>Royal Poinciana at Boca Raton is managed by:</b></p>\n                    <p class=\"center-align\">Mahogany Services, Inc.</p>\n                    <p class=\"center-align\">Attn: Lauren Heller</p>\n                    <p class=\"center-align\">21 SE 5th Street - Suite 100, Boca Raton, FL 33432</p>\n                    <p class=\"center-align\">Phone: (561) 997-6453</p>\n                </div>\n                <!-- <div class=\"col s12 m6 l6 valign\">\n                    <p class=\"center-align\"><b>Email us at:</b></p>\n                    <p class=\"center-align\"><a class=\"black-text\" href=\"mailto:RoyalPoincianaContact@gmail.com\">RoyalPoincianaContact@gmail.com</a></p>\n                </div> -->\n            </div>\n        </div>\n        <div class=\"footer-copyright\">\n            <div class=\"right-align orange-text text-darken-3\">\n                Website designed and built by: <a class=\"black-text\" href=\"mailto:cdedashv@gmail.com\">cde-v</a>\n            </div>\n        </div>\n    </footer>\n</div>\n"
+
+/***/ },
+/* 52 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _classCallCheck2 = __webpack_require__(19);
+
+	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var FootbarController = function FootbarController() {
+	  (0, _classCallCheck3.default)(this, FootbarController);
+
+	  this.name = 'footbar';
+	  this.slideshow = [{ imagePath: 'image02.jpg' }, { imagePath: 'image03.jpg' }, { imagePath: 'image04.jpg' }, { imagePath: 'image05.jpg' }, { imagePath: 'image06.jpg' }, { imagePath: 'image07.jpg' }, { imagePath: 'image08.jpg' }];
+	};
+
+	exports.default = FootbarController;
+
+/***/ },
+/* 53 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(54);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(42)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(true) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept(54, function() {
+				var newContent = __webpack_require__(54);
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 54 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(41)();
+	// imports
+	exports.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i,900,900i);", ""]);
+
+	// module
+	exports.push([module.id, ".app {\n  display: -ms-flexbox;\n  display: flex;\n  min-height: 100vh;\n  -ms-flex-direction: column;\n      flex-direction: column;\n}\n\nmain {\n  -ms-flex: 1 0 auto;\n      flex: 1 0 auto;\n}\n\n#footbar .contact-section {\n  font-size: 12px;\n}\n\n#footbar .contact-section p {\n  margin: 1px 0px;\n}\n\n#footbar .contact-section .row {\n  margin-bottom: 5px;\n}\n\n#footbar footer.page-footer {\n  padding-top: 0px !important;\n  margin-top: 0px !important;\n}\n\n#footbar .bot-banner {\n  z-index: 100;\n  position: relative;\n  padding: 1vw 0.5vw;\n  box-shadow: inset 0px 5px 12px -7px black, inset 0px -5px 12px -7px black;\n}\n\n#footbar .bot-banner.row {\n  margin-bottom: 5px;\n}\n\n#footbar .bot-banner img {\n  width: 100%;\n  height: 100%;\n}\n\n#footbar .bot-banner .col {\n  padding: 0px 0.5vw;\n}\n\n#footbar .footer-copyright {\n  font-size: 10px;\n  height: 20px;\n  line-height: 20px;\n}\n\n#footbar .footer-copyright a {\n  margin-right: 10px;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 55 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -47364,54 +47532,54 @@
 
 	var _angular2 = _interopRequireDefault(_angular);
 
-	var _home = __webpack_require__(50);
+	var _home = __webpack_require__(56);
 
 	var _home2 = _interopRequireDefault(_home);
 
-	var _about = __webpack_require__(56);
+	var _about = __webpack_require__(62);
 
 	var _about2 = _interopRequireDefault(_about);
 
-	var _documents = __webpack_require__(62);
+	var _documents = __webpack_require__(68);
 
 	var _documents2 = _interopRequireDefault(_documents);
 
-	var _notices = __webpack_require__(68);
+	var _notices = __webpack_require__(74);
 
 	var _notices2 = _interopRequireDefault(_notices);
 
-	var _login = __webpack_require__(74);
+	var _login = __webpack_require__(80);
 
 	var _login2 = _interopRequireDefault(_login);
 
-	var _signup = __webpack_require__(82);
+	var _signup = __webpack_require__(88);
 
 	var _signup2 = _interopRequireDefault(_signup);
 
-	var _adminpanel = __webpack_require__(88);
+	var _adminusers = __webpack_require__(94);
 
-	var _adminpanel2 = _interopRequireDefault(_adminpanel);
+	var _adminusers2 = _interopRequireDefault(_adminusers);
 
-	var _admindocs = __webpack_require__(94);
+	var _admindocs = __webpack_require__(100);
 
 	var _admindocs2 = _interopRequireDefault(_admindocs);
 
-	var _adminnotices = __webpack_require__(100);
+	var _adminnotices = __webpack_require__(106);
 
 	var _adminnotices2 = _interopRequireDefault(_adminnotices);
 
-	var _account = __webpack_require__(106);
+	var _account = __webpack_require__(112);
 
 	var _account2 = _interopRequireDefault(_account);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var componentModule = _angular2.default.module('app.components', [_home2.default, _about2.default.name, _documents2.default, _notices2.default, _login2.default.name, _signup2.default.name, _adminpanel2.default, _admindocs2.default, _adminnotices2.default, _account2.default.name]);
+	var componentModule = _angular2.default.module('app.components', [_home2.default, _about2.default.name, _documents2.default, _notices2.default, _login2.default.name, _signup2.default.name, _adminusers2.default, _admindocs2.default, _adminnotices2.default, _account2.default.name]);
 
 	exports.default = componentModule;
 
 /***/ },
-/* 50 */
+/* 56 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -47428,7 +47596,7 @@
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _home = __webpack_require__(51);
+	var _home = __webpack_require__(57);
 
 	var _home2 = _interopRequireDefault(_home);
 
@@ -47447,7 +47615,7 @@
 	exports.default = homeModule;
 
 /***/ },
-/* 51 */
+/* 57 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -47456,15 +47624,15 @@
 	    value: true
 	});
 
-	var _home = __webpack_require__(52);
+	var _home = __webpack_require__(58);
 
 	var _home2 = _interopRequireDefault(_home);
 
-	var _home3 = __webpack_require__(53);
+	var _home3 = __webpack_require__(59);
 
 	var _home4 = _interopRequireDefault(_home3);
 
-	__webpack_require__(54);
+	__webpack_require__(60);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -47476,13 +47644,13 @@
 	exports.default = homeComponent;
 
 /***/ },
-/* 52 */
+/* 58 */
 /***/ function(module, exports) {
 
 	module.exports = "<div id=\"home\">\n    <div class=\"top-banner parallax-container\">\n        <div parallax>\n            <img src=\"image01.jpg\">\n        </div>\n    </div>\n    <div class=\"mid-banner row\">\n        <div class=\"section orange lighten-4\">\n            <div class=\"col s12 m12 l6 offset-l3\">\n                <div class=\"icon-block orange lighten-5 z-depth-1\">\n                    <h3 class=\"icon center orange-text\"><i class=\"material-icons\">wb_sunny</i></h3>\n                    <h5 class=\"center\">Welcome to the website for Royal Poinciana at Boca Raton</h5>\n                    <p class=\"center light\">Residents, please log in to view notices and download documents.</p>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n"
 
 /***/ },
-/* 53 */
+/* 59 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -47505,143 +47673,6 @@
 	};
 
 	exports.default = HomeController;
-
-/***/ },
-/* 54 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(55);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(42)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(true) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept(55, function() {
-				var newContent = __webpack_require__(55);
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 55 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(41)();
-	// imports
-
-
-	// module
-	exports.push([module.id, "#home .parallax-container {\n  height: 500px;\n}\n\n#home .mid-banner {\n  z-index: 100;\n  position: relative;\n  box-shadow: 0px -10px 24px -19px black;\n}\n\n#home .mid-banner .row {\n  margin: 10px 0px;\n}\n\n#home .icon-block {\n  padding: 1px 15px;\n  border-radius: 20px;\n}\n\n#home .icon-block .icon {\n  margin: 1.0vw 0 0 0;\n}\n\n#home .icon-block .material-icons {\n  font-size: inherit;\n}\n", ""]);
-
-	// exports
-
-
-/***/ },
-/* 56 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _angular = __webpack_require__(3);
-
-	var _angular2 = _interopRequireDefault(_angular);
-
-	var _angularUiRouter = __webpack_require__(2);
-
-	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
-
-	var _about = __webpack_require__(57);
-
-	var _about2 = _interopRequireDefault(_about);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var aboutModule = _angular2.default.module('about', [_angularUiRouter2.default]).config(function ($stateProvider) {
-	  'ngInject';
-
-	  $stateProvider.state('about', {
-	    url: '/about',
-	    template: '<about></about>'
-	  });
-	}).component('about', _about2.default);
-
-	exports.default = aboutModule;
-
-/***/ },
-/* 57 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _about = __webpack_require__(58);
-
-	var _about2 = _interopRequireDefault(_about);
-
-	var _about3 = __webpack_require__(59);
-
-	var _about4 = _interopRequireDefault(_about3);
-
-	__webpack_require__(60);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var aboutComponent = {
-	  template: _about2.default,
-	  controller: _about4.default
-	};
-
-	// function aboutComponentLink() {}
-
-	exports.default = aboutComponent;
-
-/***/ },
-/* 58 */
-/***/ function(module, exports) {
-
-	module.exports = "<div id=\"about\">\n    <div class=\"top-banner row orange lighten-5 valign-wrapper\">\n        <div class=\"slider-container col s12 m6 l8\">\n            <div class=\"slider\" height=\"575\" slider>\n                <ul class=\"slides z-depth-2\">\n                    <li ng-repeat=\"slide in $ctrl.slideshow\">\n                        <img ng-src=\"{{slide.imagePath}}\">\n                    </li>\n                </ul>\n            </div>\n        </div>\n        <div class=\"desc-container col s12 m6 l4\">\n            <div class=\"section valign\">\n                <p><strong><large>Royal Poinciana at Boca Raton</large></strong> is a gorgeous new construction luxury gated community with an incredible East Boca Raton location. The community was built in 2007 and offers features including:\n                </p>\n                <ul class=\"browser-default\">\n                    <li>\n                        Full-size two-car garages\n                    </li>\n                    <li>\n                        Resort style pool and sundeck\n                    </li>\n                    <li>\n                        Hurricane impact resistant glass windows and doors\n                    </li>\n                    <li>\n                        Spanish Colonial inspired architecture\n                    </li>\n                    <li>\n                        Paved brick walkways, driveways, and sidewalks\n                    </li>\n                    <li>\n                        \"Old World\" tile roofs\n                    </li>\n                    <li>\n                        Monterrey styled balconies\n                    </li>\n                </ul>\n                <p>\n                    There are five unique floor plans available, with 3 or 4 bedrooms and sizes ranging from 1,900 square feet to over 2,400 square feet. The spacious interiors offer high-end finishes including marble flooring, plush carpeting, master bathrooms with spa tubs, and kitchens with stainless steel appliances and granite countertops.\n                </p>\n            </div>\n        </div>\n    </div>\n    <div class=\"mid-banner section orange lighten-4 z-depth-2\">\n        <div class=\"row\">\n            <div class=\"col s12 m12 l5\">\n                <img class=\"satellite-image z-depth-2\" src=\"https://maps.googleapis.com/maps/api/staticmap?center=26.418434,-80.0791000&zoom=18&size=570x300&scale=2&maptype=satellite&key=AIzaSyCaVRZkPN8W_isThefbYm_FDfmAeW4zFb4\">\n            </div>\n            <div class=\"col s12 m12 l2\">\n                <div class=\"icon-block orange lighten-5 z-depth-2\">\n                    <h3 class=\"icon center orange-text\"><i class=\"material-icons\">map</i></h3>\n                    <p class=\"center\">Our community is conveniently located on Hidden Valley Blvd, just west of Dixie Highway</p>\n                </div>\n            </div>\n            <div class=\"col s12 m12 l5\">\n                <img class=\"z-depth-2\" src=\"https://maps.googleapis.com/maps/api/staticmap?center=26.418434,-80.0791000&zoom=13&size=570x300&scale=2&maptype=roadmap&markers=color:red%7C26.418434,-80.0791000&key=AIzaSyCaVRZkPN8W_isThefbYm_FDfmAeW4zFb4\">\n            </div>\n        </div>\n    </div>\n</div>\n"
-
-/***/ },
-/* 59 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _classCallCheck2 = __webpack_require__(19);
-
-	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var AboutController = function AboutController() {
-	  (0, _classCallCheck3.default)(this, AboutController);
-
-	  this.name = 'about';
-	  this.slideshow = [{ imagePath: 'image02.jpg' }, { imagePath: 'image03.jpg' }, { imagePath: 'image04.jpg' }, { imagePath: 'image05.jpg' }, { imagePath: 'image06.jpg' }, { imagePath: 'image07.jpg' }, { imagePath: 'image08.jpg' }];
-	};
-
-	exports.default = AboutController;
 
 /***/ },
 /* 60 */
@@ -47678,7 +47709,7 @@
 
 
 	// module
-	exports.push([module.id, "#about .row {\n  margin-bottom: 0px;\n}\n\n#about .icon-block {\n  padding: 1px 15px;\n  border-radius: 20px;\n}\n\n#about .icon-block .icon {\n  margin: 1vw 0 0 0;\n}\n\n#about .icon-block .material-icons {\n  font-size: inherit;\n}\n\n#about .slider-container {\n  padding: 0px;\n}\n\n#about .top-banner .desc-container {\n  padding: 0vw 2vw;\n}\n\n#about .mid-banner {\n  z-index: 100;\n  position: relative;\n  box-shadow: 0px -5px 12px -7px black;\n}\n\n#about .mid-banner .col {\n  margin-bottom: 10px;\n}\n\n#about .mid-banner .row {\n  margin: 10px 0px;\n}\n\n#about .mid-banner img {\n  width: 100%;\n  height: 100%;\n}\n\n#about .mid-banner .satellite-image {\n  -webkit-filter: brightness(1.4) saturate(1.7) contrast(1.1);\n          filter: brightness(1.4) saturate(1.7) contrast(1.1);\n}\n\n#about .slider .indicators {\n  margin: 5px 0px;\n}\n\n#about .indicator-item {\n  border: 1px solid gray;\n  background-color: #ffe0b2;\n}\n\n#about .indicator-item.active {\n  background-color: #ff9100;\n}\n", ""]);
+	exports.push([module.id, "#home .parallax-container {\n  height: 500px;\n}\n\n#home .mid-banner {\n  z-index: 100;\n  position: relative;\n  box-shadow: 0px -10px 24px -19px black;\n}\n\n#home .mid-banner .row {\n  margin: 10px 0px;\n}\n\n#home .icon-block {\n  padding: 1px 15px;\n  border-radius: 20px;\n}\n\n#home .icon-block .icon {\n  margin: 1.0vw 0 0 0;\n}\n\n#home .icon-block .material-icons {\n  font-size: inherit;\n}\n", ""]);
 
 	// exports
 
@@ -47701,11 +47732,148 @@
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _documents = __webpack_require__(63);
+	var _about = __webpack_require__(63);
+
+	var _about2 = _interopRequireDefault(_about);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var aboutModule = _angular2.default.module('about', [_angularUiRouter2.default]).config(function ($stateProvider) {
+	  'ngInject';
+
+	  $stateProvider.state('about', {
+	    url: '/about',
+	    template: '<about></about>'
+	  });
+	}).component('about', _about2.default);
+
+	exports.default = aboutModule;
+
+/***/ },
+/* 63 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _about = __webpack_require__(64);
+
+	var _about2 = _interopRequireDefault(_about);
+
+	var _about3 = __webpack_require__(65);
+
+	var _about4 = _interopRequireDefault(_about3);
+
+	__webpack_require__(66);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var aboutComponent = {
+	  template: _about2.default,
+	  controller: _about4.default
+	};
+
+	// function aboutComponentLink() {}
+
+	exports.default = aboutComponent;
+
+/***/ },
+/* 64 */
+/***/ function(module, exports) {
+
+	module.exports = "<div id=\"about\">\n    <div class=\"top-banner row orange lighten-5 valign-wrapper\">\n        <div class=\"slider-container col s12 m6 l8\">\n            <div class=\"slider\" height=\"575\" slider>\n                <ul class=\"slides z-depth-2\">\n                    <li ng-repeat=\"slide in $ctrl.slideshow\">\n                        <img ng-src=\"{{slide.imagePath}}\">\n                    </li>\n                </ul>\n            </div>\n        </div>\n        <div class=\"desc-container col s12 m6 l4\">\n            <div class=\"section valign\">\n                <p><strong><large>Royal Poinciana at Boca Raton</large></strong> is a gorgeous new construction luxury gated community with an incredible East Boca Raton location. The community was built in 2007 and offers features including:\n                </p>\n                <ul class=\"browser-default\">\n                    <li>\n                        Full-size two-car garages\n                    </li>\n                    <li>\n                        Resort style pool and sundeck\n                    </li>\n                    <li>\n                        Hurricane impact resistant glass windows and doors\n                    </li>\n                    <li>\n                        Spanish Colonial inspired architecture\n                    </li>\n                    <li>\n                        Paved brick walkways, driveways, and sidewalks\n                    </li>\n                    <li>\n                        \"Old World\" tile roofs\n                    </li>\n                    <li>\n                        Monterrey styled balconies\n                    </li>\n                </ul>\n                <p>\n                    There are five unique floor plans available, with 3 or 4 bedrooms and sizes ranging from 1,900 square feet to over 2,400 square feet. The spacious interiors offer high-end finishes including marble flooring, plush carpeting, master bathrooms with spa tubs, and kitchens with stainless steel appliances and granite countertops.\n                </p>\n            </div>\n        </div>\n    </div>\n    <div class=\"mid-banner section orange lighten-4 z-depth-2\">\n        <div class=\"row\">\n            <div class=\"col s12 m12 l5\">\n                <img class=\"satellite-image z-depth-2\" src=\"https://maps.googleapis.com/maps/api/staticmap?center=26.418434,-80.0791000&zoom=18&size=570x300&scale=2&maptype=satellite&key=AIzaSyCaVRZkPN8W_isThefbYm_FDfmAeW4zFb4\">\n            </div>\n            <div class=\"col s12 m12 l2\">\n                <div class=\"icon-block orange lighten-5 z-depth-2\">\n                    <h3 class=\"icon center orange-text\"><i class=\"material-icons\">map</i></h3>\n                    <p class=\"center\">Our community is conveniently located on Hidden Valley Blvd, just west of Dixie Highway</p>\n                </div>\n            </div>\n            <div class=\"col s12 m12 l5\">\n                <img class=\"z-depth-2\" src=\"https://maps.googleapis.com/maps/api/staticmap?center=26.418434,-80.0791000&zoom=13&size=570x300&scale=2&maptype=roadmap&markers=color:red%7C26.418434,-80.0791000&key=AIzaSyCaVRZkPN8W_isThefbYm_FDfmAeW4zFb4\">\n            </div>\n        </div>\n    </div>\n</div>\n"
+
+/***/ },
+/* 65 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _classCallCheck2 = __webpack_require__(19);
+
+	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var AboutController = function AboutController() {
+	  (0, _classCallCheck3.default)(this, AboutController);
+
+	  this.name = 'about';
+	  this.slideshow = [{ imagePath: 'image02.jpg' }, { imagePath: 'image03.jpg' }, { imagePath: 'image04.jpg' }, { imagePath: 'image05.jpg' }, { imagePath: 'image06.jpg' }, { imagePath: 'image07.jpg' }, { imagePath: 'image08.jpg' }];
+	};
+
+	exports.default = AboutController;
+
+/***/ },
+/* 66 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(67);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(42)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(true) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept(67, function() {
+				var newContent = __webpack_require__(67);
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 67 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(41)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "#about .row {\n  margin-bottom: 0px;\n}\n\n#about .icon-block {\n  padding: 1px 15px;\n  border-radius: 20px;\n}\n\n#about .icon-block .icon {\n  margin: 1vw 0 0 0;\n}\n\n#about .icon-block .material-icons {\n  font-size: inherit;\n}\n\n#about .slider-container {\n  padding: 0px;\n}\n\n#about .top-banner .desc-container {\n  padding: 0vw 2vw;\n}\n\n#about .mid-banner {\n  z-index: 100;\n  position: relative;\n  box-shadow: 0px -5px 12px -7px black;\n}\n\n#about .mid-banner .col {\n  margin-bottom: 10px;\n}\n\n#about .mid-banner .row {\n  margin: 10px 0px;\n}\n\n#about .mid-banner img {\n  width: 100%;\n  height: 100%;\n}\n\n#about .mid-banner .satellite-image {\n  -webkit-filter: brightness(1.4) saturate(1.7) contrast(1.1);\n          filter: brightness(1.4) saturate(1.7) contrast(1.1);\n}\n\n#about .slider .indicators {\n  margin: 5px 0px;\n}\n\n#about .indicator-item {\n  border: 1px solid gray;\n  background-color: #ffe0b2;\n}\n\n#about .indicator-item.active {\n  background-color: #ff9100;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 68 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _angular = __webpack_require__(3);
+
+	var _angular2 = _interopRequireDefault(_angular);
+
+	var _angularUiRouter = __webpack_require__(2);
+
+	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
+
+	var _documents = __webpack_require__(69);
 
 	var _documents2 = _interopRequireDefault(_documents);
 
-	var _documents3 = __webpack_require__(67);
+	var _documents3 = __webpack_require__(73);
 
 	var _documents4 = _interopRequireDefault(_documents3);
 
@@ -47736,7 +47904,7 @@
 	exports.default = DocumentsModule;
 
 /***/ },
-/* 63 */
+/* 69 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -47749,11 +47917,11 @@
 
 	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
 
-	var _documents = __webpack_require__(64);
+	var _documents = __webpack_require__(70);
 
 	var _documents2 = _interopRequireDefault(_documents);
 
-	__webpack_require__(65);
+	__webpack_require__(71);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -47775,191 +47943,10 @@
 	exports.default = DocumentsComponent;
 
 /***/ },
-/* 64 */
-/***/ function(module, exports) {
-
-	module.exports = "<div class=\"documents\" id=\"documents\">\n    <div class=\"row pageTitle\">\n        <div class=\"top-banner orange lighten-5\">\n            <h4 class=\"center page-title\">Community Documents</h4>\n        </div>\n    </div>\n    <div class=\"row pageContent\">\n        <div class=\"col s12 m12 l12\">\n            <table class=\"bordered\">\n                <thead>\n                    <tr>\n                        <th>Document Name</th>\n                        <th class=\"center\">Description</th>\n                        <th></th>\n                    </tr>\n                </thead>\n                <tbody>\n                    <tr ng-repeat=\"doc in $ctrl.documentList\">\n                        <td>\n                            <span>{{doc.name}}</span>\n                        </td>\n                        <td>\n                            <span>{{doc.desc}}</span>\n                        </td>\n                        <td>\n                            <a class=\"btn waves-effect waves-light green darken-3\" ng-href=\"/documents/download/{{doc.name}}\" target=\"_self\">Download</a>\n                        </td>\n                    </tr>\n                </tbody>\n            </table>\n        </div>\n    </div>\n</div>\n"
-
-/***/ },
-/* 65 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(66);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(42)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(true) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept(66, function() {
-				var newContent = __webpack_require__(66);
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 66 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(41)();
-	// imports
-
-
-	// module
-	exports.push([module.id, "#documents .top-banner {\n  padding: 5px;\n}\n\n#documents .pageContent {\n  margin-top: -20px;\n  box-shadow: 0px -5px 12px -7px black;\n}\n\n#documents .form-container {\n  opacity: 1.0;\n  border-radius: 20px;\n  padding: 0vw 2vw;\n}\n", ""]);
-
-	// exports
-
-
-/***/ },
-/* 67 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _classCallCheck2 = __webpack_require__(19);
-
-	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-
-	var _createClass2 = __webpack_require__(20);
-
-	var _createClass3 = _interopRequireDefault(_createClass2);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var DocumentsService = function () {
-	  function DocumentsService($http) {
-	    'ngInject';
-
-	    (0, _classCallCheck3.default)(this, DocumentsService);
-	    this.name = 'DocumentsService';
-	    this.$http = $http;
-	  }
-
-	  (0, _createClass3.default)(DocumentsService, [{
-	    key: 'getDocList',
-	    value: function getDocList() {
-	      return this.$http.get('/documents').then(function (response) {
-	        console.log(response.data.docs);
-	        return response.data.docs;
-	      }).catch(function (response) {
-	        console.error('getDocList error: ', response.data);
-	      });
-	    }
-	  }]);
-	  return DocumentsService;
-	}();
-
-	exports.default = DocumentsService;
-
-/***/ },
-/* 68 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _angular = __webpack_require__(3);
-
-	var _angular2 = _interopRequireDefault(_angular);
-
-	var _angularUiRouter = __webpack_require__(2);
-
-	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
-
-	var _notices = __webpack_require__(69);
-
-	var _notices2 = _interopRequireDefault(_notices);
-
-	var _notices3 = __webpack_require__(73);
-
-	var _notices4 = _interopRequireDefault(_notices3);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var NoticesModule = _angular2.default.module('notices', [_angularUiRouter2.default]).config(function ($stateProvider) {
-	  'ngInject';
-
-	  $stateProvider.state('notices', {
-	    url: '/notices',
-	    component: 'notices',
-	    resolve: {
-	      noticesService: 'NoticesService',
-	      noticeList: function noticeList(NoticesService) {
-	        return NoticesService.getNoticeList();
-	      },
-	      loginRequired: loginRequired }
-	  });
-
-	  function loginRequired($state, $auth) {
-	    if (!$auth.isAuthenticated()) {
-	      $state.go('/login');
-	    }
-	  }
-	}).component('notices', _notices2.default).service('NoticesService', _notices4.default).name;
-
-	exports.default = NoticesModule;
-
-/***/ },
-/* 69 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _classCallCheck2 = __webpack_require__(19);
-
-	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-
-	var _notices = __webpack_require__(70);
-
-	var _notices2 = _interopRequireDefault(_notices);
-
-	__webpack_require__(71);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var NoticesComponent = {
-	  bindings: {
-	    noticeList: '<'
-	  },
-	  template: _notices2.default,
-	  controller: function NoticesComponent($state, NoticesService) {
-	    'ngInject';
-
-	    (0, _classCallCheck3.default)(this, NoticesComponent);
-	    this.name = 'notices';
-	    this.$state = $state;
-	    this.NoticesService = NoticesService;
-	  }
-	};
-
-	exports.default = NoticesComponent;
-
-/***/ },
 /* 70 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"notices\" id=\"notices\">\n    <div class=\"row pageTitle\">\n        <div class=\"top-banner orange lighten-5\">\n            <h4 class=\"center page-title\">Notices</h4>\n        </div>\n    </div>\n    <div class=\"row pageContent\">\n        <div class=\"container section\">\n            <div ng-repeat=\"notice in $ctrl.noticeList\">\n                <div class=\"row noticeContainer orange lighten-5 col s12 m12 l12 z-depth-2\">\n                    <h5>{{notice.title}}</h5>\n                    <div class=\"timestamp\">{{notice.timestamp}}</div>\n                    <hr>\n                    <div class=\"noticeText\" ng-bind-html=\"notice.noticeContent\"></div>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n"
+	module.exports = "<div class=\"documents\" id=\"documents\">\n    <div class=\"row pageTitle\">\n        <div class=\"top-banner orange lighten-5\">\n            <h4 class=\"center page-title\">Community Documents</h4>\n        </div>\n    </div>\n    <div class=\"row pageContent\">\n        <div class=\"row\">\n            <div class=\"col s12 m12 l12\">\n                <ul tabs reload=\"allTabContentLoaded\" class=\"tabs orange lighten-4\">\n                    <li class=\"tab col s2 m2 l2\"><a class=\"active\" href=\"#general\">General</a></li>\n                    <li class=\"tab col s2 m2 l2\"><a class=\"\" href=\"#news\">News</a></li>\n                    <li class=\"tab col s2 m2 l2\"><a class=\"\" href=\"#boardMinutes\">Board Minutes</a></li>\n                    <li class=\"tab col s2 m2 l2\"><a class=\"\" href=\"#financialsAndBudgets\">Financials & Budgets</a></li>\n                    <li class=\"tab col s2 m2 l2\"><a class=\"\" href=\"#delcarationAndCommunityRules\">Declaration & Community Rules</a></li>\n                    <li class=\"blank tab col s2 m2 l2\"><a class=\"blank\"></a></li>\n                </ul>\n            <div class=\"row table-title\">\n                <div class=\"col s3 m3 l3\">\n                    <span>Title</span>\n                </div>\n                <div class=\"col s5 m5 l5\">\n                    <span>Description</span>\n                </div>\n                <div class=\"col s2 m2 l2\">\n                    <span>Date</span>\n                </div>\n                <div class=\"col s2 m2 l2\">\n                    <span>Download</span>\n                </div>\n            </div>\n            </div>\n            <div id=\"general\">\n                <div class=\"col s12 m12 l12\">\n                    <div class=\"row table-cell\" ng-repeat=\"doc in $ctrl.documentList | filter:{category: 'General'}\">\n                        <div class=\"col s3 m3 l3\">\n                            <span>{{doc.title}}</span>\n                        </div>\n                        <div class=\"col s5 m5 l5\">\n                            <span>{{doc.desc}}</span>\n                        </div>\n                        <div class=\"col s2 m2 l2\">\n                            <span>{{doc.displayDate}}</span>\n                        </div>\n                        <div class=\"col s2 m2 l2\">\n                            <a class=\"btn waves-effect waves-light green darken-3\" ng-href=\"/documents/download/{{doc.filename}}\" target=\"_self\">Download</a>\n                        </div>\n                    </div>\n                </div>\n            </div>\n            <div id=\"news\">\n                <div class=\"col s12 m12 l12\">\n                    <div class=\"row table-cell\" ng-repeat=\"doc in $ctrl.documentList | filter:{category: 'News'}\">\n                        <div class=\"col s3 m3 l3\">\n                            <span>{{doc.title}}</span>\n                        </div>\n                        <div class=\"col s5 m5 l5\">\n                            <span>{{doc.desc}}</span>\n                        </div>\n                        <div class=\"col s2 m2 l2\">\n                            <span>{{doc.displayDate}}</span>\n                        </div>\n                        <div class=\"col s2 m2 l2\">\n                            <a class=\"btn waves-effect waves-light green darken-3\" ng-href=\"/documents/download/{{doc.filename}}\" target=\"_self\">Download</a>\n                        </div>\n                    </div>\n                </div>\n            </div>\n            <div id=\"boardMinutes\">\n                <div class=\"col s12 m12 l12\">\n                    <div class=\"row table-cell\" ng-repeat=\"doc in $ctrl.documentList | filter:{category: 'Board Minutes'}\">\n                        <div class=\"col s3 m3 l3\">\n                            <span>{{doc.title}}</span>\n                        </div>\n                        <div class=\"col s5 m5 l5\">\n                            <span>{{doc.desc}}</span>\n                        </div>\n                        <div class=\"col s2 m2 l2\">\n                            <span>{{doc.displayDate}}</span>\n                        </div>\n                        <div class=\"col s2 m2 l2\">\n                            <a class=\"btn waves-effect waves-light green darken-3\" ng-href=\"/documents/download/{{doc.filename}}\" target=\"_self\">Download</a>\n                        </div>\n                    </div>\n                </div>\n            </div>\n            <div id=\"financialsAndBudgets\">\n                <div class=\"col s12 m12 l12\">\n                    <div class=\"row table-cell\" ng-repeat=\"doc in $ctrl.documentList | filter:{category: 'Financials & Budgets'}\">\n                        <div class=\"col s3 m3 l3\">\n                            <span>{{doc.title}}</span>\n                        </div>\n                        <div class=\"col s5 m5 l5\">\n                            <span>{{doc.desc}}</span>\n                        </div>\n                        <div class=\"col s2 m2 l2\">\n                            <span>{{doc.displayDate}}</span>\n                        </div>\n                        <div class=\"col s2 m2 l2\">\n                            <a class=\"btn waves-effect waves-light green darken-3\" ng-href=\"/documents/download/{{doc.filename}}\" target=\"_self\">Download</a>\n                        </div>\n                    </div>\n                </div>\n            </div>\n            <div id=\"delcarationAndCommunityRules\">\n                <div class=\"col s12 m12 l12\">\n                    <div class=\"row table-cell\" ng-repeat=\"doc in $ctrl.documentList | filter:{category: 'Declaration & Community Rules'}\">\n                        <div class=\"col s3 m3 l3\">\n                            <span>{{doc.title}}</span>\n                        </div>\n                        <div class=\"col s5 m5 l5\">\n                            <span>{{doc.desc}}</span>\n                        </div>\n                        <div class=\"col s2 m2 l2\">\n                            <span>{{doc.displayDate}}</span>\n                        </div>\n                        <div class=\"col s2 m2 l2\">\n                            <a class=\"btn waves-effect waves-light green darken-3\" ng-href=\"/documents/download/{{doc.filename}}\" target=\"_self\">Download</a>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n"
 
 /***/ },
 /* 71 */
@@ -47996,13 +47983,204 @@
 
 
 	// module
-	exports.push([module.id, "#notices .top-banner {\n  padding: 5px;\n}\n\n#notices .pageContent {\n  margin-top: -20px;\n  box-shadow: 0px -5px 12px -7px black;\n}\n\n#notices .noticeContainer {\n  border-radius: 10px 10px;\n}\n\n#notices .noticeContainer h5 {\n  text-align: center;\n}\n\n#notices .noticeContainer .timestamp {\n  text-align: center;\n}\n\n#notices .noticeContainer .noticeText {\n  padding-bottom: 10px;\n}\n\n#notices .noticeContainer .noticeText ul {\n  padding-left: 20px;\n  list-style: circle;\n}\n\n#notices .noticeContainer .noticeText ul li {\n  list-style: circle;\n}\n", ""]);
+	exports.push([module.id, "#documents .top-banner {\n  padding: 5px;\n}\n\n#documents .pageContent {\n  margin-top: -20px;\n  box-shadow: 0px -5px 12px -7px black;\n}\n\n#documents .form-container {\n  opacity: 1.0;\n  border-radius: 20px;\n  padding: 0vw 2vw;\n}\n\n#documents .table-title {\n  border-radius: 0px 10px 0px 0px;\n  background-color: #fff3e0;\n  text-align: center;\n  margin-bottom: 0px;\n  font-weight: bold;\n}\n\n#documents .table-title .col {\n  padding: 10px 0;\n  border-bottom: 1px solid grey;\n}\n\n#documents .table-cell {\n  background-color: #fff3e0;\n  margin-bottom: 0px;\n}\n\n#documents .table-cell .btn {\n  padding: 1px;\n  margin-top: 5px;\n  width: 100%;\n}\n\n#documents .table-cell .col {\n  border: 1px grey solid;\n  border-top: none;\n  height: 50px;\n  border-right: none;\n  overflow-wrap: break-word;\n  overflow: hidden;\n}\n\n#documents .table-cell .col:last-child {\n  border-right: 1px grey solid;\n}\n\n#documents .blank {\n  pointer-events: none;\n  display: none;\n}\n\n#documents .tabs {\n  margin-top: 30px;\n}\n\n#documents .tabs .indicator {\n  background-color: orange;\n}\n\n#documents .tabs .tab {\n  border-radius: 100px 100px 0 0;\n  background-color: #fff3e0;\n  border-bottom: 1px orange dashed;\n}\n\n#documents .tabs .tab a {\n  color: black;\n}\n\n#documents .tabs .tab a:hover {\n  color: grey;\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
 /* 73 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _classCallCheck2 = __webpack_require__(19);
+
+	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+	var _createClass2 = __webpack_require__(20);
+
+	var _createClass3 = _interopRequireDefault(_createClass2);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var DocumentsService = function () {
+	  function DocumentsService($http) {
+	    'ngInject';
+
+	    (0, _classCallCheck3.default)(this, DocumentsService);
+	    this.name = 'DocumentsService';
+	    this.$http = $http;
+	  }
+
+	  (0, _createClass3.default)(DocumentsService, [{
+	    key: 'getDocList',
+	    value: function getDocList() {
+	      return this.$http.get('/documents').then(function (response) {
+	        var data = response.data.docs.map(function (cV, i, arr) {
+	          var date = new Date(response.data.docs[0].createdAt);
+	          cV.displayDate = date.toDateString();
+	          return cV;
+	        });
+	        data.sort(function (a, b) {
+	          return a.category > b.category;
+	        });
+	        data.sort(function (a, b) {
+	          return a.dateCreated > b.dateCreated;
+	        });
+	        return data;
+	      }).catch(function (response) {
+	        console.error('getDocList error: ', response.data);
+	      });
+	    }
+	  }]);
+	  return DocumentsService;
+	}();
+
+	exports.default = DocumentsService;
+
+/***/ },
+/* 74 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _angular = __webpack_require__(3);
+
+	var _angular2 = _interopRequireDefault(_angular);
+
+	var _angularUiRouter = __webpack_require__(2);
+
+	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
+
+	var _notices = __webpack_require__(75);
+
+	var _notices2 = _interopRequireDefault(_notices);
+
+	var _notices3 = __webpack_require__(79);
+
+	var _notices4 = _interopRequireDefault(_notices3);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var NoticesModule = _angular2.default.module('notices', [_angularUiRouter2.default]).config(function ($stateProvider) {
+	  'ngInject';
+
+	  $stateProvider.state('notices', {
+	    url: '/notices',
+	    component: 'notices',
+	    resolve: {
+	      noticesService: 'NoticesService',
+	      noticeList: function noticeList(NoticesService) {
+	        return NoticesService.getNoticeList();
+	      },
+	      loginRequired: loginRequired }
+	  });
+
+	  function loginRequired($state, $auth) {
+	    if (!$auth.isAuthenticated()) {
+	      $state.go('/login');
+	    }
+	  }
+	}).component('notices', _notices2.default).service('NoticesService', _notices4.default).name;
+
+	exports.default = NoticesModule;
+
+/***/ },
+/* 75 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _classCallCheck2 = __webpack_require__(19);
+
+	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+	var _notices = __webpack_require__(76);
+
+	var _notices2 = _interopRequireDefault(_notices);
+
+	__webpack_require__(77);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var NoticesComponent = {
+	  bindings: {
+	    noticeList: '<'
+	  },
+	  template: _notices2.default,
+	  controller: function NoticesComponent($state, NoticesService) {
+	    'ngInject';
+
+	    (0, _classCallCheck3.default)(this, NoticesComponent);
+	    this.name = 'notices';
+	    this.$state = $state;
+	    this.NoticesService = NoticesService;
+	  }
+	};
+
+	exports.default = NoticesComponent;
+
+/***/ },
+/* 76 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"notices\" id=\"notices\">\n    <div class=\"row pageTitle\">\n        <div class=\"top-banner orange lighten-5\">\n            <h4 class=\"center page-title\">Notices</h4>\n        </div>\n    </div>\n    <div class=\"row pageContent\">\n        <div class=\"container section\">\n            <div ng-repeat=\"notice in $ctrl.noticeList\">\n                <div class=\"row noticeContainer orange lighten-5 col s12 m12 l12 z-depth-2\">\n                    <h5>{{notice.title}}</h5>\n                    <div class=\"timestamp\">{{notice.timestamp}}</div>\n                    <hr>\n                    <div class=\"noticeText\" ng-bind-html=\"notice.noticeContent\"></div>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n"
+
+/***/ },
+/* 77 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(78);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(42)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(true) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept(78, function() {
+				var newContent = __webpack_require__(78);
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 78 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(41)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "#notices .top-banner {\n  padding: 5px;\n}\n\n#notices .pageContent {\n  margin-top: -20px;\n  box-shadow: 0px -5px 12px -7px black;\n}\n\n#notices .noticeContainer {\n  border-radius: 10px 10px;\n}\n\n#notices .noticeContainer h5 {\n  text-align: center;\n}\n\n#notices .noticeContainer .timestamp {\n  text-align: center;\n}\n\n#notices .noticeContainer .noticeText {\n  padding-bottom: 10px;\n}\n\n#notices .noticeContainer .noticeText ul {\n  padding-left: 20px;\n  list-style: circle;\n}\n\n#notices .noticeContainer .noticeText ul li {\n  list-style: circle;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 79 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48051,7 +48229,7 @@
 	exports.default = NoticesService;
 
 /***/ },
-/* 74 */
+/* 80 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48068,7 +48246,7 @@
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _login = __webpack_require__(75);
+	var _login = __webpack_require__(81);
 
 	var _login2 = _interopRequireDefault(_login);
 
@@ -48093,7 +48271,7 @@
 	exports.default = loginModule;
 
 /***/ },
-/* 75 */
+/* 81 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48102,15 +48280,15 @@
 	    value: true
 	});
 
-	var _login = __webpack_require__(76);
+	var _login = __webpack_require__(82);
 
 	var _login2 = _interopRequireDefault(_login);
 
-	var _login3 = __webpack_require__(77);
+	var _login3 = __webpack_require__(83);
 
 	var _login4 = _interopRequireDefault(_login3);
 
-	__webpack_require__(80);
+	__webpack_require__(86);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -48122,13 +48300,13 @@
 	exports.default = loginComponent;
 
 /***/ },
-/* 76 */
+/* 82 */
 /***/ function(module, exports) {
 
 	module.exports = "<div id=\"login\">\n    <div class=\"parallax-container valign-wrapper\">\n        <div class=\"section no-pad-bot\">\n            <div class=\"container\">\n                <div ng-if=\"messages.error\" role=\"alert\" class=\"alert alert-danger\">\n                    <div ng-repeat=\"error in messages.error\">{{error.msg}}</div>\n                </div>\n                <div class=\"row\">\n                    <div class=\"form-container col s8 offset-s2 l4 offset-l4 section orange lighten-5 z-depth-2\">\n                        <form ng-submit=\"$ctrl.login()\">\n                            <div class=\"row\">\n                                <h4 class=\"center\">Log In</h4>\n                                <div class=\"input-field col s12 l12\">\n                                    <label for=\"email\">Email</label>\n                                    <input type=\"email\" name=\"email\" id=\"email\" placeholder=\"Email\" class=\"validate\" ng-model=\"$ctrl.user.email\" autofocus>\n                                </div>\n                                <div class=\"input-field col s12 l12\">\n                                    <label for=\"password\">Password</label>\n                                    <input type=\"password\" name=\"password\" id=\"password\" placeholder=\"Password\" class=\"validate\" ng-model=\"$ctrl.user.password\">\n                                </div>\n                            </div>\n                            <div class=\"row center\">\n                                <button type=\"submit\" class=\"btn waves-effect waves-light\">Log in</button>\n                            </div>\n                            <!-- <div class=\"row center\">\n                                <a ui-sref=\"forgot\">\n                                    <strong>Forgot your password?</strong>\n                                </a>\n                            </div> -->\n                        </form>\n                    </div>\n                </div>\n            </div>\n            <div parallax>\n                <img class=\"top-banner\" src=\"image01.jpg\">\n            </div>\n        </div>\n    </div>\n</div>\n"
 
 /***/ },
-/* 77 */
+/* 83 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48137,7 +48315,7 @@
 	  value: true
 	});
 
-	var _stringify = __webpack_require__(78);
+	var _stringify = __webpack_require__(84);
 
 	var _stringify2 = _interopRequireDefault(_stringify);
 
@@ -48207,13 +48385,13 @@
 	exports.default = LoginController;
 
 /***/ },
-/* 78 */
+/* 84 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = { "default": __webpack_require__(79), __esModule: true };
+	module.exports = { "default": __webpack_require__(85), __esModule: true };
 
 /***/ },
-/* 79 */
+/* 85 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var core  = __webpack_require__(26)
@@ -48223,13 +48401,13 @@
 	};
 
 /***/ },
-/* 80 */
+/* 86 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(81);
+	var content = __webpack_require__(87);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(42)(content, {});
@@ -48238,8 +48416,8 @@
 	if(true) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept(81, function() {
-				var newContent = __webpack_require__(81);
+			module.hot.accept(87, function() {
+				var newContent = __webpack_require__(87);
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -48249,7 +48427,7 @@
 	}
 
 /***/ },
-/* 81 */
+/* 87 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(41)();
@@ -48263,7 +48441,7 @@
 
 
 /***/ },
-/* 82 */
+/* 88 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48280,7 +48458,7 @@
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _signup = __webpack_require__(83);
+	var _signup = __webpack_require__(89);
 
 	var _signup2 = _interopRequireDefault(_signup);
 
@@ -48303,7 +48481,7 @@
 	exports.default = signupModule;
 
 /***/ },
-/* 83 */
+/* 89 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48312,15 +48490,15 @@
 	    value: true
 	});
 
-	var _signup = __webpack_require__(84);
+	var _signup = __webpack_require__(90);
 
 	var _signup2 = _interopRequireDefault(_signup);
 
-	var _signup3 = __webpack_require__(85);
+	var _signup3 = __webpack_require__(91);
 
 	var _signup4 = _interopRequireDefault(_signup3);
 
-	__webpack_require__(86);
+	__webpack_require__(92);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -48332,13 +48510,13 @@
 	exports.default = signupComponent;
 
 /***/ },
-/* 84 */
+/* 90 */
 /***/ function(module, exports) {
 
-	module.exports = "<div id=\"signup\">\n    <div class=\"parallax-container valign-wrapper\">\n        <div class=\"section no-pad-bot\">\n            <div class=\"container\">\n                <div class=\"row\">\n                    <div class=\"form-container col s8 offset-s2 l4 offset-l4 section orange lighten-5 z-depth-2\">\n                        <form ng-submit=\"$ctrl.signup()\">\n                            <div class=\"row\">\n                                <h4 class=\"center\">Create Account</h4>\n                                <div class=\"input-field col s12 l12\">\n                                    <label for=\"name\">Name</label>\n                                    <input type=\"text\" name=\"name\" id=\"name\" class=\"validate\" ng-model=\"$ctrl.user.name\" autofocus required>\n                                </div>\n                                <div class=\"input-field col s12 l12\">\n                                    <label for=\"email\">Email</label>\n                                    <input type=\"email\" name=\"email\" id=\"email\" class=\"validate\" ng-model=\"$ctrl.user.email\" required>\n                                </div>\n                                <div class=\"input-field col s12 l12\">\n                                    <label for=\"password\">Temp Password</label>\n                                    <input type=\"text\" name=\"password\" id=\"password\" class=\"validate\" ng-model=\"$ctrl.user.password\" required>\n                                </div>\n                                <div class=\"input-field col s12 l12\">\n                                    <label for=\"confirm\">Confirm Temp Password</label>\n                                    <input type=\"text\" name=\"confirm\" id=\"confirm\" class=\"validate\" ng-model=\"$ctrl.user.confirm\" required>\n                                </div>\n                            </div>\n                            <div class=\"row center\">\n                                <button type=\"submit\" class=\"btn btn-success center-align center\">Add User</button>\n                            </div>\n                        </form>\n                    </div>\n                </div>\n            </div>\n            <div parallax>\n                <img class=\"top-banner\" src=\"image01.jpg\">\n            </div>\n        </div>\n    </div>\n</div>\n"
+	module.exports = "<adminnavbar></adminnavbar>\n<div id=\"signup\">\n    <div class=\"parallax-container valign-wrapper\">\n        <div class=\"section no-pad-bot\">\n            <div class=\"container\">\n                <div class=\"row\">\n                    <div class=\"form-container col s8 offset-s2 l4 offset-l4 section orange lighten-5 z-depth-2\">\n                        <form ng-submit=\"$ctrl.signup()\">\n                            <div class=\"row\">\n                                <h4 class=\"center\">Create Account</h4>\n                                <div class=\"input-field col s12 l12\">\n                                    <label for=\"name\">Name</label>\n                                    <input type=\"text\" name=\"name\" id=\"name\" class=\"validate\" ng-model=\"$ctrl.user.name\" autofocus required>\n                                </div>\n                                <div class=\"input-field col s12 l12\">\n                                    <label for=\"email\">Email</label>\n                                    <input type=\"email\" name=\"email\" id=\"email\" class=\"validate\" ng-model=\"$ctrl.user.email\" required>\n                                </div>\n                                <div class=\"input-field col s12 l12\">\n                                    <label for=\"password\">Temp Password</label>\n                                    <input type=\"text\" name=\"password\" id=\"password\" class=\"validate\" ng-model=\"$ctrl.user.password\" required>\n                                </div>\n                                <div class=\"input-field col s12 l12\">\n                                    <label for=\"confirm\">Confirm Temp Password</label>\n                                    <input type=\"text\" name=\"confirm\" id=\"confirm\" class=\"validate\" ng-model=\"$ctrl.user.confirm\" required>\n                                </div>\n                            </div>\n                            <div class=\"row center\">\n                                <button type=\"submit\" class=\"btn btn-success center-align center\">Add User</button>\n                            </div>\n                        </form>\n                    </div>\n                </div>\n            </div>\n            <div parallax>\n                <img class=\"top-banner\" src=\"image01.jpg\">\n            </div>\n        </div>\n    </div>\n</div>\n"
 
 /***/ },
-/* 85 */
+/* 91 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48392,13 +48570,13 @@
 	exports.default = SignupController;
 
 /***/ },
-/* 86 */
+/* 92 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(87);
+	var content = __webpack_require__(93);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(42)(content, {});
@@ -48407,8 +48585,8 @@
 	if(true) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept(87, function() {
-				var newContent = __webpack_require__(87);
+			module.hot.accept(93, function() {
+				var newContent = __webpack_require__(93);
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -48418,7 +48596,7 @@
 	}
 
 /***/ },
-/* 87 */
+/* 93 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(41)();
@@ -48432,7 +48610,7 @@
 
 
 /***/ },
-/* 88 */
+/* 94 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48449,26 +48627,26 @@
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _adminpanel = __webpack_require__(89);
+	var _adminusers = __webpack_require__(95);
 
-	var _adminpanel2 = _interopRequireDefault(_adminpanel);
+	var _adminusers2 = _interopRequireDefault(_adminusers);
 
-	var _adminpanel3 = __webpack_require__(93);
+	var _adminusers3 = __webpack_require__(99);
 
-	var _adminpanel4 = _interopRequireDefault(_adminpanel3);
+	var _adminusers4 = _interopRequireDefault(_adminusers3);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var AdminPanelModule = _angular2.default.module('adminpanel', [_angularUiRouter2.default]).config(function ($stateProvider) {
+	var AdminUsersModule = _angular2.default.module('adminusers', [_angularUiRouter2.default]).config(function ($stateProvider) {
 	  'ngInject';
 
-	  $stateProvider.state('adminpanel', {
-	    url: '/adminpanel',
-	    component: 'adminpanel',
+	  $stateProvider.state('adminusers', {
+	    url: '/adminusers',
+	    component: 'adminusers',
 	    resolve: {
-	      adminPanelService: 'AdminPanelService',
-	      userList: function userList(AdminPanelService) {
-	        return AdminPanelService.getUsers();
+	      adminUsersService: 'AdminUsersService',
+	      userList: function userList(AdminUsersService) {
+	        return AdminUsersService.getUsers();
 	      },
 	      loginRequired: loginRequired
 	    }
@@ -48479,12 +48657,12 @@
 	      $state.go('/login');
 	    }
 	  }
-	}).component('adminpanel', _adminpanel2.default).service('AdminPanelService', _adminpanel4.default).name;
+	}).component('adminusers', _adminusers2.default).service('AdminUsersService', _adminusers4.default).name;
 
-	exports.default = AdminPanelModule;
+	exports.default = AdminUsersModule;
 
 /***/ },
-/* 89 */
+/* 95 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48501,36 +48679,36 @@
 
 	var _createClass3 = _interopRequireDefault(_createClass2);
 
-	var _adminpanel = __webpack_require__(90);
+	var _adminusers = __webpack_require__(96);
 
-	var _adminpanel2 = _interopRequireDefault(_adminpanel);
+	var _adminusers2 = _interopRequireDefault(_adminusers);
 
-	__webpack_require__(91);
+	__webpack_require__(97);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var AdminPanelComponent = {
+	var AdminUsersComponent = {
 	  bindings: {
 	    userList: '<'
 	  },
-	  template: _adminpanel2.default,
+	  template: _adminusers2.default,
 	  controller: function () {
-	    function AdminPanelComponent($state, $rootScope, AdminPanelService) {
+	    function AdminUsersComponent($state, $rootScope, AdminUsersService) {
 	      'ngInject';
 
-	      (0, _classCallCheck3.default)(this, AdminPanelComponent);
-	      this.name = 'adminpanel';
+	      (0, _classCallCheck3.default)(this, AdminUsersComponent);
+	      this.name = 'adminusers';
 	      this.$state = $state;
 	      this.$rootScope = $rootScope;
-	      this.AdminPanelService = AdminPanelService;
+	      this.AdminUsersService = AdminUsersService;
 	    }
 
-	    (0, _createClass3.default)(AdminPanelComponent, [{
+	    (0, _createClass3.default)(AdminUsersComponent, [{
 	      key: 'updateUser',
 	      value: function updateUser(user) {
 	        var _this = this;
 
-	        this.AdminPanelService.updateUser(user).then(function (response) {
+	        this.AdminUsersService.updateUser(user).then(function (response) {
 	          var messages = Array.isArray(response.data) ? response.data : [response.data];
 	          for (var i = 0; i < messages.length; i++) {
 	            Materialize.toast(messages[i].msg, 4000, 'green darken-1');
@@ -48548,7 +48726,7 @@
 	      value: function toggleAdmin(user) {
 	        var _this2 = this;
 
-	        this.AdminPanelService.toggleAdmin(user).then(function (response) {
+	        this.AdminUsersService.toggleAdmin(user).then(function (response) {
 	          var messages = Array.isArray(response.data) ? response.data : [response.data];
 	          for (var i = 0; i < messages.length; i++) {
 	            Materialize.toast(messages[i].msg, 4000, 'green darken-1');
@@ -48566,7 +48744,7 @@
 	      value: function deleteUser(user) {
 	        var _this3 = this;
 
-	        this.AdminPanelService.deleteUser(user).then(function (response) {
+	        this.AdminUsersService.deleteUser(user).then(function (response) {
 	          var messages = Array.isArray(response.data) ? response.data : [response.data];
 	          for (var i = 0; i < messages.length; i++) {
 	            Materialize.toast(messages[i].msg, 4000, 'green darken-1');
@@ -48580,26 +48758,26 @@
 	        });
 	      }
 	    }]);
-	    return AdminPanelComponent;
+	    return AdminUsersComponent;
 	  }()
 	};
-	// import controller from './adminpanel.controller';
-	exports.default = AdminPanelComponent;
+	// import controller from './adminusers.controller';
+	exports.default = AdminUsersComponent;
 
 /***/ },
-/* 90 */
+/* 96 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"adminpanel\" id=\"adminpanel\">\n    <div class=\"row\">\n        <div class=\"top-banner orange lighten-5\">\n            <h4 class=\"center page-title\">Users</h4>\n        </div>\n    </div>\n    <div class=\"row z-depth-2\">\n        <table class=\"bordered\">\n            <thead>\n                <tr>\n                    <th>Name</th>\n                    <th>Email</th>\n                    <th></th>\n                </tr>\n            </thead>\n            <tbody>\n                <tr ng-repeat=\"user in $ctrl.userList\">\n                    <td>\n                        <input type=\"text\" name=\"name\" id=\"name\" ng-model=\"user.name\">\n                    </td>\n                    <td>\n                        <input type=\"email\" name=\"email\" id=\"email\" ng-model=\"user.email\">\n                    </td>\n                    <td>\n                        <button class=\"btn waves-effect waves-light green darken-2\" type=\"button\" ng-click=\"$ctrl.updateUser(user)\">Update</button>\n                        <button class=\"btn waves-effect waves-light disabled\" type=\"button\" ng-if=\"(user.isAdmin && user._id === $ctrl.$rootScope.currentUser._id)\">- Admin</button>\n                        <button class=\"btn waves-effect waves-light\" type=\"button\" ng-if=\"user.isAdmin && user._id != $ctrl.$rootScope.currentUser._id\" ng-click=\"$ctrl.toggleAdmin(user)\">- Admin</button>\n                        <button class=\"btn waves-effect waves-light blue darken-2\" type=\"button\" ng-if=\"!user.isAdmin\" ng-click=\"$ctrl.toggleAdmin(user)\">+ Admin</button>\n                        <button class=\"btn waves-effect waves-light red darken-3\" type=\"button\" ng-click=\"$ctrl.deleteUser(user)\">Remove</button>\n                    </td>\n                </tr>\n            </tbody>\n        </table>\n    </div>\n    <!-- </div> -->\n</div>\n"
+	module.exports = "<adminnavbar></adminnavbar>\n<div class=\"adminusers\" id=\"adminusers\">\n    <div class=\"row\">\n        <div class=\"top-banner orange lighten-5\">\n            <h4 class=\"center page-title\">Users</h4>\n        </div>\n    </div>\n    <div class=\"row z-depth-2\">\n        <table class=\"bordered\">\n            <thead>\n                <tr>\n                    <th>Name</th>\n                    <th>Email</th>\n                    <th></th>\n                </tr>\n            </thead>\n            <tbody>\n                <tr ng-repeat=\"user in $ctrl.userList\">\n                    <td>\n                        <input type=\"text\" name=\"name\" id=\"name\" ng-model=\"user.name\">\n                    </td>\n                    <td>\n                        <input type=\"email\" name=\"email\" id=\"email\" ng-model=\"user.email\">\n                    </td>\n                    <td>\n                        <button class=\"btn waves-effect waves-light green darken-2\" type=\"button\" ng-click=\"$ctrl.updateUser(user)\">Update</button>\n                        <button class=\"btn waves-effect waves-light disabled\" type=\"button\" ng-if=\"(user.isAdmin && user._id === $ctrl.$rootScope.currentUser._id)\">- Admin</button>\n                        <button class=\"btn waves-effect waves-light\" type=\"button\" ng-if=\"user.isAdmin && user._id != $ctrl.$rootScope.currentUser._id\" ng-click=\"$ctrl.toggleAdmin(user)\">- Admin</button>\n                        <button class=\"btn waves-effect waves-light blue darken-2\" type=\"button\" ng-if=\"!user.isAdmin\" ng-click=\"$ctrl.toggleAdmin(user)\">+ Admin</button>\n                        <button class=\"btn waves-effect waves-light red darken-3\" type=\"button\" ng-click=\"$ctrl.deleteUser(user)\">Remove</button>\n                    </td>\n                </tr>\n            </tbody>\n        </table>\n    </div>\n    <!-- </div> -->\n</div>\n"
 
 /***/ },
-/* 91 */
+/* 97 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(92);
+	var content = __webpack_require__(98);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(42)(content, {});
@@ -48608,8 +48786,8 @@
 	if(true) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept(92, function() {
-				var newContent = __webpack_require__(92);
+			module.hot.accept(98, function() {
+				var newContent = __webpack_require__(98);
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -48619,7 +48797,7 @@
 	}
 
 /***/ },
-/* 92 */
+/* 98 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(41)();
@@ -48627,13 +48805,13 @@
 
 
 	// module
-	exports.push([module.id, "#adminpanel .btn {\n  padding: 0 0.5rem;\n}\n\n#adminpanel .row {\n  margin-bottom: 0px;\n}\n\n#adminpanel .top-banner {\n  padding: 5px;\n}\n", ""]);
+	exports.push([module.id, "#adminusers .btn {\n  padding: 0 0.5rem;\n}\n\n#adminusers .row {\n  margin-bottom: 0px;\n}\n\n#adminusers .top-banner {\n  padding: 5px;\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 93 */
+/* 99 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48652,16 +48830,16 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var AdminPanelService = function () {
-	  function AdminPanelService($http) {
+	var AdminUsersService = function () {
+	  function AdminUsersService($http) {
 	    'ngInject';
 
-	    (0, _classCallCheck3.default)(this, AdminPanelService);
-	    this.name = 'AdminPanelService';
+	    (0, _classCallCheck3.default)(this, AdminUsersService);
+	    this.name = 'AdminUsersService';
 	    this.$http = $http;
 	  }
 
-	  (0, _createClass3.default)(AdminPanelService, [{
+	  (0, _createClass3.default)(AdminUsersService, [{
 	    key: 'getUsers',
 	    value: function getUsers() {
 	      return this.$http.get('/admin/users').then(function (response) {
@@ -48686,13 +48864,13 @@
 	      return this.$http.delete('/admin/users/delete/' + user._id);
 	    }
 	  }]);
-	  return AdminPanelService;
+	  return AdminUsersService;
 	}();
 
-	exports.default = AdminPanelService;
+	exports.default = AdminUsersService;
 
 /***/ },
-/* 94 */
+/* 100 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48709,11 +48887,11 @@
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _admindocs = __webpack_require__(95);
+	var _admindocs = __webpack_require__(101);
 
 	var _admindocs2 = _interopRequireDefault(_admindocs);
 
-	var _admindocs3 = __webpack_require__(99);
+	var _admindocs3 = __webpack_require__(105);
 
 	var _admindocs4 = _interopRequireDefault(_admindocs3);
 
@@ -48758,7 +48936,7 @@
 	exports.default = AdminDocsModule;
 
 /***/ },
-/* 95 */
+/* 101 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48775,11 +48953,11 @@
 
 	var _createClass3 = _interopRequireDefault(_createClass2);
 
-	var _admindocs = __webpack_require__(96);
+	var _admindocs = __webpack_require__(102);
 
 	var _admindocs2 = _interopRequireDefault(_admindocs);
 
-	__webpack_require__(97);
+	__webpack_require__(103);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -48842,19 +49020,19 @@
 	exports.default = AdminDocsComponent;
 
 /***/ },
-/* 96 */
+/* 102 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"admindocs\" id=\"admindocs\">\n    <div class=\"row\">\n        <div class=\"top-banner orange lighten-5\">\n            <h4 class=\"center page-title\">Document Management</h4>\n        </div>\n    </div>\n    <div class=\"row uploadform\">\n        <form ng-submit=\"$ctrl.uploadDoc($ctrl.myDoc)\">\n            <div class=\"col s12 m12 l12 container\">\n                <div class=\"file-field input-field\">\n                    <div class=\"btn blue\">\n                        <span>Choose Document</span>\n                        <input type=\"file\" doc-model=\"$ctrl.myDoc.file\" required>\n                    </div>\n                    <div class=\"file-path-wrapper\">\n                        <input class=\"file-path validate\" type=\"text\" required>\n                    </div>\n                </div>\n            </div>\n            <div class=\"col s12 m12 l12 container\">\n                <div class=\"input-field\">\n                    <input id=\"desc\" type=\"text\" ng-model=\"$ctrl.myDoc.desc\">\n                    <label for=\"desc\">Description</label>\n                </div>\n            </div>\n            <div class=\"col s12 m12 l12 container\">\n                <div class=\"row center\">\n                    <button type=\"submit\" class=\"btn-large waves-effect waves-light\">Upload Document</button>\n                </div>\n            </div>\n        </form>\n    </div>\n    <div class=\"row\">\n        <div class=\"col s12 m12 l12\">\n            <table class=\"bordered\">\n                <thead>\n                    <tr>\n                        <th>Document Name</th>\n                        <th>Description</th>\n                        <th></th>\n                    </tr>\n                </thead>\n                <tbody>\n                    <tr ng-repeat=\"doc in $ctrl.documentList\">\n                        <td>\n                            <span>{{doc.name}}</span>\n                        </td>\n                        <td>\n                            <span>{{doc.desc}}</span>\n                        </td>\n                        <td>\n                            <button class=\"btn waves-effect waves-light red darken-3\" type=\"button\" ng-click=\"$ctrl.deleteDoc(doc)\">Delete Document</button>\n                            <a class=\"btn waves-effect waves-light green darken-3\" ng-href=\"/documents/download/{{doc.name}}\" target=\"_self\">Download</a>\n                        </td>\n                    </tr>\n                </tbody>\n            </table>\n        </div>\n    </div>\n</div>\n"
+	module.exports = "<adminnavbar></adminnavbar>\n<div class=\"admindocs\" id=\"admindocs\">\n    <div class=\"row\">\n        <div class=\"top-banner orange lighten-5\">\n            <h4 class=\"center page-title\">Document Management</h4>\n        </div>\n    </div>\n    <div class=\"row uploadform\">\n        <form ng-submit=\"$ctrl.uploadDoc($ctrl.myDoc)\">\n            <div class=\"col s6 m6 l6 container\">\n                <div class=\"input-field\">\n                    <input id=\"title\" type=\"text\" ng-model=\"$ctrl.myDoc.title\">\n                    <label for=\"title\">Title</label>\n                </div>\n            </div>\n            <div class=\"col s6 m6 l6 container\">\n                <div class=\"input-field col s12\">\n                    <select ng-model=\"$ctrl.myDoc.category\" material-select>\n                        <option value=\"\" disabled selected>Choose a category</option>\n                        <option value=\"General\">General</option>\n                        <option value=\"News\">News</option>\n                        <option value=\"Board Minutes\">Board Minutes</option>\n                        <option value=\"Financials & Budgets\">Financials & Budgets</option>\n                        <option value=\"Declaration & Community Rules\">Declaration & Community Rules</option>\n                    </select>\n                </div>\n            </div>\n            <div class=\"col s12 m12 l12 container\">\n                <div class=\"input-field\">\n                    <input id=\"desc\" type=\"text\" ng-model=\"$ctrl.myDoc.desc\">\n                    <label for=\"desc\">Description</label>\n                </div>\n            </div>\n            <div class=\"col s8 m8 l8 container\">\n                <div class=\"file-field input-field\">\n                    <div class=\"btn blue\">\n                        <span>Choose File</span>\n                        <input type=\"file\" doc-model=\"$ctrl.myDoc.file\" required>\n                    </div>\n                    <div class=\"file-path-wrapper\">\n                        <input id=\"file-path\" class=\"file-path validate\" type=\"text\" required>\n                    </div>\n                </div>\n            </div>\n            <div class=\"col s12 m12 l12 container\">\n                <div class=\"row center\">\n                    <button type=\"submit\" class=\"btn-large waves-effect waves-light\">Upload Document</button>\n                </div>\n            </div>\n        </form>\n    </div>\n    <div class=\"row\">\n        <div class=\"col s12 m12 l12\">\n            <div class=\"row table-title\">\n                <div class=\"col s2 m2 l2\">\n                    <span>Category</span>\n                </div>\n                <div class=\"col s2 m2 l2\">\n                    <span>Title</span>\n                </div>\n                <div class=\"col s3 m3 l3\">\n                    <span>Description</span>\n                </div>\n                <div class=\"col s2 m2 l2\">\n                    <span>Date</span>\n                </div>\n                <div class=\"col s1 m1 l1\">\n                    <span>File</span>\n                </div>\n                <div class=\"col s2 m2 l2\">\n                    <span>Actions</span>\n                </div>\n            </div>\n            <div class=\"row table-cell\" ng-repeat=\"doc in $ctrl.documentList\">\n                <div class=\"col s2 m2 l2\">\n                    <span>{{doc.category}}</span>\n                </div>\n                <div class=\"col s2 m2 l2\">\n                    <span>{{doc.title}}</span>\n                </div>\n                <div class=\"col s3 m3 l3\">\n                    <span>{{doc.desc}}</span>\n                </div>\n                <div class=\"col s2 m2 l2\">\n                    <span>{{doc.displayDate}}</span>\n                </div>\n                <div class=\"col s1 m1 l1\">\n                    <span>{{doc.filename}}</span>\n                </div>\n                <div class=\"col s2 m2 l2\">\n                    <button class=\"btn waves-effect waves-light red darken-3\" type=\"button\" ng-click=\"$ctrl.deleteDoc(doc)\">Delete</button>\n                    <a class=\"btn waves-effect waves-light green darken-3\" ng-href=\"/documents/download/{{doc.filename}}\" target=\"_self\">Download</a>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n"
 
 /***/ },
-/* 97 */
+/* 103 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(98);
+	var content = __webpack_require__(104);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(42)(content, {});
@@ -48863,8 +49041,8 @@
 	if(true) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept(98, function() {
-				var newContent = __webpack_require__(98);
+			module.hot.accept(104, function() {
+				var newContent = __webpack_require__(104);
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -48874,7 +49052,7 @@
 	}
 
 /***/ },
-/* 98 */
+/* 104 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(41)();
@@ -48882,13 +49060,13 @@
 
 
 	// module
-	exports.push([module.id, "#admindocs .uploadform {\n  border-bottom: 1px solid gray;\n}\n\n#admindocs .top-banner {\n  padding: 5px;\n}\n\n#admindocs .input-field input {\n  background-color: #fff;\n  border-radius: 4px;\n  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);\n}\n\n#admindocs input[type='text'] {\n  padding-left: 10px;\n}\n\n#admindocs #desc + label {\n  padding-bottom: 5px;\n  padding-left: 10px;\n}\n", ""]);
+	exports.push([module.id, "#admindocs .top-banner {\n  padding: 5px;\n}\n\n#admindocs .uploadform {\n  border-bottom: 1px solid gray;\n}\n\n#admindocs .caret {\n  z-index: 1;\n}\n\n#admindocs li:not(:first-child) span {\n  color: black;\n}\n\n#admindocs .input-field input {\n  background-color: #fff;\n  border-radius: 4px;\n  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);\n}\n\n#admindocs input[type='text'] {\n  padding-left: 10px;\n}\n\n#admindocs #title + label {\n  padding-bottom: 5px;\n  padding-left: 10px;\n}\n\n#admindocs #desc {\n  width: 95%;\n}\n\n#admindocs #desc + label {\n  padding-bottom: 5px;\n  padding-left: 10px;\n}\n\n#admindocs #file-path {\n  background-color: #fff3e0;\n  width: 95%;\n  box-shadow: none;\n}\n\n#admindocs .table-title {\n  text-align: center;\n  margin-bottom: 0px;\n  font-weight: bold;\n}\n\n#admindocs .table-title .col {\n  border: 1px black solid;\n  border-right: none;\n}\n\n#admindocs .table-title .col:last-child {\n  border-right: 1px black solid;\n}\n\n#admindocs .table-cell {\n  margin-bottom: 0px;\n}\n\n#admindocs .table-cell .btn {\n  padding: 1px;\n  margin-top: 5px;\n  width: 100%;\n}\n\n#admindocs .table-cell .col {\n  border: 1px black solid;\n  border-top: none;\n  height: 90px;\n  border-right: none;\n  overflow-wrap: break-word;\n  overflow: hidden;\n}\n\n#admindocs .table-cell .col:last-child {\n  border-right: 1px black solid;\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 99 */
+/* 105 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48920,8 +49098,16 @@
 	    key: 'getDocList',
 	    value: function getDocList() {
 	      return this.$http.get('/admin/documents').then(function (response) {
-	        console.log(response.data.docs);
-	        return response.data.docs;
+	        var data = response.data.docs.map(function (cV, i, arr) {
+	          var date = new Date(response.data.docs[0].createdAt);
+	          cV.displayDate = date.toDateString();
+	          return cV;
+	        });
+
+	        data.sort(function (a, b) {
+	          return a.category > b.category;
+	        });
+	        return data;
 	      }).catch(function (response) {
 	        console.error('getDocList error: ', response.data);
 	      });
@@ -48931,7 +49117,9 @@
 	    value: function uploadDoc(myDoc) {
 	      var fd = new FormData();
 	      fd.append('file', myDoc.file);
+	      fd.append('title', myDoc.title);
 	      fd.append('desc', myDoc.desc);
+	      fd.append('category', myDoc.category);
 
 	      return this.$http.post('/admin/documents/upload', fd, {
 	        transformRequest: angular.identity,
@@ -48947,7 +49135,7 @@
 	  }, {
 	    key: 'deleteDoc',
 	    value: function deleteDoc(doc) {
-	      return this.$http.delete('/admin/documents/delete/' + doc.name);
+	      return this.$http.delete('/admin/documents/delete/' + doc.filename);
 	      // .then(function(response) {
 	      //   return response.data;
 	      // })
@@ -48962,7 +49150,7 @@
 	exports.default = AdminDocsService;
 
 /***/ },
-/* 100 */
+/* 106 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48979,11 +49167,11 @@
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _adminnotices = __webpack_require__(101);
+	var _adminnotices = __webpack_require__(107);
 
 	var _adminnotices2 = _interopRequireDefault(_adminnotices);
 
-	var _adminnotices3 = __webpack_require__(105);
+	var _adminnotices3 = __webpack_require__(111);
 
 	var _adminnotices4 = _interopRequireDefault(_adminnotices3);
 
@@ -49014,7 +49202,7 @@
 	exports.default = AdminNoticesModule;
 
 /***/ },
-/* 101 */
+/* 107 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49031,11 +49219,11 @@
 
 	var _createClass3 = _interopRequireDefault(_createClass2);
 
-	var _adminnotices = __webpack_require__(102);
+	var _adminnotices = __webpack_require__(108);
 
 	var _adminnotices2 = _interopRequireDefault(_adminnotices);
 
-	__webpack_require__(103);
+	__webpack_require__(109);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -49099,19 +49287,19 @@
 	exports.default = AdminNoticesComponent;
 
 /***/ },
-/* 102 */
+/* 108 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"adminnotices\" id=\"adminnotices\">\n    <div class=\"row\">\n        <div class=\"top-banner orange lighten-5\">\n            <h4 class=\"center page-title\">Notice Management</h4>\n        </div>\n    </div>\n    <div class=\"row addForm\">\n        <form ng-submit=\"$ctrl.addNotice($ctrl.notice)\">\n            <div class=\"col s12 m12 l12 container\">\n                <div class=\"input-field\">\n                    <input id=\"title\" type=\"text\" ng-model=\"$ctrl.notice.title\" required>\n                    <label for=\"title\">Notice Title</label>\n                </div>\n            </div>\n            <div class=\"col s12 m12 l12 container\">\n                <div class=\"input-field\">\n                    <trix-editor id=\"noticeContent\" angular-trix ng-model=\"$ctrl.notice.noticeContent\" class=\"trix-content noticeText\" required></trix-editor>\n                </div>\n            </div>\n            <div class=\"col s12 m12 l12 container\">\n                <div class=\"row center\">\n                    <button type=\"submit\" class=\"btn-large waves-effect waves-light\">Post Notice</button>\n                </div>\n            </div>\n        </form>\n    </div>\n    <div class=\"row\">\n        <div class=\"col s12 m12 l12\">\n            <table class=\"bordered\">\n                <thead>\n                    <tr>\n                        <th>Notice Title</th>\n                        <th>Notice Content</th>\n                        <th></th>\n                    </tr>\n                </thead>\n                <tbody>\n                    <tr ng-repeat=\"notice in $ctrl.noticeList\">\n                        <td>\n                            <div>{{notice.title}}\n                        </td>\n                        <td>\n                            <div class=\"noticeText\" ng-bind-html=\"notice.noticeContent\"></div>\n                        </td>\n                        <td>\n                            <button class=\"btn waves-effect waves-light red darken-3\" type=\"button\" ng-click=\"$ctrl.deleteNotice(notice)\">Delete Notice</button>\n                        </td>\n                    </tr>\n                </tbody>\n            </table>\n        </div>\n    </div>\n</div>\n"
+	module.exports = "<adminnavbar></adminnavbar>\n<div class=\"adminnotices\" id=\"adminnotices\">\n    <div class=\"row\">\n        <div class=\"top-banner orange lighten-5\">\n            <h4 class=\"center page-title\">Notice Management</h4>\n        </div>\n    </div>\n    <div class=\"row addForm\">\n        <form ng-submit=\"$ctrl.addNotice($ctrl.notice)\">\n            <div class=\"col s12 m12 l12 container\">\n                <div class=\"input-field\">\n                    <input id=\"title\" type=\"text\" ng-model=\"$ctrl.notice.title\" required>\n                    <label for=\"title\">Notice Title</label>\n                </div>\n            </div>\n            <div class=\"col s12 m12 l12 container\">\n                <div class=\"input-field\">\n                    <trix-editor id=\"noticeContent\" angular-trix ng-model=\"$ctrl.notice.noticeContent\" class=\"trix-content noticeText\" required></trix-editor>\n                </div>\n            </div>\n            <div class=\"col s12 m12 l12 container\">\n                <div class=\"row center\">\n                    <button type=\"submit\" class=\"btn-large waves-effect waves-light\">Post Notice</button>\n                </div>\n            </div>\n        </form>\n    </div>\n    <div class=\"row\">\n        <div class=\"col s12 m12 l12\">\n            <table class=\"bordered\">\n                <thead>\n                    <tr>\n                        <th>Notice Title</th>\n                        <th>Notice Content</th>\n                        <th></th>\n                    </tr>\n                </thead>\n                <tbody>\n                    <tr ng-repeat=\"notice in $ctrl.noticeList\">\n                        <td>\n                            <div>{{notice.title}}\n                        </td>\n                        <td>\n                            <div class=\"noticeText\" ng-bind-html=\"notice.noticeContent\"></div>\n                        </td>\n                        <td>\n                            <button class=\"btn waves-effect waves-light red darken-3\" type=\"button\" ng-click=\"$ctrl.deleteNotice(notice)\">Delete Notice</button>\n                        </td>\n                    </tr>\n                </tbody>\n            </table>\n        </div>\n    </div>\n</div>\n"
 
 /***/ },
-/* 103 */
+/* 109 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(104);
+	var content = __webpack_require__(110);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(42)(content, {});
@@ -49120,8 +49308,8 @@
 	if(true) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept(104, function() {
-				var newContent = __webpack_require__(104);
+			module.hot.accept(110, function() {
+				var newContent = __webpack_require__(110);
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -49131,7 +49319,7 @@
 	}
 
 /***/ },
-/* 104 */
+/* 110 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(41)();
@@ -49145,7 +49333,7 @@
 
 
 /***/ },
-/* 105 */
+/* 111 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49211,7 +49399,7 @@
 	exports.default = AdminNoticesService;
 
 /***/ },
-/* 106 */
+/* 112 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49228,11 +49416,11 @@
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _account = __webpack_require__(107);
+	var _account = __webpack_require__(113);
 
 	var _account2 = _interopRequireDefault(_account);
 
-	var _account3 = __webpack_require__(112);
+	var _account3 = __webpack_require__(118);
 
 	var _account4 = _interopRequireDefault(_account3);
 
@@ -49257,7 +49445,7 @@
 	exports.default = accountModule;
 
 /***/ },
-/* 107 */
+/* 113 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49266,15 +49454,15 @@
 	  value: true
 	});
 
-	var _account = __webpack_require__(108);
+	var _account = __webpack_require__(114);
 
 	var _account2 = _interopRequireDefault(_account);
 
-	var _account3 = __webpack_require__(109);
+	var _account3 = __webpack_require__(115);
 
 	var _account4 = _interopRequireDefault(_account3);
 
-	__webpack_require__(110);
+	__webpack_require__(116);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -49286,13 +49474,13 @@
 	exports.default = accountComponent;
 
 /***/ },
-/* 108 */
+/* 114 */
 /***/ function(module, exports) {
 
 	module.exports = "<div id=\"account\">\n    <div class=\"row\">\n        <div class=\"top-banner orange lighten-5\">\n            <h4 class=\"center page-title\">My Account</h4>\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"mid-banner section orange lighten-4 z-depth-2\">\n            <div class=\"row section\">\n                <div class=\"icon-block col s10 offset-s1 m6 offset-m3 orange lighten-5 z-depth-2\">\n                    <form ng-submit=\"$ctrl.updateAccount()\">\n                        <h5 class=\"center\">Update Email</h5>\n                        <label for=\"email\">Email</label>\n                        <input type=\"email\" name=\"email\" id=\"email\" ng-model=\"$ctrl.account.email\">\n                        <div class=\"center\">\n                            <button type=\"submit\" class=\"btn waves-effect waves-light\">Update Email</button>\n                        </div>\n                    </form>\n                </div>\n            </div>\n            <div class=\"row section\">\n                <div class=\"icon-block col s10 offset-s1 m6 offset-m3 orange lighten-5 z-depth-2\">\n                    <form ng-submit=\"$ctrl.changePassword()\">\n                        <h5 class=\"center\">Change Password</h5>\n                        <label for=\"password\">New Password</label>\n                        <input type=\"password\" name=\"password\" id=\"password\" ng-model=\"$ctrl.account.password\">\n                        <label for=\"confirm\">Confirm New Password</label>\n                        <input type=\"password\" name=\"confirm\" id=\"confirm\" ng-model=\"$ctrl.account.confirm\">\n                        <div class=\"center\">\n                            <button type=\"submit\" class=\"btn waves-effect waves-light\">Change Password</button>\n                        </div>\n                    </form>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n"
 
 /***/ },
-/* 109 */
+/* 115 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49301,7 +49489,7 @@
 	  value: true
 	});
 
-	var _stringify = __webpack_require__(78);
+	var _stringify = __webpack_require__(84);
 
 	var _stringify2 = _interopRequireDefault(_stringify);
 
@@ -49384,13 +49572,13 @@
 	exports.default = AccountController;
 
 /***/ },
-/* 110 */
+/* 116 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(111);
+	var content = __webpack_require__(117);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(42)(content, {});
@@ -49399,8 +49587,8 @@
 	if(true) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept(111, function() {
-				var newContent = __webpack_require__(111);
+			module.hot.accept(117, function() {
+				var newContent = __webpack_require__(117);
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -49410,7 +49598,7 @@
 	}
 
 /***/ },
-/* 111 */
+/* 117 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(41)();
@@ -49424,7 +49612,7 @@
 
 
 /***/ },
-/* 112 */
+/* 118 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49478,7 +49666,7 @@
 	exports.default = AccountService;
 
 /***/ },
-/* 113 */
+/* 119 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49487,11 +49675,11 @@
 	  value: true
 	});
 
-	var _app = __webpack_require__(114);
+	var _app = __webpack_require__(120);
 
 	var _app2 = _interopRequireDefault(_app);
 
-	__webpack_require__(115);
+	__webpack_require__(121);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -49502,19 +49690,19 @@
 	exports.default = AppComponent;
 
 /***/ },
-/* 114 */
+/* 120 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"app\">\n    <navbar></navbar>\n    <main>\n        <div ui-view></div>\n    </main>\n    <footbar></footbar>\n</div>\n"
 
 /***/ },
-/* 115 */
+/* 121 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(116);
+	var content = __webpack_require__(122);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(42)(content, {});
@@ -49523,8 +49711,8 @@
 	if(true) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept(116, function() {
-				var newContent = __webpack_require__(116);
+			module.hot.accept(122, function() {
+				var newContent = __webpack_require__(122);
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -49534,7 +49722,7 @@
 	}
 
 /***/ },
-/* 116 */
+/* 122 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(41)();

@@ -7,8 +7,18 @@ class DocumentsService {
   getDocList() {
     return this.$http.get('/documents')
       .then(function(response) {
-        console.log(response.data.docs);
-        return response.data.docs;
+        let data = response.data.docs.map(function(cV, i, arr) {
+          let date = new Date(response.data.docs[0].createdAt);
+          cV.displayDate = date.toDateString();
+          return cV;
+        })
+        data.sort(function(a, b) {
+          return a.category > b.category;
+        });
+        data.sort(function(a, b) {
+          return a.dateCreated > b.dateCreated;
+        })
+        return data;
       })
       .catch(function(response) {
         console.error('getDocList error: ', response.data);

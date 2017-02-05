@@ -1,16 +1,16 @@
-import AdminPanelModule from './adminpanel'
-import AdminPanelController from './adminpanel.controller';
-import AdminPanelComponent from './adminpanel.component';
-import AdminPanelTemplate from './adminpanel.html';
+import AdminNavbarModule from './adminnavbar'
+import AdminNavbarController from './adminnavbar.controller';
+import AdminNavbarComponent from './adminnavbar.component';
+import AdminNavbarTemplate from './adminnavbar.html';
 
-describe('AdminPanel', () => {
+describe('AdminNavbar', () => {
   let $rootScope, makeController;
 
-  beforeEach(window.module(AdminPanelModule.name));
+  beforeEach(window.module(AdminNavbarModule.name));
   beforeEach(inject((_$rootScope_) => {
     $rootScope = _$rootScope_;
     makeController = () => {
-      return new AdminPanelController();
+      return new AdminNavbarController();
     };
   }));
 
@@ -30,16 +30,16 @@ describe('AdminPanel', () => {
     // template specs
     // tip: use regex to ensure correct bindings are used e.g., {{  }}
     it('has name in template [REMOVE]', () => {
-      expect(AdminPanelTemplate).to.match(/{{\s?vm\.name\s?}}/g);
+      expect(AdminNavbarTemplate).to.match(/{{\s?vm\.name\s?}}/g);
     });
   });
 
   describe('Component', () => {
       // component/directive specs
-      let component = AdminPanelComponent;
+      let component = AdminNavbarComponent;
 
       it('includes the intended template',() => {
-        expect(component.template).to.equal(AdminPanelTemplate);
+        expect(component.template).to.equal(AdminNavbarTemplate);
       });
 
       it('uses `controllerAs` syntax', () => {
@@ -47,7 +47,7 @@ describe('AdminPanel', () => {
       });
 
       it('invokes the right controller', () => {
-        expect(component.controller).to.equal(AdminPanelController);
+        expect(component.controller).to.equal(AdminNavbarController);
       });
   });
 });

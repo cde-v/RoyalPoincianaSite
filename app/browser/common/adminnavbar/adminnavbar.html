@@ -1,0 +1,15 @@
+<!-- <header> -->
+<div id="adminnavbar" class="navbar-fixed adminnavbar">
+    <nav class="z-depth-2">
+        <div class="nav-wrapper orange">
+            <ul id="nav" class="right">
+                <li ng-repeat="option in $ctrl.options" ng-if="(option.authOnly === $ctrl.isAuthenticated() || option.authOnly === 'both') && (option.adminOnly === $ctrl.isAdmin() || option.adminOnly === 'both')">
+                    <a class="black-text" ui-sref="{{option.state}}">
+                        <span>{{option.label}}</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+<!-- </header> -->

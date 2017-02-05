@@ -5,29 +5,120 @@
         </div>
     </div>
     <div class="row pageContent">
-        <div class="col s12 m12 l12">
-            <table class="bordered">
-                <thead>
-                    <tr>
-                        <th>Document Name</th>
-                        <th class="center">Description</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="doc in $ctrl.documentList">
-                        <td>
-                            <span>{{doc.name}}</span>
-                        </td>
-                        <td>
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <ul tabs reload="allTabContentLoaded" class="tabs orange lighten-4">
+                    <li class="tab col s2 m2 l2"><a class="active" href="#general">General</a></li>
+                    <li class="tab col s2 m2 l2"><a class="" href="#news">News</a></li>
+                    <li class="tab col s2 m2 l2"><a class="" href="#boardMinutes">Board Minutes</a></li>
+                    <li class="tab col s2 m2 l2"><a class="" href="#financialsAndBudgets">Financials & Budgets</a></li>
+                    <li class="tab col s2 m2 l2"><a class="" href="#delcarationAndCommunityRules">Declaration & Community Rules</a></li>
+                    <li class="blank tab col s2 m2 l2"><a class="blank"></a></li>
+                </ul>
+            <div class="row table-title">
+                <div class="col s3 m3 l3">
+                    <span>Title</span>
+                </div>
+                <div class="col s5 m5 l5">
+                    <span>Description</span>
+                </div>
+                <div class="col s2 m2 l2">
+                    <span>Date</span>
+                </div>
+                <div class="col s2 m2 l2">
+                    <span>Download</span>
+                </div>
+            </div>
+            </div>
+            <div id="general">
+                <div class="col s12 m12 l12">
+                    <div class="row table-cell" ng-repeat="doc in $ctrl.documentList | filter:{category: 'General'}">
+                        <div class="col s3 m3 l3">
+                            <span>{{doc.title}}</span>
+                        </div>
+                        <div class="col s5 m5 l5">
                             <span>{{doc.desc}}</span>
-                        </td>
-                        <td>
-                            <a class="btn waves-effect waves-light green darken-3" ng-href="/documents/download/{{doc.name}}" target="_self">Download</a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                        </div>
+                        <div class="col s2 m2 l2">
+                            <span>{{doc.displayDate}}</span>
+                        </div>
+                        <div class="col s2 m2 l2">
+                            <a class="btn waves-effect waves-light green darken-3" ng-href="/documents/download/{{doc.filename}}" target="_self">Download</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="news">
+                <div class="col s12 m12 l12">
+                    <div class="row table-cell" ng-repeat="doc in $ctrl.documentList | filter:{category: 'News'}">
+                        <div class="col s3 m3 l3">
+                            <span>{{doc.title}}</span>
+                        </div>
+                        <div class="col s5 m5 l5">
+                            <span>{{doc.desc}}</span>
+                        </div>
+                        <div class="col s2 m2 l2">
+                            <span>{{doc.displayDate}}</span>
+                        </div>
+                        <div class="col s2 m2 l2">
+                            <a class="btn waves-effect waves-light green darken-3" ng-href="/documents/download/{{doc.filename}}" target="_self">Download</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="boardMinutes">
+                <div class="col s12 m12 l12">
+                    <div class="row table-cell" ng-repeat="doc in $ctrl.documentList | filter:{category: 'Board Minutes'}">
+                        <div class="col s3 m3 l3">
+                            <span>{{doc.title}}</span>
+                        </div>
+                        <div class="col s5 m5 l5">
+                            <span>{{doc.desc}}</span>
+                        </div>
+                        <div class="col s2 m2 l2">
+                            <span>{{doc.displayDate}}</span>
+                        </div>
+                        <div class="col s2 m2 l2">
+                            <a class="btn waves-effect waves-light green darken-3" ng-href="/documents/download/{{doc.filename}}" target="_self">Download</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="financialsAndBudgets">
+                <div class="col s12 m12 l12">
+                    <div class="row table-cell" ng-repeat="doc in $ctrl.documentList | filter:{category: 'Financials & Budgets'}">
+                        <div class="col s3 m3 l3">
+                            <span>{{doc.title}}</span>
+                        </div>
+                        <div class="col s5 m5 l5">
+                            <span>{{doc.desc}}</span>
+                        </div>
+                        <div class="col s2 m2 l2">
+                            <span>{{doc.displayDate}}</span>
+                        </div>
+                        <div class="col s2 m2 l2">
+                            <a class="btn waves-effect waves-light green darken-3" ng-href="/documents/download/{{doc.filename}}" target="_self">Download</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="delcarationAndCommunityRules">
+                <div class="col s12 m12 l12">
+                    <div class="row table-cell" ng-repeat="doc in $ctrl.documentList | filter:{category: 'Declaration & Community Rules'}">
+                        <div class="col s3 m3 l3">
+                            <span>{{doc.title}}</span>
+                        </div>
+                        <div class="col s5 m5 l5">
+                            <span>{{doc.desc}}</span>
+                        </div>
+                        <div class="col s2 m2 l2">
+                            <span>{{doc.displayDate}}</span>
+                        </div>
+                        <div class="col s2 m2 l2">
+                            <a class="btn waves-effect waves-light green darken-3" ng-href="/documents/download/{{doc.filename}}" target="_self">Download</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</div>

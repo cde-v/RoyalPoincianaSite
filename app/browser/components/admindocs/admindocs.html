@@ -1,3 +1,4 @@
+<adminnavbar></adminnavbar>
 <div class="admindocs" id="admindocs">
     <div class="row">
         <div class="top-banner orange lighten-5">
@@ -6,21 +7,39 @@
     </div>
     <div class="row uploadform">
         <form ng-submit="$ctrl.uploadDoc($ctrl.myDoc)">
-            <div class="col s12 m12 l12 container">
-                <div class="file-field input-field">
-                    <div class="btn blue">
-                        <span>Choose Document</span>
-                        <input type="file" doc-model="$ctrl.myDoc.file" required>
-                    </div>
-                    <div class="file-path-wrapper">
-                        <input class="file-path validate" type="text" required>
-                    </div>
+            <div class="col s6 m6 l6 container">
+                <div class="input-field">
+                    <input id="title" type="text" ng-model="$ctrl.myDoc.title">
+                    <label for="title">Title</label>
+                </div>
+            </div>
+            <div class="col s6 m6 l6 container">
+                <div class="input-field col s12">
+                    <select ng-model="$ctrl.myDoc.category" material-select>
+                        <option value="" disabled selected>Choose a category</option>
+                        <option value="General">General</option>
+                        <option value="News">News</option>
+                        <option value="Board Minutes">Board Minutes</option>
+                        <option value="Financials & Budgets">Financials & Budgets</option>
+                        <option value="Declaration & Community Rules">Declaration & Community Rules</option>
+                    </select>
                 </div>
             </div>
             <div class="col s12 m12 l12 container">
                 <div class="input-field">
                     <input id="desc" type="text" ng-model="$ctrl.myDoc.desc">
                     <label for="desc">Description</label>
+                </div>
+            </div>
+            <div class="col s8 m8 l8 container">
+                <div class="file-field input-field">
+                    <div class="btn blue">
+                        <span>Choose File</span>
+                        <input type="file" doc-model="$ctrl.myDoc.file" required>
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input id="file-path" class="file-path validate" type="text" required>
+                    </div>
                 </div>
             </div>
             <div class="col s12 m12 l12 container">
@@ -32,29 +51,47 @@
     </div>
     <div class="row">
         <div class="col s12 m12 l12">
-            <table class="bordered">
-                <thead>
-                    <tr>
-                        <th>Document Name</th>
-                        <th>Description</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="doc in $ctrl.documentList">
-                        <td>
-                            <span>{{doc.name}}</span>
-                        </td>
-                        <td>
-                            <span>{{doc.desc}}</span>
-                        </td>
-                        <td>
-                            <button class="btn waves-effect waves-light red darken-3" type="button" ng-click="$ctrl.deleteDoc(doc)">Delete Document</button>
-                            <a class="btn waves-effect waves-light green darken-3" ng-href="/documents/download/{{doc.name}}" target="_self">Download</a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="row table-title">
+                <div class="col s2 m2 l2">
+                    <span>Category</span>
+                </div>
+                <div class="col s2 m2 l2">
+                    <span>Title</span>
+                </div>
+                <div class="col s3 m3 l3">
+                    <span>Description</span>
+                </div>
+                <div class="col s2 m2 l2">
+                    <span>Date</span>
+                </div>
+                <div class="col s1 m1 l1">
+                    <span>File</span>
+                </div>
+                <div class="col s2 m2 l2">
+                    <span>Actions</span>
+                </div>
+            </div>
+            <div class="row table-cell" ng-repeat="doc in $ctrl.documentList">
+                <div class="col s2 m2 l2">
+                    <span>{{doc.category}}</span>
+                </div>
+                <div class="col s2 m2 l2">
+                    <span>{{doc.title}}</span>
+                </div>
+                <div class="col s3 m3 l3">
+                    <span>{{doc.desc}}</span>
+                </div>
+                <div class="col s2 m2 l2">
+                    <span>{{doc.displayDate}}</span>
+                </div>
+                <div class="col s1 m1 l1">
+                    <span>{{doc.filename}}</span>
+                </div>
+                <div class="col s2 m2 l2">
+                    <button class="btn waves-effect waves-light red darken-3" type="button" ng-click="$ctrl.deleteDoc(doc)">Delete</button>
+                    <a class="btn waves-effect waves-light green darken-3" ng-href="/documents/download/{{doc.filename}}" target="_self">Download</a>
+                </div>
+            </div>
         </div>
     </div>
 </div>

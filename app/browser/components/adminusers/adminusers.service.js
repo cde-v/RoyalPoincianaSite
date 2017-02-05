@@ -1,7 +1,7 @@
-class AdminPanelService {
+class AdminUsersService {
   constructor($http) {
     'ngInject';
-    this.name = 'AdminPanelService';
+    this.name = 'AdminUsersService';
     this.$http = $http;
   }
   getUsers() {
@@ -20,4 +20,4 @@ class AdminPanelService {
   }
 }
 
-export default AdminPanelService;
+export default AdminUsersService;

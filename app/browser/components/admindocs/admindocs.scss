@@ -1,9 +1,17 @@
 #admindocs {
+    .top-banner {
+        padding: 5px;
+    }
     .uploadform {
         border-bottom: 1px solid gray;
     }
-    .top-banner {
-        padding: 5px;
+    .caret {
+        z-index: 1;
+    }
+    li:not(:first-child) {
+        span {
+            color: black;
+        }
     }
     .input-field input {
         background-color: #fff;
@@ -13,10 +21,53 @@
     input[type='text'] {
         padding-left: 10px;
     }
-    #desc {
+    #title {
         + label {
             padding-bottom: 5px;
             padding-left: 10px;
+        }
+    }
+    #desc {
+        width: 95%;
+        + label {
+            padding-bottom: 5px;
+            padding-left: 10px;
+        }
+    }
+    #file-path {
+        background-color: #fff3e0;
+        width: 95%;
+        box-shadow: none;
+    }
+    .table-title {
+        text-align: center;
+        margin-bottom: 0px;
+        font-weight: bold;
+        .col {
+            border: 1px black solid;
+            border-right: none;
+        }
+        .col:last-child {
+            border-right: 1px black solid;
+        }
+    }
+    .table-cell {
+        margin-bottom: 0px;
+        .btn {
+            padding: 1px;
+            margin-top: 5px;
+            width: 100%;
+        }
+        .col {
+            border: 1px black solid;
+            border-top: none;
+            height: 90px;
+            border-right: none;
+            overflow-wrap: break-word;
+            overflow: hidden;
+        }
+        .col:last-child {
+            border-right: 1px black solid;
         }
     }
 }
