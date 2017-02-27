@@ -16,7 +16,8 @@ var userSchema = new mongoose.Schema({
   passwordResetToken: String,
   passwordResetExpires: Date,
   ownerOrRenter: String,
-  isAdmin: { type: Boolean, default: false }
+  isAdmin: { type: Boolean, default: false },
+  numVisits: {type: Number, default: 0}
 }, schemaOptions);
 
 userSchema.pre('save', function(next) {
