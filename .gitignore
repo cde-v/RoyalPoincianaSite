@@ -10,9 +10,6 @@ lib-cov
 # Dependency directory
 node_modules
 
-# file uploads
-uploads
-
 # Editor stuff
 .idea
 
