@@ -1,17 +1,19 @@
 let path = require('path');
 let fs = require('fs');
+let AWS = require('aws-sdk');
 var Doc = require('../models/Doc');
 
+AWS.config.update({
+  region: 'us-east-1'
+});
+
+let s3 = new AWS.S3();
+
 exports.downloadDocument = function(req, res, next) {
-  let stream = fs.createReadStream(path.resolve(__dirname, '../../../uploads/' + req.params.docId));
-  let filename = req.params.docId;
-
-  filename = encodeURIComponent(filename);
-
-  res.setHeader('Content-disposition', 'attachment; filename="' + filename + '"');
-  res.setHeader('Content-type', 'application/pdf');
-
-  stream.pipe(res);
+  let params = { Bucket: 'royalpoincianasite', Key: 'uploads/' + req.params.docId };
+  let fileStream = s3.getObject(params).createReadStream();
+  res.attachment(req.params.docId);
+  fileStream.pipe(res);
 };
 
 exports.getDocumentList = function(req, res, next) {

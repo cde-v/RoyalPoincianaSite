@@ -74,8 +74,8 @@ app.use(function(req, res, next) {
 app.get('/documents/download/:docId', documentsRoutes.downloadDocument);
 app.get('/documents', userRoutes.ensureAuthenticated, documentsRoutes.getDocumentList);
 app.get('/admin/documents', userRoutes.ensureAuthenticated, adminRoutes.ensureAdmin, adminRoutes.adminGetDocs);
-app.delete('/admin/documents/delete/:docId', userRoutes.ensureAuthenticated, adminRoutes.ensureAdmin, adminRoutes.adminDeleteDoc);
 app.post('/admin/documents/upload', userRoutes.ensureAuthenticated, adminRoutes.ensureAdmin, adminRoutes.adminSaveDoc, adminRoutes.adminPostDoc);
+app.delete('/admin/documents/delete/:docId', userRoutes.ensureAuthenticated, adminRoutes.ensureAdmin, adminRoutes.adminDeleteDoc);
 app.get('/notices', userRoutes.ensureAuthenticated, noticesRoutes.getNoticeList);
 app.delete('/admin/notices/delete/:noticeId', userRoutes.ensureAuthenticated, adminRoutes.ensureAdmin, adminRoutes.adminDeleteNotice);
 app.post('/admin/notices/add', userRoutes.ensureAuthenticated, adminRoutes.ensureAdmin, adminRoutes.adminPostNotice);

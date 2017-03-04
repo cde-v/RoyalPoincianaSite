@@ -1,19 +1,27 @@
-var async = require('async');
-var crypto = require('crypto');
-var nodemailer = require('nodemailer');
-var jwt = require('jsonwebtoken');
-var moment = require('moment');
-var request = require('request');
-var qs = require('querystring');
+let async = require('async');
+let crypto = require('crypto');
+let nodemailer = require('nodemailer');
+let jwt = require('jsonwebtoken');
+let moment = require('moment');
+let request = require('request');
+let qs = require('querystring');
 let path = require('path');
 let fs = require('fs');
 let multer = require('multer');
-var User = require('../models/User');
-var Doc = require('../models/Doc');
-var Notice = require('../models/Notice');
+let multerS3 = require('multer-storage-s3');
+let AWS = require('aws-sdk');
+let User = require('../models/User');
+let Doc = require('../models/Doc');
+let Notice = require('../models/Notice');
+
+AWS.config.update({
+  region: 'us-east-1'
+});
+
+let s3 = new AWS.S3();
 
 function generateToken(user) {
-  var payload = {
+  let payload = {
     iss: 'my.domain.com',
     sub: user.id,
     iat: moment().unix(),
@@ -137,14 +145,30 @@ exports.adminDeleteUser = function(req, res, next) {
 
 // File upload/storage using multer
 
-let storage = multer.diskStorage({
-  destination: './uploads/',
+let storage = multerS3({
+  destination: function(req, file, cb) {
+    cb(null, 'uploads');
+  },
   filename: function(req, file, cb) {
-    cb(null, file.originalname.replace(path.extname(file.originalname), '') + path.extname(file.originalname))
-  }
-})
+    // cb( null, file.fieldname + '-' + Date.now() );
+    cb(null, file.originalname.replace(path.extname(file.originalname), '') + path.extname(file.originalname));
+  },
+  bucket: 'royalpoincianasite',
+  region: 'us-east-1'
+});
 
 let upload = multer({ storage: storage }).single('file');
+
+exports.adminSaveDoc = function(req, res, next) {
+  upload(req, res, function(err) {
+    if (err) {
+      console.error(err);
+      res.status(500).send({ msg: 'Internal server error.' });
+      return;
+    }
+    next();
+  })
+}
 
 exports.adminPostDoc = function(req, res, next) {
   Doc.findOne({ name: req.file.filename }, function(err, doc) {
@@ -155,7 +179,6 @@ exports.adminPostDoc = function(req, res, next) {
     if (doc) {
       return res.status(400).send({ msg: 'A document already exists with this name.' });
     }
-    console.log('req.body', req.body);
     doc = new Doc({
       title: req.body.title,
       filename: req.file.filename,
@@ -172,14 +195,21 @@ exports.adminPostDoc = function(req, res, next) {
   });
 };
 
-exports.adminSaveDoc = function(req, res, next) {
-  upload(req, res, function(err) {
+exports.adminDeleteDoc = function(req, res, next) {
+  let params = { Bucket: 'royalpoincianasite', Key: 'uploads/' + req.params.docId };
+  s3.deleteObject(params, function(err) {
     if (err) {
       res.status(500).send({ msg: 'Internal server error.' });
       return;
     }
-    next();
-  })
+    Doc.remove({ filename: req.params.docId }, function(err) {
+      if (err) {
+        res.status(500).send({ msg: 'Internal server error.' });
+        return;
+      }
+      res.send({ msg: 'Document has been successfully deleted.' });
+    });
+  });
 };
 
 exports.adminGetDocs = function(req, res, next) {
@@ -192,29 +222,7 @@ exports.adminGetDocs = function(req, res, next) {
       res.status(404).send({ msg: 'Document not found.' });
       return;
     }
-    res.send({ docs: docs, msg: 'Documents found.' });
-  });
-};
-
-exports.adminDeleteDoc = function(req, res, next) {
-  fs.stat('./uploads/' + req.params.docId, function(err, stats) {
-    if (err) {
-      res.status(500).send({ msg: 'Internal server error.' });
-      return;
-    }
-    fs.unlink('./uploads/' + req.params.docId, function(err) {
-      if (err) {
-        res.status(500).send({ msg: 'Internal server error.' });
-        return;
-      }
-      Doc.remove({ filename: req.params.docId }, function(err) {
-        if (err) {
-          res.status(500).send({ msg: 'Internal server error.' });
-          return;
-        }
-        res.send({ msg: 'Document has been successfully deleted.' });
-      });
-    });
+    res.send({ docs: docs, msg: 'Document found.' });
   });
 };
 
